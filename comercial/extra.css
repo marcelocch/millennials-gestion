@@ -1,0 +1,52 @@
+
+/* Agregados para Millennials: seis dolores, carrera del vendedor, inversión por hitos y costos mensuales. */
+.chip.warm { color: var(--orange); background: rgba(251, 133, 0, .14); }
+
+/* Escena de comisión: el riel de seis etapas se llena */
+.rail { display: grid; grid-template-columns: repeat(6, 1fr); gap: 4px; }
+.rail i { height: 8px; border-radius: 4px; background: var(--bg); animation: railfill .35s calc(.3s + var(--n) * .22s) var(--ease) both; }
+.rail i:last-child { animation-name: railend; }
+@keyframes railfill { to { background: var(--yellow); } }
+@keyframes railend { to { background: var(--orange); } }
+.rail-l { display: grid; grid-template-columns: repeat(6, 1fr); gap: 4px; font-size: 11px; color: var(--muted); }
+.cmp { display: grid; grid-template-columns: 1fr auto auto; gap: 6px 12px; align-items: center; font-size: 14px; }
+.cmp .h { color: var(--muted); font-size: 12px; }
+.cmp .ok { color: #7fe0c0; font-weight: 600; animation: rise .4s calc(.6s + var(--n) * .35s) var(--ease) both; }
+
+/* Carrera del vendedor */
+.ladder { margin-top: 40px; display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); gap: 0; }
+.ladder li { position: relative; padding: 34px 14px 0 0; min-width: 0; }
+.ladder li::before { content: ""; position: absolute; top: 9px; left: 0; right: 0; height: 2px; background: var(--line); }
+.ladder li::after { content: ""; position: absolute; top: 3px; left: 0; width: 14px; height: 14px; border-radius: 50%; background: var(--sky); box-shadow: 0 0 0 4px var(--bg); }
+.ladder li.rp::after { background: var(--yellow); }
+.ladder li.top::after { background: var(--orange); width: 18px; height: 18px; top: 1px; }
+.ladder .grp { position: absolute; top: -22px; left: 0; font-size: 13px; color: var(--muted); white-space: nowrap; }
+.ladder h3 { font: 700 17px/1.2 var(--display); }
+.ladder p { margin-top: 6px; font-size: 15px; color: var(--fg-2); }
+.ladder small { display: block; margin-top: 10px; font-size: 14px; color: var(--sky); }
+@media (max-width: 1000px) {
+  .ladder { grid-template-columns: 1fr; gap: 0; margin-top: 28px; }
+  .ladder li { padding: 0 0 26px 34px; }
+  .ladder li::before { top: 14px; bottom: 0; left: 6px; right: auto; width: 2px; height: auto; }
+  .ladder li:last-child::before { display: none; }
+  .ladder li::after { top: 3px; }
+  .ladder .grp { position: static; display: block; margin-bottom: 4px; }
+}
+.ladder-note { margin-top: 28px; display: flex; flex-wrap: wrap; gap: 12px 20px; align-items: center; color: var(--muted); font-size: 15px; }
+
+/* Inversión */
+.plan .pct.tx { font-size: 16px; padding-top: 3px; }
+.plan .amt { font: 600 15px/1.2 var(--body); color: var(--muted); white-space: nowrap; }
+.plan li.r { grid-template-columns: 68px 1fr auto; }
+.costs { margin-top: 6px; display: grid; }
+.costs .ln { display: grid; grid-template-columns: 1fr auto; gap: 12px; padding: 12px 0; border-top: 1px solid var(--line); }
+.costs .ln small { display: block; color: var(--muted); font-size: 14px; }
+.costs .ln b { white-space: nowrap; font-weight: 600; }
+.costs .sum b { font: 800 26px/1 var(--display); color: var(--yellow); }
+.legend { margin-top: 10px; display: flex; flex-wrap: wrap; gap: 6px 14px; font-size: 13px; color: var(--muted); }
+.legend span { display: inline-flex; align-items: center; gap: 6px; }
+.legend i { width: 10px; height: 10px; border-radius: 3px; }
+.result .sub { margin-top: 22px; padding-top: 20px; border-top: 1px solid var(--line); }
+.result .big.cool { color: #7fe0c0; }
+.inv-in { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; margin-top: 14px; }
+.inv-in input { width: 150px; height: 40px; padding: 0 12px; border-radius: 10px; border: 1px solid var(--line); background: var(--bg); color: var(--fg); font: 600 16px var(--body); }

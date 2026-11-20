@@ -69,6 +69,12 @@ La matriz de acceso está en `MENU` dentro de `useDemo.ts` y se muestra en Confi
 - Los parámetros de cuotas (`TRAMOS_RECARGO`, `INICIAL_MINIMA`) son de ejemplo y están rotulados
   así en la interfaz. No presentarlos como reales.
 
+## Página comercial
+
+`comercial/` tiene la presentación que acompaña la demo, con el diseño de Artisan. Sus enlaces usan las
+escenas de arriba. Si cambias el nombre de una escena, actualízalo también ahí.
+
 ## Despliegue
 
-Proyecto en Vercel (equipo `marcelo-calles-projects`). El sitio lleva `noindex`.
+Proyecto en Vercel (equipo `marcelo-calles-projects`), pendiente de conectar al repositorio de GitHub. El sitio lleva `noindex`.
+Mientras tanto la demo está publicada como artifact (vista previa estática): https://claude.ai/artifact/GQQqDLe6AyR9HyReMeFGwg

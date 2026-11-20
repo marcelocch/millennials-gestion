@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Millennials × Artisan</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bai+Jamjuree:wght@400;500;600&family=Montserrat:wght@600;700;800&display=swap">
+<style>
+{{CSS}}
+</style>
+</head>
+<body>
+
+<header class="bar"><div class="wrap">
+  <img src="{{ARTISAN}}" alt="Artisan">
+  <nav aria-label="Secciones"><a href="#dolor">El dolor</a><a href="#costo">El costo</a><a href="#recorrido">La solución</a><a href="#carrera">La carrera</a><a href="#inversion">Inversión</a><a href="#guion">Guion de demo</a></nav>
+  <a class="btn sm demo-link" data-path="#tablero" target="_blank" rel="noopener">Abrir la demo</a>
+</div></header>
+
+<section class="hero"><div class="wrap">
+  <div class="rise">
+    <p class="who"><img src="{{MILLENNIALS}}" alt="Millennials"><span>Propuesta de plataforma<br>para Millennials Investments</span></p>
+    <h1>De la llamada a la comisión, en un solo lugar<span class="dot">.</span></h1>
+    <p class="lead">Hoy las cuotas viven en un Drive, la evidencia en WhatsApp y las entrevistas en la memoria de cada líder. La plataforma reúne ventas, cobranzas, demos, reclutamiento y telemarketing para dirigir toda la red desde un tablero.</p>
+    <div class="cta"><a class="btn" href="#dolor">Ver el recorrido</a><a class="btn ghost demo-link" data-path="#tablero" target="_blank" rel="noopener">Abrir la demo</a></div>
+  </div>
+  <div class="morph" id="morph">
+    <div class="seg" role="group" aria-label="Comparar"><button type="button" aria-pressed="true" data-on="0">Hoy</button><button type="button" aria-pressed="false" data-on="1">Con la plataforma</button></div>
+    <div class="msgs">
+      <div class="msg" style="--i:0"><div class="a">¿Ya pagó la señora Quispe? Revisa el Drive<small>Cobranzas · de 3 a 4 horas al día</small></div><div class="b"><span>Cuota 4 de 12 · S/ 320<small>Recordatorio enviado con enlace de pago</small></span><span class="chip warm">Vence hoy</span></div></div>
+      <div class="msg" style="--i:1"><div class="a">Te mando el video del curado de la clienta<small>Vendedor · por WhatsApp</small></div><div class="b"><span>Curado y cocinado · Rosa Medina<small>Evidencia validada por su líder</small></span><span class="chip ok">Comisión habilitada</span></div></div>
+      <div class="msg" style="--i:2"><div class="a">¿Quién entrevistó al chico que vino ayer?<small>Líder de equipo</small></div><div class="b"><span>Postulante · referido por Patricia M.<small>Entrevistó Carla Paredes</small></span><span class="chip info">Apto</span></div></div>
+      <div class="msg" style="--i:3"><div class="a">Te paso la base, llama a los que puedas<small>Telemarketing</small></div><div class="b"><span>Cinco operadores · 94 llamadas<small>Citas que se realizaron y vendieron</small></span><span class="chip ok">25 citas hoy</span></div></div>
+    </div>
+    <p class="foot" id="morphFoot">Cuatro conversaciones, cuatro cosas que alguien tiene que recordar</p>
+  </div>
+</div></section>
+
+<section id="dolor"><div class="wrap">
+  <p class="eyebrow">El dolor</p>
+  <h2>Dónde se pierde tiempo y control hoy<span class="dot">.</span></h2>
+  <p class="lead">Seis situaciones que salieron en la reunión con cada área. Toca cada una para ver cómo queda resuelta.</p>
+  <div class="pains" id="pains"></div>
+</div></section>
+
+<section id="costo"><div class="wrap">
+  <p class="eyebrow">El costo</p>
+  <h2>Cuánto cuesta cobrar a mano<span class="dot">.</span></h2>
+  <p class="lead">Mueve los valores con los números reales de Millennials. Solo las horas de cobranza salieron de la reunión; el resto es un ejemplo, no un dato del negocio.</p>
+  <div class="calc">
+    <div class="panel">
+      <div class="field"><label for="c1">Horas al día para revisar y notificar cuotas <output id="o1" class="num"></output></label><input id="c1" type="range" min="1" max="8" step="0.5" value="3.5"></div>
+      <div class="field"><label for="c2">Parte de ese trabajo que se automatiza <output id="o2" class="num"></output></label><input id="c2" type="range" min="30" max="90" step="5" value="70"><p class="hint">Es un supuesto: los recordatorios salen solos y la lista del día ya viene ordenada.</p></div>
+      <div class="field"><label for="c3">Cuotas por cobrar en un mes <output id="o3" class="num"></output></label><input id="c3" type="range" min="20000" max="400000" step="10000" value="120000"></div>
+      <div class="field"><label for="c4">Parte que hoy cae en mora <output id="o4" class="num"></output></label><input id="c4" type="range" min="2" max="30" value="12"></div>
+      <div class="field"><label for="c5">Mora que se evita avisando a tiempo <output id="o5" class="num"></output></label><input id="c5" type="range" min="5" max="50" step="5" value="20"><p class="hint">Es un supuesto. Se mide en los primeros meses, comparando la mora antes y después.</p></div>
+    </div>
+    <div class="panel result" aria-live="polite">
+      <p class="hint">26 días hábiles al mes</p>
+      <p class="big num" id="rHoras">0 h</p>
+      <p style="color:var(--fg-2)">vuelven cada mes al equipo de cobranzas para llamar a quien de verdad lo necesita</p>
+      <div class="sub">
+        <p class="big warm num" id="rMora">S/ 0</p>
+        <p style="color:var(--fg-2)">dejan de atrasarse cada mes porque el recordatorio llega antes del vencimiento</p>
+        <div class="bars">
+          <div class="row"><span>Cae en mora hoy <b class="num" id="bMora"></b></span><div class="track"><i id="tMora" style="background:var(--yellow)"></i></div></div>
+          <div class="row"><span>Se evita con recordatorios <b class="num" id="bEvita"></b></span><div class="track"><i id="tEvita" style="background:#7fe0c0"></i></div></div>
+        </div>
+      </div>
+<p class="hint" style="margin-top:20px">No cuenta las horas de los líderes que hoy persiguen evidencia, entrevistas y llamadas por chat.</p>
+        </div>
+  </div>
+</div></section>
+
+<section id="recorrido"><div class="wrap">
+  <p class="eyebrow">La solución</p>
+  <h2>Una venta, de la llamada a la comisión<span class="dot">.</span></h2>
+  <p class="lead">Siete momentos del mismo recorrido. Cada uno tiene su enlace para abrirlo en la demo, en el perfil de quien lo hace.</p>
+  <div class="steps" id="steps" role="tablist" aria-label="Momentos del recorrido"></div>
+  <div class="stage"><div class="txt" id="stageTxt"></div><div class="scene" id="scene" aria-hidden="true"></div></div>
+  <div class="playrow"><button type="button" class="btn ghost sm" id="play">Reproducir el recorrido</button><span class="hint">Avanza solo cada cinco segundos. También puedes tocar cada momento.</span></div>
+</div></section>
+
+<section id="carrera"><div class="wrap">
+  <p class="eyebrow">La carrera del vendedor</p>
+  <h2>De postulante a líder de red, sin perder el rastro<span class="dot">.</span></h2>
+  <p class="lead">Cada persona entra referida por alguien y avanza por los rangos de Royal Prestige. La plataforma guarda lo que pasa en cada etapa, así que cualquiera puede ver en qué punto está y cómo llegó ahí.</p>
+  <ol class="ladder" id="ladder"></ol>
+  <div class="ladder-note"><span>Los requisitos de cada rango los define Royal Prestige. La plataforma muestra el avance de cada persona.</span><span id="ladderLink"></span></div>
+</div></section>
+
+<section id="gerencia"><div class="wrap">
+  <p class="eyebrow">Para gerencia</p>
+  <h2>Seis preguntas que hoy se responden revisando hojas y chats<span class="dot">.</span></h2>
+  <div class="qa"><div class="qs" id="qs" role="tablist" aria-label="Preguntas"></div><div class="panel ans" id="ans"></div></div>
+</div></section>
+
+<section id="inversion"><div class="wrap">
+  <p class="eyebrow">Inversión</p>
+  <h2>Un solo proyecto, con cobranzas y ventas primero<span class="dot">.</span></h2>
+  <p class="lead">Se paga por hitos, y cada hito se cobra cuando su módulo ya está en uso. Los montos se completan en la propuesta final.</p>
+  <div class="inv">
+    <div class="panel">
+      <ol class="plan">
+        <li class="r"><span class="pct tx">Inicio</span><span>Pago inicial<small>A la firma, para empezar el levantamiento con cada área</small></span><span class="amt">Por definir</span></li>
+        <li class="r"><span class="pct num">1</span><span>Base, ventas y cobranzas<small>Registro de ventas, cuadre con Hy Cite y cartera migrada en uso</small></span><span class="amt">Por definir</span></li>
+        <li class="r"><span class="pct num">2</span><span>Demostraciones y comisiones<small>Calendario por trabajador, recorrido de la venta y evidencia</small></span><span class="amt">Por definir</span></li>
+        <li class="r"><span class="pct num">3</span><span>Reclutamiento, inducción y telemarketing<small>Los tres módulos en uso</small></span><span class="amt">Por definir</span></li>
+        <li class="r"><span class="pct num">4</span><span>Tablero, integración y puesta en marcha<small>Plataforma completa y equipos capacitados</small></span><span class="amt">Por definir</span></li>
+      </ol>
+      <div class="total"><span>Inversión del proyecto</span><b>Por definir</b></div>
+      <p class="aside">Incluye, como valor agregado, la actualización e integración del App Millennials, la intranet de talleres por video y su panel administrativo, con la migración de sus datos.</p>
+    </div>
+    <div class="panel" id="planPanel">
+      <p class="hint">Unas 17 semanas en seis etapas</p>
+      <div class="weeks"><i style="flex:2"></i><i style="flex:5"></i><i style="flex:3"></i><i style="flex:3;background:var(--orange)"></i><i style="flex:3;background:#7fe0c0"></i><i style="flex:1;background:var(--fg-2)"></i></div>
+      <div class="legend"><span><i style="background:var(--teal)"></i>Levantamiento</span><span><i style="background:var(--sky)"></i>Base, ventas y cobranzas</span><span><i style="background:var(--yellow)"></i>Demos</span><span><i style="background:var(--orange)"></i>Reclutamiento y llamadas</span><span><i style="background:#7fe0c0"></i>Tablero e integración</span><span><i style="background:var(--fg-2)"></i>Puesta en marcha</span></div>
+      <p class="hint" style="margin-top:26px">Costos mensuales de operación, en dólares</p>
+      <div class="costs">
+        <div class="ln"><span>Alojamiento de la aplicación<small>Vercel Pro</small></span><b class="num">US$ 20</b></div>
+        <div class="ln"><span>Base de datos, archivos y respaldos<small>Supabase Pro</small></span><b class="num">US$ 25</b></div>
+        <div class="ln"><span>Correos, hasta 50 000 al mes<small>Resend Pro</small></span><b class="num">US$ 20</b></div>
+        <div class="ln"><span>WhatsApp oficial<small>Meta cobra por mensaje entregado</small></span><b class="num">≈ US$ 0,03 c/u</b></div>
+        <div class="ln sum"><span>Base fija</span><b class="num">US$ 65</b></div>
+      </div>
+      <p class="aside">Precios de lista a noviembre de 2026. Soporte y mantenimiento de Artisan se cotizan aparte.</p>
+    </div>
+  </div>
+</div></section>
+
+<section id="guion"><div class="wrap">
+  <p class="eyebrow">Para quien presenta</p>
+  <h2>Guion de la demo en doce minutos<span class="dot">.</span></h2>
+  <p class="lead">Cada enlace abre la demo en el perfil de quien hace esa tarea. La demo vuelve a su estado inicial al recargarla.</p>
+  <ol class="guide" id="guide"></ol>
+  <div class="base"><label for="base">Dirección de la demo</label><input id="base" type="url" spellcheck="false"><span class="hint">Cámbiala cuando la demo esté en su dirección definitiva. Todos los enlaces de esta página la usan.</span></div>
+</div></section>
+
+<section id="siguiente"><div class="wrap">
+  <p class="eyebrow">Siguiente paso</p>
+  <h2>Validar cuatro cosas con cada área<span class="dot">.</span></h2>
+  <p class="lead">Los parámetros de las cuotas, quién cuadra las ventas con Hy Cite y si ese sistema exporta un reporte, las metas de telemarketing, y cómo se reconoce a quien refiere a un postulante que ingresa.</p>
+</div></section>
+
+<footer><div class="wrap"><img src="{{ARTISAN}}" alt="Artisan"><span>Artisan Technology E.I.R.L. · Demo con datos ficticios: pagos, WhatsApp y el sistema de Hy Cite son simulados</span></div></footer>
+
+<script>
+(function () {
+  var $ = function (s, r) { return (r || document).querySelector(s); };
+  var $$ = function (s, r) { return Array.prototype.slice.call((r || document).querySelectorAll(s)); };
+  var ARROW = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 4h6v6M20 4l-9 9"/><path d="M18 14v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h5"/></svg>';
+  var miles = function (n) { return String(Math.round(n)).replace(/\B(?=(\d{3})+(?!\d))/g, " "); };
+  var soles = function (n) { return "S/ " + miles(n); };
+  var demo = function (path, label) { return '<a class="demo demo-link" target="_blank" rel="noopener" data-path="' + path + '">' + ARROW + '<span>' + label + '</span></a>'; };
+
+  /* Dirección de la demo: cada enlace es esa dirección más un #escena */
+  var DEFECTO = "{{DEMO}}";
+  var base = DEFECTO;
+  try { base = localStorage.getItem("millennialsDemo") || base; } catch (e) {}
+  function applyBase() {
+    var b = base.replace(/#.*$/, "").replace(/\/+$/, "");
+    $$(".demo-link").forEach(function (a) { a.href = b + a.getAttribute("data-path"); });
+  }
+  var baseInput = $("#base"); baseInput.value = base;
+  baseInput.addEventListener("input", function () { base = baseInput.value.trim() || DEFECTO; try { localStorage.setItem("millennialsDemo", base); } catch (e) {} applyBase(); });
+
+  /* Antes y después */
+  var morph = $("#morph"), touched = false;
+  function setMorph(on) {
+    morph.classList.toggle("on", on);
+    $$(".seg button", morph).forEach(function (b) { b.setAttribute("aria-pressed", String((b.dataset.on === "1") === on)); });
+    $("#morphFoot").textContent = on ? "La misma información, en un sistema que cada área y la gerencia ven igual" : "Cuatro conversaciones, cuatro cosas que alguien tiene que recordar";
+  }
+  $$(".seg button", morph).forEach(function (b) { b.addEventListener("click", function () { touched = true; setMorph(b.dataset.on === "1"); }); });
+  setTimeout(function () { if (!touched) setMorph(true); }, 2200);
+
+  /* Dolor */
+  var PAINS = [
+    { a: "Cobranzas", h: "Las cuotas se siguen en un Drive", c: "Revisar y notificar a mano toma de 3 a 4 horas al día, y la urgencia se pierde entre filas.", f: "Cada mañana el gestor ve a quién contactar y en qué orden. Los recordatorios salen solos por WhatsApp y correo, con el enlace de pago de Hy Cite.", p: "#mi-dia", l: "Mi día del gestor" },
+    { a: "Ventas", h: "Lo vendido no tiene un control propio", c: "Las ventas se ingresan en Hy Cite, pero Millennials no tiene una vista suya del día ni un cuadre ordenado contra ese sistema.", f: "El vendedor registra la venta en un minuto, con productos y montos. Gerencia ve lo vendido e ingresado hoy y contabilidad cuadra cada venta contra Hy Cite.", p: "#cuadre", l: "Cuadre con Hy Cite" },
+    { a: "Demostraciones", h: "La evidencia de la comisión vive en un chat", c: "El video del curado y el cocinado se envía a una persona por WhatsApp. Si se pierde, la comisión se discute.", f: "Cada venta avanza por seis etapas. El vendedor sube el video desde su celular y su líder lo valida para habilitar la comisión.", p: "#evidencia", l: "Evidencia por validar" },
+    { a: "Reclutamiento", h: "Las entrevistas no dejan registro", c: "No queda quién citó al postulante, quién lo entrevistó ni quién lo refirió.", f: "Cada postulante queda con quién lo refiere, quién lo registró y quién lo entrevistó, hasta darlo de alta en el equipo.", p: "#nuevo-postulante", l: "Registrar un postulante" },
+    { a: "Inducción", h: "La capacitación no se mide", c: "No se sabe quién completó su inducción antes de salir a campo.", f: "Una ruta de seis pasos por ingresante, con asistencia por sesión y el avance en la intranet de talleres.", p: "#capacitacion", l: "Inducción y capacitación" },
+    { a: "Telemarketing", h: "Se llama sin control", c: "Las bases están curadas, pero no hay registro de cada llamada ni de cuántas citas terminan en venta.", f: "Cola con guion y referente, rellamadas, metas por operador y la calidad de cada cita: si se realizó y si vendió.", p: "#calidad-citas", l: "Calidad de las citas" }
+  ];
+  $("#pains").innerHTML = PAINS.map(function (p, i) {
+    return '<article class="pain"><p class="tag">' + p.a + ' · hoy</p><h3>' + p.h + '</h3><p class="cost">' + p.c + '</p>' +
+      '<div class="fix" id="fix' + i + '"><div><p>' + p.f + '</p>' + demo(p.p, p.l) + '</div></div>' +
+      '<p class="tog"><button type="button" aria-expanded="false" aria-controls="fix' + i + '"><span>Ver cómo se resuelve</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></button></p></article>';
+  }).join("");
+  $$(".pain").forEach(function (el, i) {
+    var btn = $(".tog button", el);
+    btn.addEventListener("click", function () {
+      var open = el.classList.toggle("open");
+      btn.setAttribute("aria-expanded", String(open));
+      $("span", btn).textContent = open ? "Volver al problema" : "Ver cómo se resuelve";
+      $(".tag", el).textContent = PAINS[i].a + (open ? " · con la plataforma" : " · hoy");
+    });
+  });
+
+  /* Calculadora */
+  var shown = { h: 0, m: 0 };
+  function anim(key, to, el, fmt) {
+    var from = shown[key], t0 = performance.now();
+    (function tick(t) { var k = Math.min(1, (t - t0) / 350); shown[key] = from + (to - from) * k; el.textContent = fmt(shown[key]); if (k < 1) requestAnimationFrame(tick); })(t0);
+  }
+  function calc() {
+    var horas = +$("#c1").value, auto = +$("#c2").value, cartera = +$("#c3").value, mora = +$("#c4").value, evita = +$("#c5").value;
+    var hMes = horas * 26 * auto / 100, enMora = cartera * mora / 100, evitada = enMora * evita / 100;
+    $("#o1").textContent = String(horas).replace(".", ",") + " h"; $("#o2").textContent = auto + " %"; $("#o3").textContent = soles(cartera); $("#o4").textContent = mora + " %"; $("#o5").textContent = evita + " %";
+    $("#bMora").textContent = soles(enMora) + " al mes"; $("#bEvita").textContent = soles(evitada) + " al mes";
+    $("#tMora").style.width = "100%"; $("#tEvita").style.width = (evitada / Math.max(enMora, 1) * 100) + "%";
+    anim("h", hMes, $("#rHoras"), function (v) { return Math.round(v) + " h"; });
+    anim("m", evitada, $("#rMora"), soles);
+  }
+  ["c1", "c2", "c3", "c4", "c5"].forEach(function (id) { $("#" + id).addEventListener("input", calc); });
+  calc();
+
+  /* Recorrido */
+  var ETAPAS = ["Demo", "Cierre", "Entrega", "Curado", "Cocinado", "Comisión"];
+  var STEPS = [
+    { t: "Llamada", h: "Telemarketing agenda la demo en el calendario del vendedor", d: "El operador ve quién refirió al contacto, sigue el guion y agenda con el vendedor que tiene la agenda más libre ese día.", s: "las llamadas sin registro y las citas que nadie sigue", how: "En la cola de llamadas, toca «Agendar demo» y elige al vendedor. La cita aparece al instante en su calendario.", p: "#mi-cola", l: "Cola de llamadas",
+      scene: '<div class="phone"><h4>Siguiente llamada · 14 en cola</h4><div class="rowi a1"><span>Elena Espinoza<small>Referida por María Quispe, programa 4 en 14</small></span></div><div class="rowi a2"><span>Guion de la llamada<small>«María nos dio su número porque…»</small></span></div><div class="rowi a3 pick"><span>Agendar demo<small>Mañana 17:00 con Alonso M.</small></span></div><div class="rowi a4" style="background:var(--raise)"><span>Citas de hoy<small>Meta del operador: 5</small></span><span class="swap"><b class="num from">3</b><b class="num to">4</b></span></div></div>' },
+    { t: "Demo", h: "Cada vendedor tiene su calendario de demos", d: "Fecha, hora, dirección y origen de cada visita. El líder ve las demos del día de todo su equipo, en la oficina que comparten.", s: "las agendas en el Calendar personal de cada uno", how: "Abre la agenda del emprendedor: verás la semana con sus demos confirmadas y las de hoy.", p: "#mis-demos", l: "Mis demostraciones",
+      scene: '<div class="phone"><h4>Calendario · hoy</h4><div class="rowi a1"><span>15:00 · Óscar Medina<small>La Molina · referido</small></span><span class="chip ok">Realizada</span></div><div class="rowi a2"><span>17:00 · Elena Espinoza<small>Ate · telemarketing</small></span><span class="swap"><span class="chip info from">Confirmada</span><span class="chip ok to">Realizada</span></span></div><div class="rowi a3"><span>19:30 · Pilar Paredes<small>Carabayllo</small></span><span class="chip info">Confirmada</span></div></div>' },
+    { t: "Venta", h: "La venta se registra en un minuto, con sus montos", d: "Productos, descuento, forma de pago e inicial. Si Millennials financia, el cronograma de cuotas pasa solo a Cobranzas.", s: "no saber cuánto se vendió e ingresó hoy sin preguntar", how: "Registra un juego de ollas en cuotas de Millennials. Luego mira cómo sube lo ingresado del día.", p: "#registrar-venta", l: "Registrar una venta",
+      scene: '<div class="phone"><h4>Registrar venta · Elena Espinoza</h4><div class="rowi a1"><span>Juego de ollas 7 piezas<small>1 unidad</small></span><b class="num">S/ 4 100</b></div><div class="rowi a2"><span>Cuotas Millennials<small>Inicial S/ 600 · 12 cuotas mensuales</small></span><b class="num">S/ 362</b></div><div class="rowi a4" style="background:var(--raise)"><span>MV-2632<small>Por cuadrar con Hy Cite</small></span><span class="swap"><span class="chip wait from">Borrador</span><span class="chip ok to">Registrada</span></span></div></div>' },
+    { t: "Cuadre", h: "Contabilidad contrasta cada venta con Hy Cite", d: "Hy Cite no se conecta con otros sistemas, así que el cuadre es manual pero ordenado: número de orden, monto, inicial y productos, venta por venta.", s: "las ventas que nadie compara con lo registrado en Hy Cite", how: "Cuadra una venta escribiendo el monto y la inicial que ves en Hy Cite. Abre también una con diferencia.", p: "#cuadre", l: "Cuadre con Hy Cite",
+      scene: '<div class="phone"><h4>Cuadrar MV-2632 · orden HC48210377</h4><div class="cmp"><span class="h">Dato</span><span class="h">Millennials</span><span class="h">Hy Cite</span><span>Monto total</span><b class="num">S/ 4 100</b><span class="ok" style="--n:0">✓ S/ 4 100</span><span>Inicial</span><b class="num">S/ 600</b><span class="ok" style="--n:1">✓ S/ 600</span><span>Productos</span><span>Ollas 7 pzas</span><span class="ok" style="--n:2">✓ iguales</span></div><div class="rowi a4"><span>Estado del cuadre<small>Revisó contabilidad</small></span><span class="swap late"><span class="chip wait from">Por cuadrar</span><span class="chip ok to">Cuadrada</span></span></div></div>' },
+    { t: "Cuota", h: "El recordatorio sale solo y el gestor ve a quién llamar", d: "Las reglas avisan 7 días antes, un día antes y el día del vencimiento. El gestor empieza su día con la lista ordenada por atraso.", s: "las 3 a 4 horas diarias revisando el Drive", how: "En Mi día, toca «Enviar» en un cliente en mora: el WhatsApp se abre con el mensaje listo. Luego registra un pago.", p: "#mi-dia", l: "Mi día del gestor",
+      scene: '<div class="phone"><div class="note"><span class="chip ok" style="padding:6px 8px">W</span><span><b>Millennials</b><small>Hola Rosa, tu cuota 4 de 12 de S/ 320 vence hoy. Puedes pagarla aquí: pagos.hycite…</small></span></div><h4>Mi día · cobranzas</h4><div class="rowi a1"><span>Rosa Medina<small>Cuota 4 de 12</small></span><span class="swap late"><span class="chip warm from">Vence hoy</span><span class="chip ok to">Pagada</span></span></div><div class="rowi a2"><span>Iván Rojas<small>47 días de atraso</small></span><span class="chip bad">En mora</span></div></div>' },
+    { t: "Comisión", h: "La comisión se habilita con evidencia validada", d: "En la segunda visita el vendedor hace el curado y el cocinado, y sube el video desde su celular. Su líder lo revisa y habilita la comisión.", s: "la evidencia perdida en un chat de WhatsApp", how: "En Evidencia por validar, toca «Validar y habilitar comisión».", p: "#evidencia", l: "Evidencia por validar",
+      scene: '<div class="phone"><h4>Recorrido de la venta · Rosa Medina</h4><div class="rail">' + ETAPAS.map(function (e, i) { return '<i style="--n:' + i + '"></i>'; }).join("") + '</div><div class="rail-l">' + ETAPAS.map(function (e) { return "<span>" + e + "</span>"; }).join("") + '</div><div class="rowi a2"><span>Video de curado<small>Subido por el vendedor</small></span><span class="chip ok">Listo</span></div><div class="rowi a3"><span>Video de cocinado<small>Subido por el vendedor</small></span><span class="chip ok">Listo</span></div><div class="rowi a4" style="background:var(--raise)"><span>Comisión<small>Validó Carla Paredes</small></span><span class="chip ok">Habilitada</span></div></div>' },
+    { t: "Gerencia", h: "Fernando ve toda la red en una pantalla", d: "Lo vendido e ingresado hoy, dónde está cada venta, la mora, el desempeño de cada distribuidor y lo que requiere atención.", s: "armar el panorama del día a partir de hojas y chats", how: "Cierra aquí: la franja de hoy ya incluye la venta que registraste. Compara a los distribuidores.", p: "#tablero", l: "Tablero de gerencia",
+      scene: '<div class="phone"><h4>Tablero · toda la red · hoy</h4><div class="kpis"><div class="kpi wide"><small>Vendido hoy</small><b class="num" id="kVend">S/ 30 100</b> <span class="up">+ la venta de esta demo</span></div><div class="kpi a2"><small>Ingresó hoy</small><b class="num">S/ 11 782</b></div><div class="kpi a3"><small>Por cuadrar</small><b class="num">21</b></div></div></div>' }
+  ];
+  var cur = 0, timer = null, stepsEl = $("#steps");
+  stepsEl.innerHTML = STEPS.map(function (s, i) { return '<button type="button" role="tab" aria-selected="false" id="tab' + i + '"><b class="num">' + (i + 1) + '</b>' + s.t + '<i></i></button>'; }).join("");
+  function show(i, user) {
+    cur = i; var s = STEPS[i];
+    $$("button", stepsEl).forEach(function (b, k) { b.setAttribute("aria-selected", String(k === i)); });
+    $("#stageTxt").innerHTML = '<h3 class="rise">' + s.h + '</h3><p class="rise">' + s.d + '</p><p class="solves">Resuelve: <b>' + s.s + '</b></p><div class="how"><small><b>En la demo.</b> ' + s.how + '</small>' + demo(s.p, s.l) + '</div>';
+    $("#scene").innerHTML = s.scene;
+    applyBase();
+    if (i === 6) { var el = $("#kVend"), t0 = performance.now(); (function tick(t) { var k = Math.min(1, Math.max(0, (t - t0 - 700) / 900)); el.textContent = soles(30100 + 4100 * k); if (k < 1 && el.isConnected) requestAnimationFrame(tick); })(t0); }
+    if (user) stop();
+    var b = $("#tab" + i); if (b.scrollIntoView && user) b.scrollIntoView({ block: "nearest", inline: "center", behavior: "smooth" });
+  }
+  function stop() { clearInterval(timer); timer = null; stepsEl.classList.remove("playing"); $("#play").textContent = "Reproducir el recorrido"; }
+  function play() {
+    stepsEl.classList.add("playing"); $("#play").textContent = "Pausar"; show(cur === STEPS.length - 1 ? 0 : cur);
+    timer = setInterval(function () { if (cur >= STEPS.length - 1) { stop(); return; } show(cur + 1); }, 5500);
+  }
+  $$("button", stepsEl).forEach(function (b, i) { b.addEventListener("click", function () { show(i, true); }); });
+  $("#play").addEventListener("click", function () { timer ? stop() : play(); });
+  stepsEl.addEventListener("keydown", function (e) { if (e.key === "ArrowRight" || e.key === "ArrowLeft") { var n = (cur + (e.key === "ArrowRight" ? 1 : STEPS.length - 1)) % STEPS.length; show(n, true); $("#tab" + n).focus(); } });
+  show(0);
+
+  /* Carrera del vendedor */
+  var LADDER = [
+    { g: "Ingreso", h: "Postulante", d: "Llega referido por alguien del equipo o por un aviso.", r: "Quién lo refiere y quién lo registró" },
+    { h: "Entrevista", d: "Un líder lo entrevista en su oficina.", r: "Entrevistador, resultado y notas" },
+    { h: "Inducción", d: "Seis pasos antes de salir a campo.", r: "Asistencia y avance en talleres" },
+    { g: "Carrera Royal Prestige", c: "rp", h: "Emprendedor", d: "Hace demos y cierra sus primeras ventas.", r: "Demos, ventas, evidencia y comisiones" },
+    { c: "rp", h: "Distribuidor Junior", d: "Empieza a reclutar y a formar su equipo.", r: "Su equipo y la gente que refiere" },
+    { c: "rp", h: "Distribuidor", d: "Dirige su distribución dentro de la red.", r: "Ventas, cobranza y cuadre de su equipo" },
+    { c: "top", h: "Blue, Royal y Premier", d: "Lidera a otros distribuidores.", r: "El tablero consolidado de su red" }
+  ];
+  $("#ladder").innerHTML = LADDER.map(function (s) { return '<li class="' + (s.c || "") + '">' + (s.g ? '<span class="grp">' + s.g + '</span>' : "") + '<h3>' + s.h + '</h3><p>' + s.d + '</p><small>Registra: ' + s.r + '</small></li>'; }).join("");
+  $("#ladderLink").innerHTML = demo("#red", "Ficha de cada persona en Red y equipo");
+
+  /* Preguntas de gerencia */
+  var QA = [
+    { q: "¿Cuánto vendimos e ingresó hoy?", h: "Ventas e ingresos del día, por medio de pago", a: "Lo vendido, las iniciales, las ventas al contado y las cuotas cobradas, separados para no contarlos dos veces. Cada venta abre su detalle.", p: "#ventas", l: "Ventas e ingresos" },
+    { q: "¿Qué falta cuadrar con Hy Cite?", h: "Avance del cuadre de los últimos siete días", a: "Ventas por cuadrar y con diferencia, con la nota de qué no coincide y quién la revisó.", p: "#cuadre", l: "Cuadre con Hy Cite" },
+    { q: "¿Quién está en mora?", h: "Cartera por estado, gestor y vendedor", a: "Mora, cuotas que vencen hoy y por vencer, con el historial de cada cliente: mensajes, llamadas, promesas y pagos.", p: "#cobranzas", l: "Cobranzas" },
+    { q: "¿Cómo va cada distribuidor?", h: "Comparativo de la red", a: "Demos, ventas, tasa de cierre, monto vendido y clientes en mora de cada distribuidor a cargo y su equipo.", p: "#tablero", l: "Tablero de gerencia" },
+    { q: "¿Quién trae gente nueva?", h: "Postulantes referidos por persona", a: "Cuántos postulantes refirió cada uno, cuántos se entrevistaron y cuántos ingresaron. También por canal: referidos, avisos, redes o ferias.", p: "#referidos", l: "Quién trae gente" },
+    { q: "¿Las citas de telemarketing venden?", h: "Calidad de las citas por operador", a: "No solo cuántas citas agendó cada operador, sino cuántas se realizaron y cuántas terminaron en venta, con el monto vendido.", p: "#calidad-citas", l: "Resultado de las citas" }
+  ];
+  $("#qs").innerHTML = QA.map(function (x) { return '<button type="button" role="tab" aria-selected="false">' + x.q + '</button>'; }).join("");
+  function ask(i) {
+    $$("#qs button").forEach(function (b, k) { b.setAttribute("aria-selected", String(k === i)); });
+    var x = QA[i]; $("#ans").innerHTML = '<h3 class="rise">' + x.h + '</h3><p class="rise">' + x.a + '</p>' + demo(x.p, x.l); applyBase();
+  }
+  $$("#qs button").forEach(function (b, i) { b.addEventListener("click", function () { ask(i); }); });
+  ask(0);
+
+  /* Guion */
+  var GUIDE = [
+    ["El problema, sin pantalla", "Cuotas en un Drive, evidencia en WhatsApp, entrevistas sin registro y llamadas sin control. Usa la portada de esta página.", null],
+    ["Gerencia abre su día", "La franja de hoy, dónde está cada venta y el comparativo de distribuidores.", ["#tablero", "Tablero"]],
+    ["Telemarketing agenda", "Muestra el referente y el guion. Agenda una demo para mañana con el vendedor más libre.", ["#mi-cola", "Cola de llamadas"]],
+    ["La venta se registra", "Registra un juego de ollas en cuotas de Millennials. Señala que el cronograma pasa solo a Cobranzas.", ["#registrar-venta", "Registrar venta"]],
+    ["Contabilidad cuadra con Hy Cite", "Cuadra una venta escribiendo monto e inicial. Abre una con diferencia y su nota.", ["#cuadre", "Cuadre"]],
+    ["Cobranzas trabaja su lista", "Envía un WhatsApp con el mensaje listo y registra un pago. Muestra las reglas en Configuración.", ["#mi-dia", "Mi día"]],
+    ["La comisión con evidencia", "Valida una venta con curado y cocinado: la comisión queda habilitada.", ["#evidencia", "Evidencia"]],
+    ["Un postulante referido", "Registra un postulante e indica quién lo refiere. Luego abre «Quién trae gente».", ["#nuevo-postulante", "Registrar postulante"]],
+    ["Cierre", "Vuelve a esta página: la carrera del vendedor y la inversión por hitos.", null]
+  ];
+  var done = {}; try { done = JSON.parse(localStorage.getItem("millennialsGuion") || "{}"); } catch (e) {}
+  $("#guide").innerHTML = GUIDE.map(function (g, i) {
+    return '<li><input type="checkbox" id="g' + i + '"' + (done[i] ? " checked" : "") + '><label for="g' + i + '"><b>' + (i + 1) + ". " + g[0] + '</b><span>' + g[1] + '</span></label>' + (g[2] ? demo(g[2][0], g[2][1]) : "<span></span>") + '</li>';
+  }).join("");
+  $$("#guide input").forEach(function (c, i) { c.addEventListener("change", function () { done[i] = c.checked; try { localStorage.setItem("millennialsGuion", JSON.stringify(done)); } catch (e) {} }); });
+
+  applyBase();
+
+  /* Entradas al hacer scroll: el contenido ya es visible, solo se anima al llegar */
+  if ("IntersectionObserver" in window) {
+    var io = new IntersectionObserver(function (es) { es.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add("in", "rise"); io.unobserve(e.target); } }); }, { threshold: .15 });
+    $$("section:not(.hero) h2, .pain, .panel, .stage, .ladder").forEach(function (el) { io.observe(el); });
+  } else { $("#planPanel").classList.add("in"); }
+})();
+</script>
+</body>
+</html>
