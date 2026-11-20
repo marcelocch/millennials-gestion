@@ -6,11 +6,11 @@ const origen = '.output/public'
 const destino = 'vista-previa'
 rmSync(destino, { recursive: true, force: true })
 mkdirSync(destino)
-cpSync(`${origen}/_nuxt`, `${destino}/_nuxt`, { recursive: true })
+cpSync(`${origen}/recursos`, `${destino}/recursos`, { recursive: true })
 for (const f of readdirSync(origen).filter(f => f.endsWith('.png'))) cpSync(`${origen}/${f}`, `${destino}/${f}`)
 
 const html = readFileSync(`${origen}/index.html`, 'utf8')
-  .replaceAll('"/_nuxt/', '"./_nuxt/')
+  .replaceAll('"/recursos/', '"./recursos/')
   .replace('baseURL:"/"', 'baseURL:"./"')
 writeFileSync(`${destino}/index.html`, html)
 console.log(`Vista previa lista en ${destino}/`)

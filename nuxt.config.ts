@@ -14,6 +14,7 @@ export default defineNuxtConfig({
   experimental: vistaPrevia ? { appManifest: false, payloadExtraction: false } : {},
   app: {
     baseURL: vistaPrevia ? './' : '/',
+    buildAssetsDir: vistaPrevia ? '/recursos/' : '/_nuxt/',
     head: {
       title: 'Millennials · Plataforma de gestión',
       htmlAttrs: { lang: 'es' },
