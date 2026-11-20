@@ -5,6 +5,7 @@ import { HOY, fDia } from '~/utils/formato'
 
 const { estado, rol, yo, menu, datos } = useDemo()
 const ruta = useRoute()
+const logo = useRuntimeConfig().app.baseURL + 'logo-blanco.png'
 const activa = (r: string) => (r === '/' ? ruta.path === '/' : ruta.path.startsWith(r))
 
 // Al cambiar de perfil, la demo lleva a la pantalla con la que esa persona empieza su día.
@@ -21,7 +22,7 @@ const equipo = computed(() => datos.distribucion(yo.value.distribucionId))
     <!-- Navegación -->
     <aside class="bg-marino text-white lg:sticky lg:top-0 lg:flex lg:h-screen lg:flex-col">
       <div class="flex items-center justify-between px-5 pb-4 pt-5">
-        <img src="/logo-blanco.png" alt="Millennials" class="h-8 w-auto" />
+        <img :src="logo" alt="Millennials" class="h-8 w-auto" />
       </div>
       <nav class="flex gap-1 overflow-x-auto px-3 pb-3 lg:flex-1 lg:flex-col lg:overflow-visible" aria-label="Secciones">
         <NuxtLink v-for="m in menu" :key="m.ruta" :to="m.ruta"

@@ -6,6 +6,7 @@
     "dev": "nuxt dev",
     "build": "nuxt build",
     "generate": "nuxt generate",
+    "vista-previa": "VISTA_PREVIA=1 nuxt generate && node scripts/vista-previa.mjs",
     "preview": "nuxt preview",
     "postinstall": "nuxt prepare"
   },

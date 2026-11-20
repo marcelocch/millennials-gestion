@@ -18,6 +18,7 @@ Lee `docs/` antes de cambiar algo que toque el negocio:
 npm install
 npm run dev      # http://localhost:3000
 npm run build    # compila para producción (Vercel lo detecta solo)
+npm run vista-previa   # versión estática con rutas relativas en vista-previa/, para publicarla como página suelta
 ```
 
 ## Cómo está armado

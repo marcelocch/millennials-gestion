@@ -41,8 +41,8 @@ const abierto = ref<Financiamiento | null>(null)
 const sit = computed(() => (abierto.value ? situacion(abierto.value) : null))
 const nota = ref('')
 
+// El botón es un enlace a WhatsApp con el mensaje ya escrito; al usarlo queda registrado el contacto.
 const abrirWhatsApp = (f: Financiamiento) => {
-  window.open(enlaceWhatsApp(f.tel, mensajeCobro(f)), '_blank', 'noopener')
   registrarContacto(f, 'WhatsApp', 'Mensaje de cobro enviado por el gestor con el enlace de pago')
   avisar('Mensaje abierto en WhatsApp y registrado en el historial')
 }
@@ -146,7 +146,7 @@ const ICONO = { WhatsApp: 'whatsapp', Correo: 'correo', Llamada: 'telefono', Not
         </div>
         <div class="flex items-center gap-2">
           <span v-if="x.f.contactadoHoy" class="chip bg-ok-fondo text-ok"><Icono nombre="check" :size="13" />Contactado</span>
-          <button class="btn-wa px-3" @click="abrirWhatsApp(x.f)"><Icono nombre="whatsapp" :size="16" />Enviar</button>
+          <a class="btn-wa px-3" :href="enlaceWhatsApp(x.f.tel, mensajeCobro(x.f))" target="_blank" rel="noopener" @click="abrirWhatsApp(x.f)"><Icono nombre="whatsapp" :size="16" />Enviar</a>
           <button class="btn-linea px-2.5" title="Copiar enlace de pago" aria-label="Copiar enlace de pago" @click="copiarEnlace(x.f)"><Icono nombre="enlace" :size="16" /></button>
           <button class="btn-linea" @click="registrarPago(x.f, x.s.cuota!)">Registrar pago</button>
         </div>
@@ -188,7 +188,7 @@ const ICONO = { WhatsApp: 'whatsapp', Correo: 'correo', Llamada: 'telefono', Not
         <p v-if="sit.cuota" class="rounded-panel border border-regla bg-white p-3 text-sm leading-relaxed text-tinta-suave">{{ mensajeCobro(abierto) }}</p>
         <p v-else class="text-sm text-ok">Financiamiento cancelado. No hay cuotas pendientes.</p>
         <div v-if="sit.cuota" class="mt-3 flex flex-wrap gap-2">
-          <button class="btn-wa" @click="abrirWhatsApp(abierto)"><Icono nombre="whatsapp" :size="16" />Enviar por WhatsApp</button>
+          <a class="btn-wa" :href="enlaceWhatsApp(abierto.tel, mensajeCobro(abierto))" target="_blank" rel="noopener" @click="abrirWhatsApp(abierto)"><Icono nombre="whatsapp" :size="16" />Enviar por WhatsApp</a>
           <button class="btn-linea" @click="registrarContacto(abierto, 'Correo', 'Recordatorio enviado por correo con el enlace de pago'); avisar('Correo enviado')"><Icono nombre="correo" :size="16" />Enviar correo</button>
           <button class="btn-linea" @click="copiarEnlace(abierto)"><Icono nombre="enlace" :size="16" />Copiar enlace de pago</button>
         </div>
