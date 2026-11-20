@@ -8,7 +8,7 @@ datos, API ni autenticación.
 Lee `docs/` antes de cambiar algo que toque el negocio:
 
 - `docs/contexto-negocio.md`: cómo opera Royal Prestige y Millennials, rangos, vocabulario.
-- `docs/alcance-v1.md`: los ocho módulos de la versión 1 y lo que queda fuera.
+- `docs/alcance-v1.md`: los nueve módulos, las tres fases con su inversión y lo que queda fuera.
 - `docs/modelo-datos.md`: entidades simuladas y cómo pasarían a tablas reales.
 - `docs/pendientes.md`: preguntas abiertas con el cliente y siguientes pasos de la demo.
 

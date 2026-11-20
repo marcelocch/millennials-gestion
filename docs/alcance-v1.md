@@ -15,6 +15,23 @@ posteriores por área entra a una segunda fase, cotizada aparte.
 | 8 | Red, usuarios y accesos | `/red` | Estructura Premier → distribuidores → equipos, registro de trabajadores, ficha y carrera |
 | 9 | Notificaciones | `/configuracion` | Reglas por días antes o después del vencimiento, plantillas, canales |
 
+## Fases e inversión
+
+Total: **S/ 35,000 + IGV**, en tres fases según los dolores. Cada fase se paga 50% al iniciarla y 50% contra
+entrega en uso; la siguiente se inicia con la conformidad de Millennials. Alcance evolutivo, al estilo de iTalk.
+
+| Fase | Módulos | Plazo | Inversión |
+| --- | --- | --- | --- |
+| 1. Control de ventas y cobranzas | Base (usuarios, red, accesos), Ventas e ingresos con cuadre Hy Cite, Cobranzas con recordatorios, Notificaciones, tablero inicial. Valor agregado: usuarios del App Millennials unificados | 6 semanas | S/ 15,000 + IGV |
+| 2. Demostraciones, comisiones y telemarketing | Demos con evidencia y comisión, Telemarketing (carga simple de bases), embudo comercial y comparativo | 5 semanas | S/ 11,000 + IGV |
+| 3. Reclutamiento y formación | Reclutamiento con referidos, Inducción y capacitación, ficha de carrera. Valor agregado: intranet de talleres integrada | 4 semanas | S/ 9,000 + IGV |
+
+Evolutivos (se cotizan aparte): editor de reglas y plantillas de notificación (en fase 1 las configura Artisan),
+cálculo de comisiones, duplicados y lista de no llamar en telemarketing, cuadre semiautomático si Hy Cite exporta
+reportes, reportes exportables.
+
+Referencia interna de precio: equipo de líder (S/ 3,500/mes) y junior (S/ 1,700/mes), unas 15 semanas.
+
 ## Decisiones tomadas
 
 - **WhatsApp**: API oficial de WhatsApp Business. Mientras Meta aprueba el servicio, el mensaje

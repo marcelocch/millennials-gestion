@@ -50,3 +50,4 @@
 .result .big.cool { color: #7fe0c0; }
 .inv-in { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; margin-top: 14px; }
 .inv-in input { width: 150px; height: 40px; padding: 0 12px; border-radius: 10px; border: 1px solid var(--line); background: var(--bg); color: var(--fg); font: 600 16px var(--body); }
+.plan .amt.v { color: var(--fg); font: 700 18px/1.2 var(--display); }
