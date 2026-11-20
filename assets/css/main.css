@@ -1,0 +1,28 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html { font-family: 'Figtree', ui-sans-serif, system-ui, sans-serif; }
+  body { @apply bg-papel text-tinta antialiased; font-feature-settings: 'tnum' 1; }
+  h1, h2, h3 { @apply text-tinta; text-wrap: balance; }
+  :focus-visible { outline: 2px solid #FF8403; outline-offset: 2px; border-radius: 6px; }
+}
+
+@layer components {
+  .panel { @apply rounded-panel border border-regla bg-white; }
+  .panel-titulo { @apply text-[15px] font-semibold text-tinta; }
+  .btn { @apply inline-flex items-center justify-center gap-2 rounded-lg px-3.5 py-2 text-sm font-semibold transition-colors; }
+  .btn-primario { @apply btn bg-marino text-white hover:bg-marino-700; }
+  .btn-llama { @apply btn bg-llama text-marino-900 hover:bg-llama-ambar; }
+  .btn-linea { @apply btn border border-regla bg-white text-tinta hover:bg-marino-50; }
+  .btn-wa { @apply btn bg-[#128C7E] text-white hover:bg-[#0E7469]; }
+  .campo { @apply w-full rounded-lg border border-regla bg-white px-3 py-2 text-sm text-tinta placeholder:text-tinta-tenue focus:border-marino-500 focus:outline-none; }
+  .th { @apply px-4 py-2.5 text-left text-xs font-semibold text-tinta-suave; }
+  .td { @apply px-4 py-3 text-sm; }
+  .chip { @apply inline-flex items-center gap-1.5 rounded-full px-2.5 py-0.5 text-xs font-semibold; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * { transition: none !important; animation: none !important; }
+}
