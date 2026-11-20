@@ -4,6 +4,9 @@ const props = defineProps<{ nombre: string; size?: number }>()
 const TRAZOS: Record<string, string> = {
   tablero: 'M4 13h6V4H4zM14 20h6v-9h-6zM4 20h6v-3H4zM14 7h6V4h-6z',
   cobranza: 'M3 7h18v11H3zM3 11h18M7 15h4',
+  venta: 'M4 4h2l2.4 10.5a1 1 0 0 0 1 .8h8.2a1 1 0 0 0 1-.8L20 8H7M10 20h.01M17 20h.01',
+  cuadre: 'M9 5H5v14h14v-4M9 12l3 3 8-8',
+  buscar: 'M11 18a7 7 0 1 0 0-14 7 7 0 0 0 0 14zM20 20l-4-4',
   demo: 'M5 4h14v16H5zM9 2v4M15 2v4M5 10h14M9 14h2M13 14h2',
   personas: 'M9 11a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7zM2.5 20a6.5 6.5 0 0 1 13 0M17 11a3 3 0 1 0-1-5.8M18 14.5a5.5 5.5 0 0 1 3.5 5.5',
   libro: 'M4 5a2 2 0 0 1 2-2h14v15H6a2 2 0 0 0-2 2zM4 20a2 2 0 0 0 2 2h14v-4M9 8h7',

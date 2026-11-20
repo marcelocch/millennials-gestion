@@ -10,7 +10,7 @@
 }
 
 @layer components {
-  .panel { @apply rounded-panel border border-regla bg-white; }
+  .panel { @apply min-w-0 rounded-panel border border-regla bg-white; }
   .panel-titulo { @apply text-[15px] font-semibold text-tinta; }
   .btn { @apply inline-flex items-center justify-center gap-2 rounded-lg px-3.5 py-2 text-sm font-semibold transition-colors; }
   .btn-primario { @apply btn bg-marino text-white hover:bg-marino-700; }

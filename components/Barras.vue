@@ -8,7 +8,7 @@ const f = (n: number) => (props.formato ? props.formato(n) : n.toLocaleString('e
 </script>
 
 <template>
-  <div>
+  <div class="pt-8">
     <div class="flex items-end gap-2 border-b border-regla" :style="{ height: (alto ?? 168) + 'px' }">
       <button v-for="(d, i) in datos" :key="d.etiqueta" type="button"
         class="group relative flex h-full flex-1 cursor-default items-end justify-center"

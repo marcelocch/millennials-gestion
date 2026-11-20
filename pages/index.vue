@@ -1,12 +1,19 @@
 <script setup lang="ts">
 import { ETAPAS, ventasPorMes, distribuciones, vendedores } from '~/data/datos'
-import { situacion } from '~/composables/useDemo'
+import { situacion, ingresosDel } from '~/composables/useDemo'
 import { HOY, diasEntre, soles, solesCorto, pct } from '~/utils/formato'
 
-const { estado, rol, yo, alcance, demosVisibles, carteraVisible } = useDemo()
+const { estado, rol, yo, alcance, demosVisibles, carteraVisible, ventasVisibles } = useDemo()
 
 // Solo gerencia y distribuidores tienen tablero; los demás perfiles empiezan en su módulo.
 if (!['gerencia', 'distribuidor'].includes(estado.rol)) await navigateTo(rol.value.inicio)
+
+// El día de hoy
+const ventasHoy = computed(() => ventasVisibles.value.filter(v => diasEntre(v.fecha, HOY) === 0))
+const vendidoHoy = computed(() => ventasHoy.value.reduce((s, v) => s + v.total, 0))
+const ingresoHoy = computed(() => ingresosDel(ventasVisibles.value, carteraVisible.value).reduce((s, m) => s + m.monto, 0))
+const demosHoy = computed(() => demosVisibles.value.filter(d => diasEntre(d.fecha, HOY) === 0))
+const porCuadrar = computed(() => ventasVisibles.value.filter(v => v.cuadre !== 'Cuadrada').length)
 
 const pasadas = computed(() => demosVisibles.value.filter(d => diasEntre(d.fecha, HOY) >= 0 && diasEntre(d.fecha, HOY) <= 30))
 const realizadas = computed(() => pasadas.value.filter(d => d.visita === 'Realizada'))
@@ -28,11 +35,12 @@ const moraGrave = computed(() => enMora.value.filter(x => x.s.atraso > 15))
 const entrevistasHoy = computed(() => estado.postulantes.filter(p => diasEntre(p.fecha, HOY) === 0 && (!alcance.value || p.distribucionId === alcance.value)))
 
 const pendientes = computed(() => [
+  { n: porCuadrar.value, texto: 'ventas esperan su cuadre con Hy Cite', ruta: '/ventas?vista=cuadre', tono: 'llama' },
   { n: porValidar.value.length, texto: 'ventas con evidencia lista para validar y habilitar comisión', ruta: '/demos', tono: 'llama' },
   { n: detenidas.value.length, texto: 'ventas llevan más de 7 días detenidas en la misma etapa', ruta: '/demos', tono: 'aviso' },
   { n: moraGrave.value.length, texto: 'clientes superan los 15 días de atraso', ruta: '/cobranzas', tono: 'mora' },
   { n: entrevistasHoy.value.length, texto: 'entrevistas a postulantes están agendadas para hoy', ruta: '/reclutamiento', tono: 'marino' },
-].filter(p => p.n > 0 && (estado.rol === 'gerencia' || p.ruta !== '/cobranzas')))
+].filter(p => p.n > 0 && (estado.rol === 'gerencia' || !['/cobranzas', '/ventas?vista=cuadre'].includes(p.ruta))))
 
 // Tendencia: la gerencia ve la red; un distribuidor ve su parte proporcional.
 const parte = computed(() => {
@@ -91,6 +99,15 @@ const embudoReclutamiento = computed(() => {
       Esta semana vencen cuotas por <b class="text-tinta">{{ soles(porCobrarSemana) }}</b>
       y hay <b class="text-mora">{{ enMora.length }} clientes en mora</b>.
     </Encabezado>
+
+    <!-- El día de hoy -->
+    <NuxtLink to="/ventas" class="mb-5 flex flex-wrap items-center gap-x-8 gap-y-3 rounded-panel bg-marino px-6 py-4 text-white hover:bg-marino-700">
+      <p class="text-sm font-semibold text-llama-ambar">Hoy</p>
+      <p><span class="text-2xl font-extrabold">{{ soles(vendidoHoy) }}</span> <span class="text-sm text-marino-300">vendidos en {{ ventasHoy.length }} ventas</span></p>
+      <p><span class="text-2xl font-extrabold">{{ soles(ingresoHoy) }}</span> <span class="text-sm text-marino-300">ingresados</span></p>
+      <p><span class="text-2xl font-extrabold">{{ demosHoy.length }}</span> <span class="text-sm text-marino-300">demos en agenda</span></p>
+      <span class="ml-auto flex items-center gap-1 text-sm font-semibold">Ver ventas e ingresos <Icono nombre="flecha" :size="16" /></span>
+    </NuxtLink>
 
     <!-- Cifras principales, en una sola franja -->
     <section class="panel grid grid-cols-2 gap-x-6 gap-y-6 p-6 md:grid-cols-5 md:divide-x md:divide-regla">

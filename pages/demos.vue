@@ -7,7 +7,10 @@ const { estado, yo, alcance, demosVisibles, avisar } = useDemo()
 const soyVendedor = computed(() => estado.rol === 'vendedor')
 const puedeValidar = computed(() => ['gerencia', 'distribuidor'].includes(estado.rol))
 
-const vista = ref<'agenda' | 'ventas' | 'validar'>('agenda')
+type Vista = 'agenda' | 'ventas' | 'validar'
+const ruta = useRoute()
+const vista = ref<Vista>((ruta.query.vista as Vista) || 'agenda')
+watch(() => ruta.query.vista, (v) => { if (v) vista.value = v as Vista })
 const equipo = computed(() => vendedores.filter(v => !alcance.value || v.distribucionId === alcance.value))
 const trabajadorId = ref('')
 const enSemana = (id: string) => estado.demos.filter(d => d.vendedorId === id && diasEntre(HOY, d.fecha) >= -1 && diasEntre(HOY, d.fecha) <= 5).length
@@ -31,7 +34,6 @@ const segundaVisita = computed(() => ventas.value.filter(d => d.etapa === 2 || d
 const abierta = ref<Demo | null>(null)
 const marcar = (d: Demo, v: Visita) => { d.visita = v; avisar(`Visita marcada como ${v.toLowerCase()}`) }
 const avanzar = (d: Demo, etapa: number, texto: string) => { d.etapa = etapa; d.diasEnEtapa = 0; avisar(texto) }
-const cerrarVenta = (d: Demo) => { d.venta = true; d.visita = 'Realizada'; avanzar(d, 1, 'Venta registrada') }
 const subir = (d: Demo, tipo: 'curado' | 'cocinado') => {
   if (tipo === 'curado') { d.evidenciaCurado = true; avanzar(d, 3, 'Evidencia de curado subida') }
   else { d.evidenciaCocinado = true; avanzar(d, 4, 'Evidencia de cocinado subida. Queda en revisión.') }
@@ -169,7 +171,8 @@ const guardar = () => {
             <button v-for="v in (['Confirmada', 'Realizada', 'Reprogramada', 'Cliente ausente', 'Cancelada'] as Visita[])" :key="v"
               class="btn-linea" :class="abierta.visita === v ? '!border-marino !bg-marino-50' : ''" @click="marcar(abierta, v)">{{ v }}</button>
           </div>
-          <button v-if="abierta.visita === 'Realizada'" class="btn-llama mt-4" @click="cerrarVenta(abierta)">Registrar cierre de venta</button>
+          <button v-if="abierta.visita === 'Realizada'" class="btn-llama mt-4" @click="navigateTo({ path: '/ventas', query: { demo: abierta.id } })">Registrar la venta</button>
+          <p v-if="abierta.visita === 'Realizada'" class="mt-2 text-xs text-tinta-suave">Se abre el registro de venta con los datos del cliente ya cargados.</p>
         </template>
 
         <template v-else>

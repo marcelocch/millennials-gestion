@@ -8,13 +8,14 @@ el sistema real.
 | `Distribucion` | `distribuciones` | líder, rango, oficina, distribución padre | Árbol: Premier → distribuidores a cargo |
 | `Persona` | `personas` + `usuarios` | nombre, área, rango, distribución, ingreso, paso de inducción | El rango solo aplica al área de ventas |
 | `Demo` | `demos` y `ventas` | vendedor, cliente, fecha, hora, origen, estado de visita, etapa, evidencias | En el sistema real conviene separar la demo de la venta |
+| `Venta` | `ventas` y `lineas_venta` | código, demo, cliente, DNI, vendedor, productos, descuento, total, forma de pago, inicial, medio, orden Hy Cite, estado de cuadre, montos vistos en Hy Cite, nota | El cuadre es manual: Hy Cite no tiene API |
 | `Financiamiento` | `financiamientos` | cliente, venta, total, inicial, frecuencia, gestor | Uno por venta financiada por Millennials |
 | `Cuota` | `cuotas` | número, vencimiento, monto, pagada, fecha de pago, comprobante | El estado se calcula, no se guarda |
 | `Gestion` | `gestiones_cobranza` | fecha, tipo, texto, automática | Incluye envíos de las reglas y acciones del gestor |
 | `Regla` | `reglas_notificacion` | días respecto al vencimiento, canales, plantilla, activa | |
-| `Postulante` | `postulantes` y `entrevistas` | origen, fecha, hora, entrevistador, oficina, estado | |
+| `Postulante` | `postulantes` y `entrevistas` | origen, referido por (persona), registrado por, equipo al que se suma, fecha, hora, entrevistador, oficina, estado, segunda entrevista | Al darlo de alta se crea su `persona` |
 | `Sesion` | `sesiones` y `asistencias` | tema, tipo, expositor, fecha, inscritos, asistentes | |
-| `Contacto` | `contactos_tm` y `llamadas` | base, operador, intentos, resultado, hora | |
+| `Contacto` | `contactos_tm` y `llamadas` | base, operador, intentos, resultado, hora, referente (cliente que dio el nombre), rellamada, nota | |
 | `BaseTm` | `bases_tm` | nombre, origen, registros | Los avances se calculan desde las llamadas |
 
 ## Estados calculados
@@ -26,6 +27,11 @@ el sistema real.
 - **Etapa de la venta** (`Demo.etapa`): índice de la última etapa completada en
   `ETAPAS = [Demo, Cierre de venta, Producto entregado, Curado, Cocinado, Comisión]`.
   La etapa 4 con `validada = false` es "evidencia por validar"; al validar pasa a 5.
+
+- **Ingresos del día** (`ingresosDel()` en `useDemo.ts`): iniciales y ventas al contado registradas ese día,
+  más cuotas marcadas como pagadas ese día, por medio de pago.
+- **Cuadre**: `Por cuadrar` → `Cuadrada` cuando orden, monto total, inicial y productos coinciden con Hy Cite;
+  `Con diferencia` con una nota, hasta resolverla.
 
 ## Reglas de visibilidad
 

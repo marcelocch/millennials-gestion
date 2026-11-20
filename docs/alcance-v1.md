@@ -5,14 +5,15 @@ posteriores por área entra a una segunda fase, cotizada aparte.
 
 | # | Módulo | Página de la demo | Qué resuelve |
 | --- | --- | --- | --- |
-| 1 | Cobranzas | `/cobranzas` | Cuotas centralizadas, "Mi día", recordatorios automáticos, enlace de pago, registro de pagos |
-| 2 | Demostraciones y comisiones | `/demos` | Calendario por trabajador, recorrido de la venta, evidencia de curado y cocinado, validación |
-| 3 | Reclutamiento y entrevistas | `/reclutamiento` | Agenda de entrevistas, entrevistador, resultado, embudo |
-| 4 | Inducción y capacitación | `/capacitacion` | Sesiones, asistencia, ruta de inducción, vínculo con la intranet de talleres |
-| 5 | Telemarketing | `/telemarketing` | Bases, cola de llamadas, agendamiento directo de demos, monitoreo por operador |
-| 6 | Tablero gerencial | `/` | Indicadores, comparativo por distribuidor, embudos, alertas |
-| 7 | Red, usuarios y accesos | `/red` | Estructura Premier → distribuidores → equipos, registro de trabajadores, ficha y carrera |
-| 8 | Notificaciones | `/configuracion` | Reglas por días antes o después del vencimiento, plantillas, canales |
+| 1 | Ventas e ingresos | `/ventas` | Registro de venta con productos, montos, forma de pago e inicial; ventas e ingresos del día; cuadre manual contra Hy Cite |
+| 2 | Cobranzas | `/cobranzas` | Cuotas centralizadas, "Mi día", recordatorios automáticos, enlace de pago, registro de pagos |
+| 3 | Demostraciones y comisiones | `/demos` | Calendario por trabajador, recorrido de la venta, evidencia de curado y cocinado, validación |
+| 4 | Reclutamiento y entrevistas | `/reclutamiento` | Postulantes registrados por un distribuidor o usuario, quién lo refiere, entrevistador, resultado, alta en el equipo, ranking de quién trae gente |
+| 5 | Inducción y capacitación | `/capacitacion` | Sesiones, asistencia, ruta de inducción, vínculo con la intranet de talleres |
+| 6 | Telemarketing | `/telemarketing` | Cola con guion y referente, rellamadas, agendamiento en el calendario del vendedor, metas, carga y asignación de bases, calidad de las citas (realizadas y vendidas) |
+| 7 | Tablero gerencial | `/` | Indicadores, comparativo por distribuidor, embudos, alertas |
+| 8 | Red, usuarios y accesos | `/red` | Estructura Premier → distribuidores → equipos, registro de trabajadores, ficha y carrera |
+| 9 | Notificaciones | `/configuracion` | Reglas por días antes o después del vencimiento, plantillas, canales |
 
 ## Decisiones tomadas
 
@@ -20,6 +21,9 @@ posteriores por área entra a una segunda fase, cotizada aparte.
   se abre redactado en el WhatsApp del gestor ("mensaje listo"). La demo muestra ambos modos;
   se alterna en Configuración → Servicios conectados.
 - **Accesos**: cada distribuidor a cargo registra y ve solo a su equipo; la gerencia ve el consolidado.
+- **Ventas**: se siguen registrando en el sistema de Hy Cite. La plataforma lleva un registro práctico
+  para seguimiento interno, y contabilidad las contrasta a mano con Hy Cite (no hay API).
+- **Referidos**: cada postulante guarda quién lo refirió y quién lo registró.
 - **Comisiones**: la versión 1 valida la evidencia y marca la comisión como habilitada. No calcula montos.
 - **Telemarketing**: registro de gestiones, sin telefonía integrada.
 - **CRM de Hy Cite**: no se integra ni se reemplaza.

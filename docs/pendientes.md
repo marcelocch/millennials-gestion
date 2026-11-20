@@ -10,6 +10,10 @@
 - Si el CRM de Hy Cite permite exportar datos, para evitar doble digitación.
 - Número y cuenta de empresa en Meta para tramitar WhatsApp Business.
 - Qué datos del App Millennials y de la intranet de talleres deben migrarse.
+- Si el sistema de Hy Cite permite exportar un reporte de órdenes (Excel): el cuadre podría hacerse subiendo ese archivo.
+- Quién hace el cuadre con Hy Cite, con qué frecuencia y qué datos compara hoy.
+- Metas reales de telemarketing (llamadas y citas por día) y si se paga algo por cita que termina en venta.
+- Si se reconoce de alguna forma a quien refiere a un postulante que ingresa.
 - Volumen: cuántos financiamientos activos, demos por semana y contactos de telemarketing por día.
 
 ## Siguientes pasos de la demo

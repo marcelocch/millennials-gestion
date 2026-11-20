@@ -5,6 +5,9 @@ const AUTO: Record<string, string> = {
   'Al día': 'ok', 'Cancelado': 'ok', 'Por vencer': 'aviso', 'Vence hoy': 'llama', 'En mora': 'mora',
   'Realizada': 'ok', 'Confirmada': 'marino', 'Programada': 'neutro', 'Reprogramada': 'aviso', 'Cancelada': 'mora', 'Cliente ausente': 'mora',
   'Citado': 'marino', 'Apto': 'ok', 'Activo': 'ok', 'En inducción': 'llama', 'Segunda entrevista': 'aviso', 'No apto': 'mora', 'No asistió': 'mora',
+  'Por cuadrar': 'aviso', 'Cuadrada': 'ok', 'Con diferencia': 'mora',
+  'Contado': 'neutro', 'Crédito Hy Cite': 'marino', 'Cuotas Millennials': 'llama',
+  'Referido': 'llama',
   'Cita agendada': 'ok', 'No contesta': 'neutro', 'Volver a llamar': 'aviso', 'No interesado': 'mora', 'Número equivocado': 'mora',
 }
 const CLASES: Record<string, string> = {

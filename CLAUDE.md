@@ -30,7 +30,8 @@ npm run vista-previa   # versión estática con rutas relativas en vista-previa/
   (qué distribución ve cada quien) y las acciones (registrar pago, registrar contacto). Al recargar
   la página todo vuelve al inicio. Es el archivo que se reemplaza por llamadas al servidor.
 - `utils/formato.ts`: fechas, soles, enlace de WhatsApp con mensaje listo.
-- `pages/`: una página por módulo. `layouts/default.vue`: menú lateral y selector de perfil.
+- `pages/`: una página por módulo. `ventas.vue` registra ventas con montos, muestra ventas e ingresos
+  del día y el cuadre manual contra Hy Cite (Hy Cite no tiene API). `layouts/default.vue`: menú lateral y selector de perfil.
 - `components/`: piezas compartidas. `Riel.vue` es el recorrido de la venta
   (Demo → Cierre de venta → Producto entregado → Curado → Cocinado → Comisión) y se usa igual en
   listas, fichas y tablero. `Cajon.vue` es el panel lateral de detalle.
@@ -39,7 +40,16 @@ npm run vista-previa   # versión estática con rutas relativas en vista-previa/
 
 El selector "Ver la plataforma como" cambia de perfil y lleva a su pantalla de inicio:
 gerencia (ve toda la red), distribuidor a cargo (solo su equipo), gestor de cobranzas (su cartera),
-emprendedor (su agenda y ventas), operador de telemarketing (su cola) y administración.
+emprendedor (su agenda y ventas), operador de telemarketing (su cola), administración y contabilidad
+(ingresos del día y cuadre con Hy Cite).
+
+## Entradas directas (#escena)
+
+`plugins/escenas.client.ts` abre la demo en un perfil y una pantalla a partir de un `#nombre` en la URL
+(por ejemplo `#cuadre`, `#mi-cola`, `#registrar-venta`). Funciona en Vercel y en la vista previa publicada,
+donde solo viaja un `#nombre` simple (sin `/`). La página comercial usa estos nombres para sus enlaces.
+Las páginas aceptan `?vista=` para abrir una pestaña, `?nueva=1` (ventas), `?nuevo=1` (reclutamiento)
+y `?demo=ID` (ventas: abre el registro con los datos de esa demo).
 La matriz de acceso está en `MENU` dentro de `useDemo.ts` y se muestra en Configuración.
 
 ## Reglas para trabajar aquí
