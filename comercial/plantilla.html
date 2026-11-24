@@ -131,7 +131,7 @@
 
 <section id="guion"><div class="wrap">
   <p class="eyebrow">Para quien presenta</p>
-  <h2>Guion de la demo en doce minutos<span class="dot">.</span></h2>
+  <h2>Guion de la demo en quince minutos<span class="dot">.</span></h2>
   <p class="lead">Cada enlace abre la demo en el perfil de quien hace esa tarea. La demo vuelve a su estado inicial al recargarla.</p>
   <ol class="guide" id="guide"></ol>
   <div class="base"><label for="base">Dirección de la demo</label><input id="base" type="url" spellcheck="false"><span class="hint">Cámbiala cuando la demo esté en su dirección definitiva. Todos los enlaces de esta página la usan.</span></div>
@@ -289,15 +289,16 @@
 
   /* Guion */
   var GUIDE = [
-    ["El problema, sin pantalla", "Cuotas en un Drive, evidencia en WhatsApp, entrevistas sin registro y llamadas sin control. Usa la portada de esta página.", null],
-    ["Gerencia abre su día", "La franja de hoy, dónde está cada venta y el comparativo de distribuidores.", ["#tablero", "Tablero"]],
-    ["Telemarketing agenda", "Muestra el referente y el guion. Agenda una demo para mañana con el vendedor más libre.", ["#mi-cola", "Cola de llamadas"]],
+    ["El problema, sin pantalla", "Resume lo que contaron sus áreas con la portada de esta página y pregunta qué es lo que más le pesa hoy. Empieza la demo por ese dolor; si no elige ninguno, sigue este orden.", null],
+    ["Gerencia abre su día", "La franja de hoy: lo vendido, lo ingresado y las demos en agenda. Luego el comparativo de distribuidores.", ["#tablero", "Tablero"]],
+    ["Cada distribuidor ve a su gente", "El mismo tablero visto por un distribuidor a cargo: solo su equipo. La gerencia ve toda la red.", ["#tablero-distribuidor", "Vista del distribuidor"]],
     ["La venta se registra", "Registra un juego de ollas en cuotas de Millennials. Señala que el cronograma pasa solo a Cobranzas.", ["#registrar-venta", "Registrar venta"]],
     ["Contabilidad cuadra con Hy Cite", "Cuadra una venta escribiendo monto e inicial. Abre una con diferencia y su nota.", ["#cuadre", "Cuadre"]],
     ["Cobranzas trabaja su lista", "Envía un WhatsApp con el mensaje listo y registra un pago. Muestra las reglas en Configuración.", ["#mi-dia", "Mi día"]],
-    ["La comisión con evidencia", "Valida una venta con curado y cocinado: la comisión queda habilitada.", ["#evidencia", "Evidencia"]],
-    ["Un postulante referido", "Registra un postulante e indica quién lo refiere. Luego abre «Quién trae gente».", ["#nuevo-postulante", "Registrar postulante"]],
-    ["Cierre", "Vuelve a esta página: la carrera del vendedor y las tres fases de inversión.", null]
+    ["Lo que viene: la comisión con evidencia", "Valida una venta con curado y cocinado: la comisión queda habilitada.", ["#evidencia", "Evidencia"]],
+    ["Lo que viene: telemarketing agenda", "Muestra el referente y el guion. Agenda una demo para mañana con el vendedor más libre.", ["#mi-cola", "Cola de llamadas"]],
+    ["Lo que viene: un postulante referido", "Registra un postulante e indica quién lo refiere. Luego abre «Quién trae gente».", ["#nuevo-postulante", "Registrar postulante"]],
+    ["Cierre", "Vuelve a esta página: el costo de cobrar a mano con sus cifras y las tres fases de inversión.", null]
   ];
   var done = {}; try { done = JSON.parse(localStorage.getItem("millennialsGuion") || "{}"); } catch (e) {}
   $("#guide").innerHTML = GUIDE.map(function (g, i) {
