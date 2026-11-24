@@ -157,7 +157,7 @@
   /* Dirección de la demo: cada enlace es esa dirección más un #escena */
   var DEFECTO = "{{DEMO}}";
   var base = DEFECTO;
-  try { base = localStorage.getItem("millennialsDemo") || base; } catch (e) {}
+  try { var guardada = localStorage.getItem("millennialsDemo"); if (guardada && guardada.indexOf("claude.ai/artifact") < 0) base = guardada; } catch (e) {}
   function applyBase() {
     var b = base.replace(/#.*$/, "").replace(/\/+$/, "");
     $$(".demo-link").forEach(function (a) { a.href = b + a.getAttribute("data-path"); });

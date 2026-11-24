@@ -436,9 +436,9 @@ footer img { height: 24px; width: auto; }
   var demo = function (path, label) { return '<a class="demo demo-link" target="_blank" rel="noopener" data-path="' + path + '">' + ARROW + '<span>' + label + '</span></a>'; };
 
   /* Dirección de la demo: cada enlace es esa dirección más un #escena */
-  var DEFECTO = "https://claude.ai/artifact/GQQqDLe6AyR9HyReMeFGwg";
+  var DEFECTO = "https://millennials-gestion.vercel.app";
   var base = DEFECTO;
-  try { base = localStorage.getItem("millennialsDemo") || base; } catch (e) {}
+  try { var guardada = localStorage.getItem("millennialsDemo"); if (guardada && guardada.indexOf("claude.ai/artifact") < 0) base = guardada; } catch (e) {}
   function applyBase() {
     var b = base.replace(/#.*$/, "").replace(/\/+$/, "");
     $$(".demo-link").forEach(function (a) { a.href = b + a.getAttribute("data-path"); });
