@@ -76,5 +76,7 @@ escenas de arriba. Si cambias el nombre de una escena, actualízalo también ah�
 
 ## Despliegue
 
-Proyecto en Vercel (equipo `marcelo-calles-projects`), pendiente de conectar al repositorio de GitHub. El sitio lleva `noindex`.
-Mientras tanto la demo está publicada como artifact (vista previa estática): https://claude.ai/artifact/GQQqDLe6AyR9HyReMeFGwg
+Repositorio: https://github.com/marcelocch/millennials-gestion (rama `main`). Proyecto en Vercel
+`millennials-gestion`, equipo `marcelo-calles-projects`, conectado al repositorio: cada push a `main`
+publica en producción en https://millennials-gestion.vercel.app. El sitio lleva `noindex`.
+La vista previa estática sigue publicada como artifact: https://claude.ai/artifact/GQQqDLe6AyR9HyReMeFGwg
