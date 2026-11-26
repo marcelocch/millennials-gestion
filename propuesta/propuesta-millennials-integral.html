@@ -1,0 +1,205 @@
+<!DOCTYPE html><html lang="es"><head><meta charset="utf-8"><title>Propuesta comercial · Plataforma integral Millennials</title><style>
+@page { size: Letter; margin: 92px 0 74px 0; }
+* { box-sizing: border-box; }
+body { margin: 0; font-family: Carlito, Lato, Calibri, sans-serif; font-size: 10.4pt; line-height: 1.55; color: #1D2733; }
+.pg { padding: 0 64px; }
+h1 { font-size: 22pt; line-height: 1.15; color: #0F2A44; margin: 6px 0 8px; }
+h2 { font-size: 14pt; color: #0F2A44; margin: 26px 0 10px; break-after: avoid; }
+h3 { font-size: 11pt; color: #0F2A44; margin: 16px 0 6px; break-after: avoid; }
+p { margin: 0 0 9px; }
+ul { margin: 4px 0 10px; padding-left: 18px; } li { margin: 0 0 3px; }
+.eyebrow { font-family: 'Liberation Sans', Arial, sans-serif; color: #F08A1C; font-weight: 700; letter-spacing: .06em; font-size: 9.5pt; margin-top: 4px; }
+.sub { color: #5D6B78; font-size: 12pt; margin-bottom: 16px; }
+.ficha { display: grid; grid-template-columns: repeat(4, 1fr); border: 1px solid #C9D1D9; border-radius: 6px; }
+.ficha div { padding: 10px 12px; border-left: 1px solid #C9D1D9; } .ficha div:first-child { border-left: 0; }
+.ficha small, .card small { display: block; font-size: 8pt; letter-spacing: .04em; color: #5D6B78; text-transform: uppercase; }
+.ficha b { font-size: 10.5pt; color: #0F2A44; }
+.cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin: 16px 0 6px; break-inside: avoid; }
+.card { background: #F2F5F8; border-radius: 5px; border-top: 4px solid #0F2A44; padding: 12px 14px 14px; }
+.card.n { border-top-color: #F08A1C; }
+.card small { text-transform: none; letter-spacing: 0; font-size: 9pt; margin-bottom: 4px; }
+.card b { font-size: 15pt; color: #0F2A44; } .card em { font-style: normal; font-size: 8.5pt; color: #5D6B78; }
+table { width: 100%; border-collapse: collapse; margin: 6px 0 12px; font-size: 9.6pt; }
+th { background: #0F2A44; color: #fff; text-align: left; font-weight: 700; padding: 7px 8px; }
+td { border-bottom: 1px solid #C9D1D9; padding: 7px 8px; vertical-align: top; }
+tr { break-inside: avoid; }
+td:first-child, th:first-child { border-left: 1px solid #C9D1D9; } td:last-child, th:last-child { border-right: 1px solid #C9D1D9; }
+td.n, th.n { text-align: right; white-space: nowrap; }
+tr.tot td { background: #F2F5F8; font-weight: 700; }
+.chip { display: inline-block; padding: 0 8px; border-radius: 10px; font-size: 8.4pt; background: #E3EDF5; color: #0F2A44; white-space: nowrap; }
+.chip.o { background: #FDEAD2; color: #B4610C; }
+.nota { border-left: 4px solid #0F2A44; background: #F2F5F8; padding: 10px 14px; font-size: 9.6pt; margin: 8px 0 12px; break-inside: avoid; }
+.dos { display: grid; grid-template-columns: 1fr 1fr; gap: 6px 26px; }
+.dos > div { break-inside: avoid; }
+.dos ul { font-size: 9.6pt; }
+.mod { border: 1px solid #C9D1D9; border-radius: 6px; padding: 12px 16px 6px; margin: 0 0 12px; }
+.mod li { break-inside: avoid; } .mod .t { break-after: avoid; }
+.mod .t { display: flex; justify-content: space-between; gap: 12px; font-weight: 700; color: #0F2A44; font-size: 11pt; margin-bottom: 4px; }
+.mod .t span:last-child { color: #F08A1C; white-space: nowrap; }
+.mod ul { font-size: 9.6pt; } .mute { color: #5D6B78; font-size: 9.2pt; }
+.gantt { border: 1px solid #C9D1D9; border-radius: 6px; padding: 10px 12px 12px; font-size: 8.4pt; margin: 6px 0 6px; break-inside: avoid; }
+.gr { display: grid; grid-template-columns: 170px 1fr; align-items: center; height: 19px; }
+.gr > span { color: #1D2733; white-space: nowrap; } .gr > span.fuerte { font-weight: 700; }
+.pista { position: relative; height: 100%; }
+.cab { height: 22px; } .tk { position: absolute; transform: translateX(-2px); color: #5D6B78; top: 2px; white-space: nowrap; }
+.cuerpo { position: relative; } .lineas { position: absolute; left: 170px; right: 0; top: 0; bottom: 0; }
+.lineas i { position: absolute; top: 0; bottom: 0; border-left: 1px dashed #DCE1E6; }
+.bar { position: absolute; top: 5px; height: 9px; border-radius: 5px; background: #CFE3F1; border: 1px solid #8DB8D6; }
+.bar.f2 { background: #FDE3C2; border-color: #F2B56B; }
+.dia { position: absolute; top: 4px; width: 10px; height: 10px; transform: translateX(-5px) rotate(45deg); background: #1F8FB8; }
+.dia.final { background: #F08A1C; }
+.lbl { position: absolute; top: 2px; color: #5D6B78; white-space: nowrap; } .lbl.izq { left: auto; }
+.check { list-style: none; padding: 0; } .check li { padding-left: 22px; position: relative; margin-bottom: 5px; }
+.check li::before { content: ""; position: absolute; left: 0; top: 3px; width: 11px; height: 11px; border: 1.2px solid #1D2733; border-radius: 2px; }
+.firmas { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; margin-top: 46px; break-inside: avoid; }
+.firmas div { border-top: 1px solid #1D2733; padding-top: 6px; font-weight: 700; font-size: 9.6pt; }
+.firmas small { display: block; font-weight: 400; color: #5D6B78; font-size: 8.4pt; }
+.salto { break-before: page; }
+.junto { break-inside: avoid; }
+
+.gr { grid-template-columns: 196px 1fr; } .lineas { left: 196px; }
+.mod .t span:last-child { font-size: 9.4pt; padding-top: 2px; }
+.mod p { font-size: 9.8pt; margin-bottom: 6px; }
+</style></head><body><div class="pg">
+
+<p class="eyebrow">PROPUESTA COMERCIAL</p>
+<h1>Millennials: plataforma integral para la venta y la expansión de la red</h1>
+<p class="sub">Clientes, demostraciones, ventas, cobranzas, captación de socios, WhatsApp y el portal del emprendedor en un solo sistema</p>
+<div class="ficha">
+  <div><small>Cliente</small><b>Millennials Investments SAC</b></div>
+  <div><small>Fecha</small><b>25 de noviembre de 2026</b></div>
+  <div><small>Validez de la oferta</small><b>15 días calendario</b></div>
+  <div><small>Salida a producción</small><b>9 de abril de 2027</b></div>
+</div>
+
+<h2>1. Resumen</h2>
+<p>Millennials necesita un solo sistema para dos trabajos que hoy viven en Drive, hojas de cálculo, WhatsApp y el App Millennials. El primero es <b>vender y cobrar</b>: cada cliente, su demostración, su venta y sus cuotas. El segundo es <b>hacer crecer la red</b>: cada persona interesada que llega desde redes sociales, su entrevista, su inducción y su primera venta.</p>
+<p>Proponemos una plataforma única, hecha a la medida de Millennials, que cubre ambos trabajos y además reemplaza al App Millennials con un portal para toda la red: capacitación, catálogo, calculadora de financiamiento y multimedia. Cada dato se registra una sola vez: la demo trae al cliente, la venta trae la demo, y cobranzas recibe al cliente, al vendedor y sus cuotas sin volver a digitarlos. Las conversaciones de WhatsApp quedan en la plataforma, con los números oficiales de Millennials.</p>
+<p>El proyecto empieza con tres semanas de discovery para cerrar los procesos con cada área. El portal sale primero, para apagar el app actual en enero, y la plataforma completa entra en uso en abril, con 60 días de garantía y soporte.</p>
+<div class="cards">
+  <div class="card"><small>Inversión total</small><b>S/ 29,571</b> <em>+ IGV</em></div>
+  <div class="card"><small>Portal del emprendedor en uso</small><b>15 de enero</b></div>
+  <div class="card n"><small>Plataforma completa · garantía</small><b>9 abr · 60 días</b></div>
+</div>
+
+<h2>2. Cómo funciona</h2>
+<p>La plataforma ordena el trabajo de Millennials en tres frentes que comparten la misma información:</p>
+<table>
+<tr><th style="width:24%">Frente</th><th>Qué resuelve</th><th style="width:30%">Recorrido</th></tr>
+<tr><td><b>Operación comercial</b></td><td>Que cada cliente, demo, venta y cuota esté en un solo lugar, con su historia completa, y que el cuadre con Hy Cite sea rápido.</td><td>Cliente → demo asignada → venta → cobranza → cuadre</td></tr>
+<tr><td><b>Expansión de la red</b></td><td>Que cada persona interesada en ser emprendedor tenga seguimiento desde que llena el formulario hasta su primera venta, con un responsable visible.</td><td>Lead → llamada → WhatsApp con información → entrevista → inducción → primera venta</td></tr>
+<tr><td><b>Portal del emprendedor</b></td><td>Que toda la red tenga sus herramientas del día a día en el mismo sistema, desde el celular o la computadora.</td><td>Capacitación, catálogo, calculadora y multimedia</td></tr>
+</table>
+<p>Por encima de los tres frentes, la plataforma se conecta a la cuenta oficial de WhatsApp de Millennials: trae sus números aprobados por Meta y administración asigna cada uno a captación o a cobranzas. La plataforma se instala en cualquier celular, Android o iPhone, como una app, sin pasar por las tiendas, y avisa al usuario cuando le llega un mensaje.</p>
+
+<h3>Quién accede a qué</h3>
+<table>
+<tr><th style="width:24%">Acceso</th><th style="width:38%">Para quién</th><th>Qué incluye</th></tr>
+<tr><td><b>Plataforma completa</b></td><td>Los distribuidores que Millennials habilite y su red, y la red directa de Millennials.</td><td>Todos los módulos, según el rol de cada persona.</td></tr>
+<tr><td><b>Portal del emprendedor</b></td><td>Todos los usuarios de la red.</td><td>Capacitación, catálogo, calculadora de financiamiento, multimedia y tarjeta digital.</td></tr>
+</table>
+<table>
+<tr><th style="width:34%">Perfil</th><th>Qué hace en la plataforma</th></tr>
+<tr><td>Gerencia general</td><td>Ve el tablero de toda la red y los reportes esenciales.</td></tr>
+<tr><td>Distribuidores y coordinación</td><td>Registran clientes, asignan demostraciones en el calendario de cada emprendedor y siguen a su equipo.</td></tr>
+<tr><td>Emprendedores</td><td>Ven su agenda, marcan la demo como vendida, registran la venta y suben la evidencia de curado y cocinado.</td></tr>
+<tr><td>Telemarketing</td><td>Trabaja su base de leads, envía la información por WhatsApp, agenda entrevistas y sigue a cada ingresante.</td></tr>
+<tr><td>Cobranzas</td><td>Trabaja su cartera, conversa con sus clientes desde el número de cobranzas y registra pagos.</td></tr>
+<tr><td>Contabilidad</td><td>Ve los ingresos del día y cuadra cada venta contra Hy Cite.</td></tr>
+<tr><td>Administración</td><td>Gestiona usuarios, accesos, números de WhatsApp, catálogo, capacitación y multimedia.</td></tr>
+</table>
+
+<h2 class="salto">3. Módulos y funciones</h2>
+<p>Cada módulo se explica por lo que permite hacer. Los detalles finos de cada proceso se cierran en el discovery.</p>
+
+<div class="mod"><div class="t"><span>Portal del emprendedor</span><span>Entrega 1 · enero</span></div><p>Reemplaza al App Millennials con todas sus pantallas, dentro de la plataforma. Lo usa toda la red.</p><ul><li><b>Capacitación:</b> talleres por categoría con módulos en video, exámenes con nota mínima de aprobación, avance de cada persona y ranking. Cada taller se muestra según el rango de quien lo ve. Se migran todos los talleres actuales.</li><li><b>Catálogo de productos:</b> productos por categoría, con fotos y videos, código, descripción, precio y los regalos que incluyen. Búsqueda, favoritos y lista de códigos, como en el app actual.</li><li><b>Calculadora de financiamiento:</b> monto, inicial por porcentaje o monto libre, y cuota según el número de cuotas. Administración configura los factores y el rango de cuotas (hoy de 2 a 31). Es la misma tabla que usan las ventas en cuotas.</li><li><b>Multimedia compartida:</b> imágenes, videos y documentos para que la red los use y los comparta.</li><li><b>Tarjeta digital, perfil, requisitos y POS virtual:</b> las demás pantallas del app pasan igual.</li></ul></div>
+
+<div class="mod"><div class="t"><span>Clientes y demostraciones</span><span>Entrega 2 · febrero</span></div><p>Un listado único de clientes con sus datos de contacto, y un calendario de demostraciones por emprendedor.</p><ul><li><b>Módulo de clientes:</b> cada cliente con sus datos de contacto, su historial de demos, compras y cuotas.</li><li><b>Asignación de demos:</b> un distribuidor o coordinador elige al cliente y asigna la demo en el calendario del emprendedor, con fecha, hora y dirección.</li><li><b>Google Calendar:</b> cada demo asignada aparece en el calendario de Google del emprendedor.</li><li><b>Estado de la visita:</b> programada, realizada, reprogramada, cancelada o cliente ausente.</li><li><b>Recorrido de la venta:</b> demo, cierre, entrega, curado, cocinado y comisión. El emprendedor sube desde su celular la evidencia de curado y cocinado, su líder la valida y la comisión queda habilitada para pago.</li></ul></div>
+
+<div class="mod"><div class="t"><span>Ventas e ingresos</span><span>Entrega 2 · febrero</span></div><p>El registro propio de cada venta, para el seguimiento interno de Millennials.</p><ul><li><b>Venta desde la demo:</b> cuando el emprendedor marca su demo como vendida, la venta se abre con los datos del cliente ya cargados.</li><li><b>Contado o cuotas:</b> productos del catálogo, total, inicial y medio de pago. Si es en cuotas, el cronograma se calcula con la misma tabla de la calculadora.</li><li><b>Ventas e ingresos del día:</b> lo vendido y lo ingresado por medio de pago, separado entre iniciales, ventas al contado y cuotas cobradas.</li></ul></div>
+
+<div class="mod"><div class="t"><span>Cuadre con Hy Cite</span><span>Entrega 2 · febrero</span></div><p>Una revisión rápida y ordenada de las ventas registradas en la plataforma contra las de Hy Cite.</p><ul><li><b>Comparación lado a lado:</b> cada venta de la plataforma junto a los datos de su orden en Hy Cite (número de orden, monto, inicial y productos), para marcarla como cuadrada o con diferencia.</li><li><b>Avisar al vendedor:</b> si hay una diferencia, contabilidad contacta al vendedor desde la misma pantalla y deja la nota de lo que hay que corregir.</li><li><b>Pendientes a la vista:</b> ventas cuadradas, por cuadrar y con diferencia de cada día, y quién las revisó.</li></ul></div>
+
+<div class="mod"><div class="t"><span>Cobranzas</span><span>Entrega 2 · febrero</span></div><p>La cartera completa, heredada de las ventas, sin volver a digitar nada.</p><ul><li><b>Cartera heredada:</b> cada cliente llega con sus datos de contacto, su vendedor y su financiamiento, en cuotas o al contado.</li><li><b>Mi día:</b> a quién contactar hoy, en qué orden y quién ya recibió aviso. Cada cuota con su estado: al día, por vencer, vence hoy o en mora.</li><li><b>Conversaciones desde el número de cobranzas:</b> el gestor escribe y responde a sus clientes desde la plataforma, con el número oficial asignado a cobranzas.</li><li><b>Recordatorios y enlace de pago:</b> mensajes con el monto, la cuota y el enlace de pago de Hy Cite. Registro del pago con su comprobante.</li></ul></div>
+
+<div class="mod"><div class="t"><span>Captación de socios</span><span>Entrega 3 · marzo</span></div><p>Telemarketing y reclutamiento en un solo flujo, para expandir la red con personas que llegan desde la publicidad en redes sociales.</p><ul><li><b>Formulario de interés:</b> la persona deja sus datos en un formulario propio de Millennials y entra directo a la base de leads. Los campos se definen en el discovery.</li><li><b>Reparto entre operadores:</b> la base se distribuye entre los operadores de telemarketing, y cada uno ve su lista del día.</li><li><b>Envío de información por WhatsApp:</b> después de la llamada, el operador envía con un clic el mensaje con el PDF informativo, desde el número de captación. La conversación queda a su nombre.</li><li><b>Agenda de entrevistas:</b> fecha, hora, entrevistador y oficina, y el operador marca si la persona llegó.</li><li><b>Ruta hasta la primera venta:</b> entrevista, inducción, alta como emprendedor y primera venta, visibles para el operador que lo trajo, porque de esa venta depende su comisión.</li></ul></div>
+
+<div class="mod"><div class="t"><span>Conversaciones de WhatsApp y app en el celular</span><span>Entrega 3 · marzo</span></div><p>Los números oficiales de Millennials, trabajados desde la plataforma y con permisos claros.</p><ul><li><b>Hasta tres números oficiales:</b> la plataforma trae los números de la cuenta de Millennials y administración asigna cada uno a captación o a cobranzas.</li><li><b>Bandeja de conversaciones:</b> textos, imágenes y documentos. Cada operador ve solo las conversaciones que él inició, y cada gestor solo las de sus clientes.</li><li><b>Avisos en el celular:</b> el usuario recibe una notificación cuando le escriben, aunque no tenga la plataforma abierta.</li><li><b>Instalable en cualquier celular:</b> Android o iPhone, como una app, sin descargarla de una tienda.</li></ul></div>
+
+<div class="mod"><div class="t"><span>Tablero gerencial y reportes</span><span>Entrega 3 · abril</span></div><p>La vista de gerencia sobre toda la red.</p><ul><li><b>Tablero:</b> lo vendido, lo ingresado, las demos del día, la cartera y la captación de socios, por distribuidor.</li><li><b>Reportes esenciales:</b> hasta ocho reportes, que se definen con gerencia en el discovery.</li></ul></div>
+
+<div class="mod"><div class="t"><span>Base, accesos y migración de datos</span><span>En todas las entregas</span></div><p>Lo que sostiene a la plataforma y trae la historia de Millennials.</p><ul><li><b>Red, usuarios y accesos:</b> estructura de distribuidores y equipos, rangos Royal Prestige, áreas internas y permisos por rol. Los usuarios del app entran con su mismo código.</li><li><b>Migración del app:</b> usuarios, productos, talleres, avance de capacitación y multimedia.</li><li><b>Migración de la operación:</b> demos, ventas y cobranzas, con lo pendiente y el histórico, a partir de una plantilla única en Excel. Lo pendiente queda activo y con sus recordatorios.</li></ul></div>
+
+<h2>4. Plan de trabajo</h2>
+<h3>Discovery: las tres primeras semanas</h3>
+<p>Antes de construir, entrevistamos a cada área para aterrizar los procesos que hoy tienen vacíos. El discovery termina con un documento de alcance funcional y prototipos navegables que Millennials aprueba. Ahí se define, entre otros puntos:</p>
+<div class="dos">
+<div><ul><li>Los campos del formulario de interés.</li><li>Los reportes esenciales de gerencia.</li><li>El flujo de entrevistas, inducción y alta.</li><li>Las reglas de asignación de demos y de reparto de leads.</li></ul></div>
+<div><ul><li>Las plantillas de WhatsApp para captación y cobranzas.</li><li>Los factores de cuotas y la inicial mínima.</li><li>La plantilla de Excel para la migración.</li><li>Qué distribuidores tienen acceso a la plataforma completa.</li></ul></div>
+</div>
+<p class="mute">Lo que aparezca después del discovery se evalúa como evolutivo y se cotiza aparte.</p>
+
+<div class="junto"><h3>Cronograma</h3>
+<p>El plan arranca el lunes 7 de diciembre de 2026. El portal entra en uso el 15 de enero para apagar el app actual, y la plataforma completa el 9 de abril de 2027.</p>
+<div class="gantt"><div class="gr cab"><span></span><div class="pista"><span class="tk" style="left:0.00%">7 dic</span><span class="tk" style="left:11.29%">21 dic</span><span class="tk" style="left:22.58%">4 ene</span><span class="tk" style="left:33.87%">18 ene</span><span class="tk" style="left:45.16%">1 feb</span><span class="tk" style="left:56.45%">15 feb</span><span class="tk" style="left:67.74%">1 mar</span><span class="tk" style="left:79.03%">15 mar</span><span class="tk" style="left:90.32%">29 mar</span></div></div><div class="cuerpo"><div class="lineas"><i style="left:0.00%"></i><i style="left:11.29%"></i><i style="left:22.58%"></i><i style="left:33.87%"></i><i style="left:45.16%"></i><i style="left:56.45%"></i><i style="left:67.74%"></i><i style="left:79.03%"></i><i style="left:90.32%"></i></div><div class="gr"><span>Discovery y entrevistas</span><div class="pista"><span class="bar f1" style="left:0.00%;width:14.52%"></span><span class="lbl" style="left:15.32%">7 dic a 24 dic</span></div></div><div class="gr"><span>Base: usuarios, red y accesos</span><div class="pista"><span class="bar f1" style="left:5.65%;width:20.97%"></span><span class="lbl" style="left:27.41%">14 dic a 8 ene</span></div></div><div class="gr"><span>Portal del emprendedor</span><div class="pista"><span class="bar f1" style="left:11.29%;width:20.16%"></span><span class="lbl" style="left:32.25%">21 dic a 14 ene</span></div></div><div class="gr"><span class="fuerte">Portal en uso, app apagada</span><div class="pista"><span class="dia hito" style="left:31.85%"></span><span class="lbl izq" style="right:69.55%">15 ene</span></div></div><div class="gr"><span>Clientes, demos y calendario</span><div class="pista"><span class="bar f2" style="left:28.23%;width:20.97%"></span><span class="lbl" style="left:49.99%">11 ene a 5 feb</span></div></div><div class="gr"><span>Ventas, cobranzas y cuadre</span><div class="pista"><span class="bar f2" style="left:39.52%;width:26.61%"></span><span class="lbl" style="left:66.93%">25 ene a 26 feb</span></div></div><div class="gr"><span class="fuerte">Operación comercial validada</span><div class="pista"><span class="dia hito" style="left:65.73%"></span><span class="lbl izq" style="right:35.67%">26 feb</span></div></div><div class="gr"><span>WhatsApp y conversaciones</span><div class="pista"><span class="bar f2" style="left:56.45%;width:20.97%"></span><span class="lbl" style="left:78.22%">15 feb a 12 mar</span></div></div><div class="gr"><span>Captación de socios</span><div class="pista"><span class="bar f2" style="left:67.74%;width:15.32%"></span><span class="lbl izq" style="right:33.06%">1 mar a 19 mar</span></div></div><div class="gr"><span class="fuerte">Captación validada</span><div class="pista"><span class="dia hito" style="left:82.66%"></span><span class="lbl izq" style="right:18.74%">19 mar</span></div></div><div class="gr"><span>Tablero, reportes y migración</span><div class="pista"><span class="bar f2" style="left:79.03%;width:15.32%"></span><span class="lbl izq" style="right:21.77%">15 mar a 2 abr</span></div></div><div class="gr"><span>Pruebas y salida</span><div class="pista"><span class="bar f2" style="left:95.97%;width:4.03%"></span><span class="lbl izq" style="right:4.83%">5 abr a 9 abr</span></div></div><div class="gr"><span class="fuerte">Plataforma completa en uso</span><div class="pista"><span class="dia final" style="left:99.60%"></span><span class="lbl izq" style="right:1.80%">9 abr</span></div></div></div></div>
+<p class="mute">Se consideran los feriados de diciembre, el 1 de enero y Semana Santa (25 y 26 de marzo). Las entregas 2 y 3 se validan con el equipo de Millennials en un ambiente de pruebas y salen a producción juntas, con la migración completa.</p></div>
+
+<div class="junto"><h3>Garantía y soporte: 60 días</h3>
+<p>Desde la salida a producción, Artisan acompaña a Millennials durante 60 días calendario, hasta el 8 de junio de 2027:</p>
+<ul><li>Corrección sin costo de cualquier falla de lo construido.</li><li>Atención de consultas del equipo en horario laboral.</li><li>Ajustes menores de textos, plantillas y configuraciones.</li><li>Acompañamiento en las primeras semanas de uso de cada área.</li></ul>
+<p class="mute">Las funciones nuevas no forman parte de la garantía. El soporte mensual posterior se cotiza aparte.</p></div>
+
+<h2 class="salto">5. Inversión</h2>
+<table>
+<tr><th>Concepto</th><th class="n">Precio</th><th class="n">IGV (18%)</th><th class="n">Total</th></tr>
+<tr><td>Plataforma integral Millennials: discovery, construcción, migración, salida a producción y 60 días de garantía y soporte</td><td class="n">S/ 29,571.00</td><td class="n">S/ 5,322.78</td><td class="n">S/ 34,893.78</td></tr>
+</table>
+
+<h3>Forma de pago</h3>
+<table>
+<tr><th>Hito</th><th>Fecha estimada</th><th class="n">%</th><th class="n">Monto</th></tr>
+<tr><td>Firma e inicio del proyecto</td><td>7 de diciembre</td><td class="n">35%</td><td class="n">S/ 10,349.85</td></tr><tr><td>Cierre del discovery: alcance funcional y prototipos aprobados</td><td>24 de diciembre</td><td class="n">15%</td><td class="n">S/ 4,435.65</td></tr><tr><td>Portal del emprendedor en uso y app actual apagada</td><td>15 de enero</td><td class="n">15%</td><td class="n">S/ 4,435.65</td></tr><tr><td>Operación comercial validada por Millennials</td><td>26 de febrero</td><td class="n">15%</td><td class="n">S/ 4,435.65</td></tr><tr><td>Captación de socios y conversaciones validadas</td><td>19 de marzo</td><td class="n">10%</td><td class="n">S/ 2,957.10</td></tr><tr><td>Plataforma completa en uso, con la migración terminada</td><td>9 de abril</td><td class="n">10%</td><td class="n">S/ 2,957.10</td></tr>
+<tr class="tot"><td>Total</td><td></td><td class="n">100%</td><td class="n">S/ 29,571.00</td></tr>
+</table>
+<p class="mute">Montos sin IGV. Cada hito se factura cuando se cumple; si una fecha se mueve, el pago se mueve con ella.</p>
+
+<div class="junto"><h3>Costos mensuales de operación</h3>
+<table>
+<tr><th>Servicio</th><th>Para qué sirve</th><th class="n">Costo mensual</th></tr>
+<tr><td>Vercel Pro</td><td>Alojamiento de la plataforma</td><td class="n">US$ 20</td></tr>
+<tr><td>Supabase Pro</td><td>Base de datos, archivos, evidencias y respaldos diarios</td><td class="n">US$ 25</td></tr>
+<tr><td>Resend Pro</td><td>Envío de correos, hasta 50,000 al mes</td><td class="n">US$ 20</td></tr>
+<tr><td>WhatsApp: mensaje de captación</td><td>Primer mensaje con el PDF a cada lead</td><td class="n">≈ US$ 0.081 c/u</td></tr>
+<tr><td>WhatsApp: recordatorio de cobranza</td><td>Aviso de cuota fuera de una conversación abierta</td><td class="n">≈ US$ 0.035 c/u</td></tr>
+<tr><td>WhatsApp: respuestas en conversación</td><td>Las primeras 1,000 al mes por número no se cobran</td><td class="n">≈ US$ 0.03 c/u</td></tr>
+<tr class="tot"><td>Base fija</td><td>Antes del consumo de WhatsApp</td><td class="n">US$ 65</td></tr>
+</table>
+<p class="mute">Tarifas de Meta para números de Perú vigentes desde octubre de 2026 y precios de lista de los demás servicios a noviembre de 2026; pueden variar. Como referencia, contactar a 1,000 leads al mes cuesta unos US$ 81. Los avisos en el celular y Google Calendar no tienen costo.</p></div>
+
+<h3>No incluido</h3>
+<ul><li>Integración automática con el sistema de Hy Cite, que no ofrece conexión con otros sistemas: el cuadre se hace en la plataforma, venta por venta.</li><li>Cálculo de montos de comisión. La plataforma valida la evidencia, habilita la comisión y muestra la ruta hasta la primera venta.</li><li>Chatbot o respuestas automáticas en WhatsApp, y telefonía integrada para las llamadas.</li><li>Pasarela de pagos propia, facturación electrónica y contabilidad.</li><li>La pauta publicitaria en redes sociales y el diseño del PDF informativo.</li></ul>
+
+<h2>6. Supuestos y riesgos</h2>
+<h3>Supuestos</h3>
+<ul><li>Millennials designa un responsable por área para el discovery, las validaciones y las pruebas.</li><li>Millennials tiene su cuenta de empresa verificada en Meta y hasta tres números para WhatsApp. La aprobación de las plantillas depende de Meta.</li><li>Las ventas se siguen ingresando en el sistema de Hy Cite; la plataforma lleva el registro interno y el cuadre.</li><li>Millennials entrega el histórico de demos, ventas y cobranzas en la plantilla de Excel acordada en el discovery.</li><li>Los emprendedores usan una cuenta de Google para recibir sus demos en Google Calendar.</li><li>En iPhone, los avisos en el celular requieren instalar la plataforma en la pantalla de inicio. Lo incluimos en la capacitación.</li></ul>
+<h3>Riesgos y mitigación</h3>
+<table>
+<tr><th style="width:30%">Riesgo</th><th style="width:26%">Impacto</th><th>Mitigación</th></tr>
+<tr><td>Meta demora la aprobación de las plantillas o las clasifica como marketing</td><td>Retrasa los envíos o sube su costo</td><td>Tramitar las plantillas en el discovery, con textos que respeten las reglas de cada categoría.</td></tr>
+<tr><td>El histórico en Excel viene incompleto o con formatos distintos</td><td>Retrasa la migración</td><td>Plantilla única desde el discovery, una carga de prueba y una carga final.</td></tr>
+<tr><td>Procesos que todavía no están definidos</td><td>El alcance crece durante el desarrollo</td><td>El discovery los cierra con un documento aprobado; lo nuevo se trabaja como evolutivo.</td></tr>
+<tr><td>Poca disponibilidad del equipo en fiestas de fin de año</td><td>Se alarga el discovery</td><td>Entrevistas agendadas desde la firma y sesiones fijas cada semana.</td></tr>
+<tr><td>El equipo sigue usando el app o el Drive</td><td>Información partida en dos lugares</td><td>El app se apaga al salir el portal, y cada área recibe capacitación antes de cada salida.</td></tr>
+</table>
+
+<div class="junto"><h2>7. Para empezar el 7 de diciembre</h2>
+<ul class="check">
+<li>Aceptación de la propuesta y pago del primer hito.</li>
+<li>Un responsable por área y la agenda de entrevistas del discovery.</li>
+<li>Acceso a la cuenta de empresa de Millennials en Meta y los números que se usarán para WhatsApp.</li>
+<li>El histórico actual de demos, ventas y cobranzas, en el formato en que esté hoy.</li>
+<li>Lista de distribuidores con acceso a la plataforma completa.</li>
+<li>Dominio para la plataforma y los correos (por ejemplo, millennials.pe) y acceso a su configuración.</li>
+</ul>
+<div class="firmas"><div>Artisan Technology<small>Nombre, firma y fecha</small></div><div>Millennials Investments SAC<small>Nombre, firma y fecha</small></div></div></div>
+</div></body></html>
