@@ -250,12 +250,12 @@ HTML = f"""<!DOCTYPE html><html lang="es"><head><meta charset="utf-8"><title>Pro
 <tr><td>Vercel Pro</td><td>Alojamiento de la plataforma</td><td class="n">US$ 20</td></tr>
 <tr><td>Supabase Pro</td><td>Base de datos, archivos, evidencias y respaldos diarios</td><td class="n">US$ 25</td></tr>
 <tr><td>Resend Pro</td><td>Envío de correos, hasta 50,000 al mes</td><td class="n">US$ 20</td></tr>
-<tr><td>WhatsApp: mensaje de captación</td><td>Primer mensaje con el PDF a cada lead</td><td class="n">≈ US$ 0.081 c/u</td></tr>
-<tr><td>WhatsApp: recordatorio de cobranza</td><td>Aviso de cuota fuera de una conversación abierta</td><td class="n">≈ US$ 0.035 c/u</td></tr>
+<tr><td>WhatsApp: mensaje de captación</td><td>Primer mensaje con el PDF a cada lead</td><td class="n">≈ US$ 0.0703 c/u</td></tr>
+<tr><td>WhatsApp: recordatorio de cobranza</td><td>Aviso de cuota fuera de una conversación abierta</td><td class="n">≈ US$ 0.03 c/u</td></tr>
 <tr><td>WhatsApp: respuestas en conversación</td><td>Las primeras 1,000 al mes por número no se cobran</td><td class="n">≈ US$ 0.03 c/u</td></tr>
 <tr class="tot"><td>Base fija</td><td>Antes del consumo de WhatsApp</td><td class="n">US$ 65</td></tr>
 </table>
-<p class="mute">Tarifas de Meta para números de Perú vigentes desde octubre de 2026 y precios de lista de los demás servicios a noviembre de 2026; pueden variar. Como referencia, contactar a 1,000 leads al mes cuesta unos US$ 81. Los avisos en el celular y Google Calendar no tienen costo.</p></div>
+<p class="mute">Tarifas de referencia de Meta para números de Perú y precios de lista de los demás servicios a noviembre de 2026; pueden variar. Como referencia, contactar a 1,000 leads al mes cuesta unos US$ 70. Los avisos en el celular y Google Calendar no tienen costo.</p></div>
 
 <h3>No incluido</h3>
 {li('Integración automática con el sistema de Hy Cite, que no ofrece conexión con otros sistemas: el cuadre se hace en la plataforma, venta por venta.', 'Bonos y comisiones de red por rango o por equipo. La plataforma paga la comisión de cada venta y la de telemarketing con la tabla que Millennials configure.', 'Chatbot o respuestas automáticas en WhatsApp, y telefonía integrada para las llamadas.', 'Pasarela de pagos propia, facturación electrónica y contabilidad.', 'La pauta publicitaria en redes sociales y el diseño del PDF informativo.')}
