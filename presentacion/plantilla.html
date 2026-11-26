@@ -1,0 +1,768 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Propuesta Millennials × Artisan</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bai+Jamjuree:wght@400;500;600&family=Montserrat:wght@600;700;800&display=swap" rel="stylesheet">
+<style>
+/* VOICE  presentación comercial de Artisan: segura, directa, hecha para venderse sola en pantalla completa
+   IDEA   un recorrido: la información dispersa converge en una sola línea, y cada sección es una estación de esa línea
+   PICTURE la red de Millennials (Drive, hojas, WhatsApp, el app) cerrándose sobre una plataforma; luego recorridos animados de una venta y de un socio
+   COLOUR fondo azul de Prusia de Artisan, celeste para información, amarillo y naranja solo para dinero y acción
+   TYPE   Montserrat para títulos y cifras, Bai Jamjuree para texto
+   LAYOUT una pantalla por sección con scroll; riel de estaciones a la derecha; en celular todo en una columna */
+:root{color-scheme:dark;--bg:#023047;--deep:#01202f;--surface:#073b56;--raise:#0c4a69;--line:rgba(142,202,230,.22);--fg:#f3f8fb;--fg2:#bdd6e2;--muted:#8fb2c4;--sky:#8ECAE6;--teal:#219EBC;--yellow:#FFB703;--orange:#FB8500;--display:"Montserrat","Avenir Next","Segoe UI",sans-serif;--body:"Bai Jamjuree","Trebuchet MS",system-ui,sans-serif;--ease:cubic-bezier(.22,1,.36,1)}
+*{box-sizing:border-box;min-width:0;margin:0;padding:0}
+html{scroll-snap-type:y proximity;scroll-behavior:smooth;background:var(--bg)}
+body{background:var(--bg);color:var(--fg);font:17px/1.55 var(--body);overflow-x:clip}
+img{max-width:100%;display:block}
+button,input{font:inherit;color:inherit}
+h1,h2,h3{font-family:var(--display);letter-spacing:-.02em;line-height:1.08;text-wrap:balance}
+h1{font-size:clamp(34px,5.2vw,64px);font-weight:800}
+h2{font-size:clamp(30px,3.8vw,50px);font-weight:800}
+h3{font-size:19px;font-weight:700;line-height:1.25}
+p{max-width:64ch}
+.lead{font-size:clamp(17px,1.6vw,21px);color:var(--fg2);margin-top:16px}
+.small{font-size:14px;color:var(--muted)}
+.num{font-family:var(--display);font-weight:800;white-space:nowrap;font-variant-numeric:tabular-nums}
+.money{color:var(--yellow)}
+section{min-height:100svh;scroll-snap-align:start;display:grid;align-content:center;gap:28px;padding:clamp(56px,7vh,96px) max(5vw,20px);padding-right:max(5vw,20px,72px);position:relative;border-top:1px solid var(--line)}
+section.alt{background:var(--deep)}
+.wrap{width:100%;max-width:1240px;margin:0 auto;display:grid;gap:28px}
+.two{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.1fr);gap:clamp(24px,4vw,64px);align-items:center}
+.tag{display:inline-flex;align-items:center;gap:8px;font-size:15px;color:var(--sky);font-weight:600}
+.tag::before{content:"";width:10px;height:10px;border-radius:50%;background:var(--sky)}
+.tag.warm{color:var(--yellow)}.tag.warm::before{background:var(--yellow)}
+.btn{display:inline-flex;align-items:center;gap:10px;min-height:44px;padding:10px 18px;border-radius:999px;border:1px solid var(--line);background:var(--surface);cursor:pointer;font-weight:600;text-decoration:none;color:var(--fg)}
+.btn:hover{background:var(--raise)}
+.btn.cta{background:var(--orange);border-color:var(--orange);color:#fff}
+.btn.cta:hover{background:#e67700}
+:focus-visible{outline:3px solid var(--yellow);outline-offset:3px}
+.panel{background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:clamp(18px,2.2vw,28px)}
+
+/* Entradas: solo con movimiento permitido; el contenido existe y se ve igual sin script */
+.js .rv{opacity:0;transform:translateY(22px);transition:opacity .7s var(--ease),transform .7s var(--ease);transition-delay:calc(var(--d,0)*90ms)}
+.js section.on .rv{opacity:1;transform:none}
+
+/* Riel de estaciones */
+.riel{position:fixed;right:18px;top:50%;transform:translateY(-50%);z-index:20;display:grid;gap:10px;justify-items:end}
+.riel::before{content:"";position:absolute;right:7px;top:6px;bottom:6px;width:2px;background:var(--line)}
+.riel a{position:relative;display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--muted);font-size:13px;min-height:18px}
+.riel a span{opacity:0;transform:translateX(6px);transition:.25s var(--ease);background:var(--deep);padding:2px 8px;border-radius:6px;white-space:nowrap}
+.riel:hover a span,.riel a:focus-visible span{opacity:1;transform:none}
+.riel a i{width:16px;height:16px;border-radius:50%;background:var(--bg);border:2px solid var(--sky);transition:.25s}
+.riel a.on i{background:var(--yellow);border-color:var(--yellow);transform:scale(1.2)}
+.riel a.on{color:var(--fg)}
+.barra{position:fixed;left:0;top:0;height:3px;background:linear-gradient(90deg,var(--yellow),var(--orange));z-index:30;width:0}
+.herr{position:fixed;left:16px;bottom:16px;z-index:20;display:flex;gap:8px}
+.herr .btn{min-height:40px;padding:8px 14px;font-size:14px;background:rgba(7,59,86,.85);backdrop-filter:blur(6px)}
+
+/* Portada */
+.cover{grid-template-columns:minmax(0,1fr) minmax(0,1.05fr);display:grid;align-items:center;gap:clamp(20px,4vw,56px);max-width:1240px;margin:0 auto;width:100%}
+.logos{display:flex;align-items:center;gap:18px;margin-bottom:28px}
+.logos img{height:34px;width:auto}.logos b{color:var(--muted);font-weight:400;font-size:22px}
+.cover .acciones{display:flex;flex-wrap:wrap;gap:12px;margin-top:28px}
+.fig{position:relative;min-height:420px}
+.fig>svg{position:absolute;inset:0;width:100%;height:100%}
+.red text{font-family:var(--body);font-size:15px;fill:var(--fg2)}
+.red .hub text{font-family:var(--display);font-weight:800;fill:var(--bg);font-size:18px}
+.red .lin{stroke:var(--sky);stroke-width:2;fill:none;stroke-dasharray:8 10;opacity:.55}
+.js .red .lin{stroke-dasharray:400;stroke-dashoffset:400;animation:trazo 1.6s var(--ease) forwards;animation-delay:calc(.4s + var(--n)*.18s)}
+@keyframes trazo{to{stroke-dashoffset:0;opacity:.75}}
+.red .pto{fill:var(--sky);opacity:.55}
+.js .red .pto{animation:pulso 3.2s ease-in-out infinite;animation-delay:calc(var(--n)*-.37s)}
+@keyframes pulso{50%{opacity:.15}}
+.red .pill rect{fill:var(--surface);stroke:var(--line)}
+.js .red .hub circle.halo{animation:halo 2.8s ease-out infinite}
+@keyframes halo{from{r:70;opacity:.5}to{r:150;opacity:0}}
+
+/* Hoy */
+.fuentes{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,190px),1fr));gap:14px}
+.fuente{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:18px}
+.fuente h3{display:flex;align-items:center;gap:10px}
+.fuente h3 svg{width:22px;height:22px;flex:none;color:var(--sky)}
+.fuente ul{list-style:none;margin-top:10px;display:grid;gap:6px;color:var(--fg2);font-size:15px}
+.fuente li::before{content:"";display:inline-block;width:6px;height:6px;border-radius:50%;background:var(--orange);margin-right:8px;vertical-align:middle}
+.dato{display:flex;flex-wrap:wrap;align-items:baseline;gap:6px 18px}
+.dato .num{font-size:clamp(56px,8vw,104px);line-height:1;color:var(--yellow)}
+
+/* Costo de quedarse igual */
+.calc{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:clamp(20px,4vw,56px);align-items:center}
+.ctrl{display:grid;gap:22px}
+.ctrl label{display:flex;justify-content:space-between;gap:12px;font-weight:600}
+.ctrl label output{font-family:var(--display);color:var(--yellow);white-space:nowrap}
+input[type=range]{width:100%;height:44px;background:transparent;appearance:none;-webkit-appearance:none;cursor:pointer}
+input[type=range]::-webkit-slider-runnable-track{height:8px;border-radius:4px;background:var(--raise)}
+input[type=range]::-moz-range-track{height:8px;border-radius:4px;background:var(--raise)}
+input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:26px;height:26px;border-radius:50%;background:var(--yellow);margin-top:-9px;border:4px solid var(--bg)}
+input[type=range]::-moz-range-thumb{width:20px;height:20px;border-radius:50%;background:var(--yellow);border:4px solid var(--bg)}
+.result{display:grid;gap:18px}
+.result .grande{font-size:clamp(40px,5.6vw,80px);line-height:1;color:var(--yellow);white-space:normal;display:block}
+.horas{display:grid;grid-template-columns:repeat(22,minmax(0,1fr));gap:4px}
+.horas i{height:46px;border-radius:5px;background:var(--raise);position:relative;overflow:hidden}
+.horas i b{position:absolute;left:0;right:0;bottom:0;background:var(--orange);transition:height .5s var(--ease)}
+
+/* Líneas de la propuesta */
+.lineas{display:grid;gap:18px}
+.linea{display:grid;grid-template-columns:minmax(0,230px) minmax(0,1fr);gap:18px;align-items:center;background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:18px 20px}
+.linea h3{color:var(--c)}
+.linea p{font-size:15px;color:var(--fg2);margin-top:4px}
+.estac{position:relative;display:flex;justify-content:space-between;gap:8px;list-style:none}
+.estac::before{content:"";position:absolute;left:8px;right:8px;top:7px;height:4px;border-radius:2px;background:var(--c)}
+.js .estac::before{transform-origin:left;transform:scaleX(0);transition:transform 1.2s var(--ease) .3s}
+.js section.on .estac::before{transform:none}
+.estac li{position:relative;padding-top:26px;font-size:14px;color:var(--fg2);flex:1;text-align:center}
+.estac li::before{content:"";position:absolute;top:0;left:50%;margin-left:-9px;width:18px;height:18px;border-radius:50%;background:var(--bg);border:4px solid var(--c)}
+.estac li:first-child{text-align:left}.estac li:first-child::before{left:0;margin-left:0}
+.estac li:last-child{text-align:right}.estac li:last-child::before{left:auto;right:0;margin-left:0}
+.capa{display:flex;flex-wrap:wrap;gap:10px 18px;align-items:center;justify-content:space-between;border:1px dashed var(--sky);border-radius:16px;padding:16px 20px;color:var(--fg2)}
+.capa b{color:var(--fg)}
+
+/* Recorridos */
+.rec{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,.85fr);gap:clamp(20px,3vw,40px);align-items:start}
+.pasos{list-style:none;display:grid;gap:4px;position:relative}
+.pasos::before{content:"";position:absolute;left:15px;top:16px;bottom:16px;width:4px;border-radius:2px;background:var(--raise)}
+.pasos .prog{position:absolute;left:15px;top:16px;width:4px;border-radius:2px;background:var(--c);transition:height .6s var(--ease)}
+.pasos button{all:unset;cursor:pointer;display:grid;grid-template-columns:34px minmax(0,1fr);gap:14px;align-items:start;padding:8px 10px 8px 0;border-radius:12px;width:100%;box-sizing:border-box}
+.pasos button:focus-visible{outline:3px solid var(--yellow)}
+.pasos .pt{width:34px;height:34px;border-radius:50%;background:var(--bg);border:4px solid var(--raise);position:relative;z-index:1;transition:.3s;display:grid;place-items:center;font:700 13px var(--display);color:var(--muted)}
+.pasos li.hecho .pt{border-color:var(--c);color:var(--fg)}
+.pasos li.act .pt{background:var(--c);border-color:var(--c);color:var(--bg);transform:scale(1.12)}
+.pasos strong{display:block;font-family:var(--display);font-size:17px;line-height:1.3;padding-top:5px}
+.pasos small{display:block;color:var(--fg2);font-size:15px;max-height:0;overflow:hidden;transition:max-height .4s var(--ease)}
+.pasos li.act small{max-height:120px}
+.ficha{position:sticky;top:12vh;background:#f3f8fb;color:#06283a;border-radius:18px;padding:22px;box-shadow:0 0 0 8px rgba(142,202,230,.12)}
+.ficha header{display:flex;justify-content:space-between;align-items:center;gap:10px;border-bottom:2px dashed #b9cfdb;padding-bottom:12px;margin-bottom:12px}
+.ficha header b{font-family:var(--display)}
+.ficha header span{font-size:13px;padding:3px 10px;border-radius:999px;background:#e3eef4;white-space:nowrap}
+.ficha dl{display:grid;grid-template-columns:auto minmax(0,1fr);gap:8px 14px;font-size:15px}
+.ficha dt{color:#4b6a7b}
+.ficha dd{font-weight:600;text-align:right}
+.ficha .nuevo{animation:aparece .5s var(--ease)}
+@keyframes aparece{from{background:#ffe7a8}to{background:transparent}}
+.controles{display:flex;gap:10px;flex-wrap:wrap;margin-top:16px}
+
+/* Portal */
+.tel{width:min(320px,100%);margin:0 auto;background:#011824;border-radius:42px;padding:14px;border:2px solid var(--raise)}
+.pant{background:#f3f8fb;color:#06283a;border-radius:30px;overflow:hidden;min-height:560px;display:flex;flex-direction:column}
+.pant .sb{display:flex;justify-content:space-between;padding:10px 22px 4px;font-size:12px;font-weight:600}
+.pant .hd{padding:6px 18px 12px;font:800 20px var(--display)}
+.pant .cuerpo{padding:0 18px 18px;display:grid;gap:12px;flex:1;align-content:start}
+.pant label{font-size:13px;color:#4b6a7b;font-weight:600;display:grid;gap:6px}
+.pant input[type=number]{font-size:18px;padding:10px 12px;border-radius:12px;border:1.5px solid #b9cfdb;background:#fff;color:#06283a;width:100%;font-weight:600}
+.chips{display:flex;gap:6px;flex-wrap:wrap}
+.chips button{flex:1;min-height:40px;border-radius:10px;border:1.5px solid #b9cfdb;background:#fff;color:#06283a;font-weight:700;cursor:pointer}
+.chips button[aria-pressed=true]{background:#023047;border-color:#023047;color:#fff}
+.pant input[type=range]::-webkit-slider-runnable-track{background:#cfe0e9}
+.pant input[type=range]::-moz-range-track{background:#cfe0e9}
+.pant input[type=range]::-webkit-slider-thumb{background:#FB8500;border-color:#f3f8fb}
+.pant input[type=range]::-moz-range-thumb{background:#FB8500;border-color:#f3f8fb}
+.cuota{background:#023047;color:#fff;border-radius:16px;padding:14px 16px}
+.cuota .num{font-size:34px;color:var(--yellow);display:block}
+.tabbar{display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid #d7e5ec;font-size:11px;text-align:center;color:#4b6a7b}
+.tabbar span{padding:10px 2px}.tabbar span.on{color:#FB8500;font-weight:700}
+.modulos{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr));gap:14px}
+.modulos .panel h3{color:var(--sky)}
+.modulos .panel p{color:var(--fg2);font-size:15px;margin-top:6px}
+
+/* Conversaciones */
+.chat{display:grid;grid-template-columns:minmax(0,200px) minmax(0,1fr);background:#f3f8fb;color:#06283a;border-radius:18px;overflow:hidden;min-height:380px}
+.chat aside{background:#e3eef4;padding:14px;display:grid;gap:8px;align-content:start;font-size:14px}
+.chat aside b{font-family:var(--display);font-size:13px;color:#4b6a7b;font-weight:700;margin-top:6px}
+.chat aside div{padding:8px 10px;border-radius:10px;background:#fff}
+.chat aside div.on{outline:2px solid #FB8500}
+.hilo{padding:16px;display:grid;gap:10px;align-content:end}
+.msg{max-width:82%;padding:10px 12px;border-radius:14px;font-size:15px;line-height:1.4}
+.msg.yo{justify-self:end;background:#d6f2e4;border-bottom-right-radius:4px}
+.msg.el{background:#fff;border:1px solid #d7e5ec;border-bottom-left-radius:4px}
+.msg small{display:block;font-size:12px;color:#4b6a7b;margin-top:4px}
+.pdf{display:flex;gap:10px;align-items:center;background:#fff;border-radius:10px;padding:8px;margin-bottom:6px;border:1px solid #cfe0e9;font-size:14px}
+.pdf i{width:30px;height:38px;border-radius:4px;background:#FB8500;flex:none}
+.js .msg{opacity:0;transform:translateY(8px);transition:.5s var(--ease);transition-delay:calc(.4s + var(--n)*.7s)}
+.js section.on .msg{opacity:1;transform:none}
+.reglas{list-style:none;display:grid;gap:14px}
+.reglas li{display:grid;grid-template-columns:28px minmax(0,1fr);gap:12px;color:var(--fg2)}
+.reglas li b{color:var(--fg)}
+.reglas svg{width:28px;height:28px;color:var(--yellow)}
+
+/* Acceso */
+.niveles{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:18px}
+.nivel h3{font-size:24px}
+.nivel ul{list-style:none;display:grid;gap:8px;margin-top:14px;color:var(--fg2)}
+.nivel li{display:flex;gap:10px}.nivel li::before{content:"";flex:none;width:8px;height:8px;margin-top:9px;border-radius:50%;background:var(--sky)}
+.nivel.full{border-color:var(--yellow)}.nivel.full li::before{background:var(--yellow)}
+
+/* Plan */
+.gantt{display:grid;gap:6px;font-size:14px}
+.gfila{display:grid;grid-template-columns:minmax(0,220px) minmax(0,1fr);gap:12px;align-items:center}
+.gfila .pista{position:relative;height:26px}
+.gfila .pista::before{content:"";position:absolute;inset:12px 0;height:2px;background:var(--line)}
+.gbar{position:absolute;top:4px;height:18px;border-radius:9px;background:var(--c,var(--teal));display:flex;align-items:center;padding:0 8px;font-size:12px;color:var(--bg);font-weight:700;white-space:nowrap;overflow:hidden}
+.js .gbar{transform-origin:left;transform:scaleX(0);transition:transform .8s var(--ease);transition-delay:calc(.2s + var(--n)*.08s)}
+.js section.on .gbar{transform:none}
+.ghito{position:absolute;top:3px;width:20px;height:20px;margin-left:-10px;transform:rotate(45deg);background:var(--c,var(--sky));border-radius:3px}
+.gfila.h span{font-weight:700}
+.gsem{display:grid;grid-template-columns:minmax(0,220px) minmax(0,1fr);gap:12px;color:var(--muted);font-size:13px}
+.gsem div{position:relative;height:18px}.gsem div span{position:absolute;transform:translateX(-50%);white-space:nowrap}
+.entregas{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,220px),1fr));gap:14px}
+.entregas .panel b{display:block;font-family:var(--display);color:var(--yellow);font-size:15px}
+.entregas .panel h3{margin-top:6px}
+.entregas .panel p{font-size:15px;color:var(--fg2);margin-top:6px}
+
+/* Inversión */
+.precio{display:flex;flex-wrap:wrap;align-items:baseline;gap:8px 18px}
+.precio .num{font-size:clamp(64px,10vw,132px);line-height:.95;color:var(--yellow)}
+.precio span{font-size:22px;color:var(--fg2)}
+.pagos{display:flex;gap:4px;height:64px;border-radius:14px;overflow:hidden}
+.pagos div{background:var(--c);display:flex;align-items:center;justify-content:center;font:800 18px var(--display);color:var(--bg)}
+.js .pagos div{transform:scaleY(0);transform-origin:bottom;transition:transform .6s var(--ease);transition-delay:calc(.2s + var(--n)*.12s)}
+.js section.on .pagos div{transform:none}
+.hitos{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:4px;font-size:14px}
+.hitos div{border-top:3px solid var(--c);padding-top:8px}
+.hitos b{display:block;font-family:var(--display);font-size:15px;white-space:nowrap}
+.hitos span{color:var(--fg2)}
+.mensual{display:flex;flex-wrap:wrap;gap:10px 28px;color:var(--fg2);font-size:15px}
+.mensual b{color:var(--fg)}
+
+/* Garantía */
+.compromisos{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));gap:14px}
+.compromisos .panel{display:grid;grid-template-columns:44px minmax(0,1fr);gap:14px;align-items:start}
+.compromisos svg{width:44px;height:44px;color:var(--yellow)}
+.compromisos p{font-size:15px;color:var(--fg2);margin-top:4px}
+.fuera{color:var(--muted);font-size:15px}
+.fuera b{color:var(--fg2)}
+
+/* Empezar */
+.check{list-style:none;display:grid;gap:12px}
+.check li{display:grid;grid-template-columns:28px minmax(0,1fr);gap:12px;align-items:start}
+.check li::before{content:"";width:22px;height:22px;border:2px solid var(--sky);border-radius:6px;margin-top:3px}
+.contacto{display:flex;flex-wrap:wrap;gap:12px;align-items:center;margin-top:8px}
+footer{padding:28px max(5vw,20px);border-top:1px solid var(--line);color:var(--muted);font-size:14px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}
+footer img{height:22px;width:auto}
+
+/* Notas para quien presenta */
+.notas{position:fixed;left:16px;bottom:70px;z-index:25;width:min(420px,calc(100vw - 32px));background:#fff;color:#06283a;border-radius:16px;padding:16px 18px;font-size:15px;box-shadow:0 10px 40px rgba(0,0,0,.35);display:none}
+.notas.on{display:block}
+.notas b{font-family:var(--display);display:block;margin-bottom:6px}
+
+@media (max-width:900px){
+  .cover,.two,.calc,.rec,.niveles{grid-template-columns:minmax(0,1fr)}
+  .fig{min-height:340px}
+  .riel{display:none}
+  section{padding-right:max(5vw,20px)}
+  .ficha{position:static}
+  .linea{grid-template-columns:minmax(0,1fr)}
+}
+@media (max-width:640px){
+  body{font-size:16px}
+  .estac{flex-direction:column;gap:10px}
+  .estac::before{left:7px;right:auto;top:8px;bottom:8px;width:4px;height:auto}
+  .js .estac::before{transform:none}
+  .estac li,.estac li:first-child,.estac li:last-child{text-align:left;padding:0 0 0 30px}
+  .estac li::before,.estac li:first-child::before,.estac li:last-child::before{left:0;right:auto;margin-left:0;top:1px}
+  .gfila,.gsem{grid-template-columns:minmax(0,1fr)}
+  .gsem span:nth-child(even){display:none}
+  .hitos{grid-template-columns:repeat(3,minmax(0,1fr));row-gap:14px}
+  .pagos div{font-size:14px}
+  .chat{grid-template-columns:minmax(0,1fr)}
+  .chat aside{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .chat aside b{grid-column:1/-1}
+  .herr{display:none}
+}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{animation:none!important;transition:none!important}
+  .js .rv,.js .msg{opacity:1;transform:none}
+  .js .estac::before,.js .gbar,.js .pagos div{transform:none}
+  .js .red .lin{stroke-dashoffset:0}
+}
+</style>
+</head>
+<body>
+<div class="barra" id="barra"></div>
+<nav class="riel" id="riel" aria-label="Secciones"></nav>
+<div class="herr">
+  <button class="btn" id="pc" type="button" title="Pantalla completa (F)"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5"/></svg><span>Pantalla completa</span></button>
+  <button class="btn" id="bn" type="button" title="Notas para quien presenta (N)"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 4h14v16H5zM9 9h6M9 13h6M9 17h3"/></svg><span>Notas</span></button>
+</div>
+<div class="notas" id="notas" role="status" aria-live="polite"></div>
+
+<!-- 1. Portada -->
+<section id="inicio" data-nombre="Inicio">
+  <div class="cover">
+    <div>
+      <div class="logos rv"><img src="{{LOGO_CLIENTE}}" alt="Millennials"><b>×</b><img src="{{LOGO_ARTISAN}}" alt="Artisan"></div>
+      <h1 class="rv" style="--d:1">Una sola plataforma para vender, cobrar y hacer crecer la red de Millennials</h1>
+      <p class="lead rv" style="--d:2">Clientes, demostraciones, ventas, comisiones, cobranzas, captación de socios, WhatsApp y el portal del emprendedor, en un solo sistema hecho a la medida.</p>
+      <div class="acciones rv" style="--d:3">
+        <a class="btn cta" href="#hoy">Empezar el recorrido</a>
+        <span class="small">Avanza con ↓, la barra espaciadora o el scroll</span>
+      </div>
+    </div>
+    <div class="fig rv" style="--d:2"><svg id="red" class="red" viewBox="0 0 640 520" preserveAspectRatio="xMidYMid meet" role="img" aria-label="Drive, hojas de cálculo, WhatsApp, Calendar y el App Millennials se conectan a una sola plataforma"></svg></div>
+  </div>
+</section>
+
+<!-- 2. Hoy -->
+<section id="hoy" class="alt" data-nombre="Cómo se trabaja hoy">
+  <div class="wrap">
+    <div class="two">
+      <div>
+        <span class="tag rv">Cómo se trabaja hoy</span>
+        <h2 class="rv" style="--d:1">La información existe, pero vive en cinco lugares distintos</h2>
+        <p class="lead rv" style="--d:2">Cada área encontró su forma de trabajar. El costo es que nadie ve el recorrido completo de un cliente ni de un nuevo socio, y todo depende de que alguien busque y mueva los datos a mano.</p>
+      </div>
+      <div class="dato rv" style="--d:2"><span class="num">3 a 4 h</span><p class="lead" style="margin:0">al día dedica cobranzas a revisar un Drive y avisar a cada cliente, uno por uno.</p></div>
+    </div>
+    <div class="fuentes" id="fuentes"></div>
+  </div>
+</section>
+
+<!-- 3. Costo de quedarse igual -->
+<section id="costo" data-nombre="El costo de quedarse igual">
+  <div class="wrap">
+    <div>
+      <span class="tag warm rv">El costo de quedarse igual</span>
+      <h2 class="rv" style="--d:1">No hacer nada también cuesta, todos los meses</h2>
+    </div>
+    <div class="calc">
+      <div class="ctrl panel rv" style="--d:2">
+        <div><label for="h">Horas al día de cobranza manual <output id="hO"></output></label><input id="h" type="range" min="1" max="8" step=".5" value="3.5"></div>
+        <div><label for="g">Personas haciendo esa tarea <output id="gO"></output></label><input id="g" type="range" min="1" max="5" step="1" value="1"></div>
+        <div><label for="c">Cartera en cuotas <output id="cO"></output></label><input id="c" type="range" min="100000" max="2000000" step="50000" value="600000"></div>
+        <div><label for="m">Puntos de mora que se recuperan avisando a tiempo <output id="mO"></output></label><input id="m" type="range" min="0" max="10" step=".5" value="2"></div>
+        <p class="small">Cifras de ejemplo: muévelas con las de Millennials.</p>
+      </div>
+      <div class="result rv" style="--d:3">
+        <div><span class="num grande" id="rH"></span><p class="lead" style="margin-top:6px" id="rHt"></p></div>
+        <div class="horas" id="hgrid" aria-hidden="true"></div>
+        <div><span class="num grande" id="rM" style="font-size:clamp(36px,5vw,64px)"></span><p class="lead" style="margin-top:6px">que vuelven a caja cada vez que la cartera da una vuelta, si los avisos salen solos y a tiempo.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 4. La propuesta -->
+<section id="propuesta" class="alt" data-nombre="La propuesta">
+  <div class="wrap">
+    <div class="two">
+      <div>
+        <span class="tag rv">La propuesta</span>
+        <h2 class="rv" style="--d:1">Tres frentes de trabajo sobre la misma información</h2>
+      </div>
+      <p class="lead rv" style="--d:2">Cada dato se registra una sola vez y viaja solo: la demo trae al cliente, la venta trae la demo, y cobranzas recibe al cliente, al vendedor y sus cuotas sin volver a digitarlos.</p>
+    </div>
+    <div class="lineas" id="lineas"></div>
+    <div class="capa rv" style="--d:5"><span><b>Debajo de todo:</b> los números oficiales de WhatsApp de Millennials, una sola base de datos y permisos por rol.</span><span>Se instala en cualquier celular, Android o iPhone.</span></div>
+  </div>
+</section>
+
+<!-- 5. Recorrido de una venta -->
+<section id="venta" data-nombre="Recorrido de una venta">
+  <div class="wrap">
+    <div>
+      <span class="tag warm rv">Operación comercial</span>
+      <h2 class="rv" style="--d:1">Una venta, del posible cliente al cuadre con Hy Cite</h2>
+    </div>
+    <div class="rec" data-rec="venta" style="--c:var(--yellow)">
+      <div><ol class="pasos"></ol><div class="controles"><button class="btn" data-a="-1" type="button">Anterior</button><button class="btn cta" data-a="1" type="button">Siguiente paso</button></div></div>
+      <div class="ficha" aria-live="polite"><header><b>Ficha de la venta</b><span></span></header><dl></dl></div>
+    </div>
+  </div>
+</section>
+
+<!-- 6. Recorrido de un socio -->
+<section id="red-socios" class="alt" data-nombre="Recorrido de un socio">
+  <div class="wrap">
+    <div>
+      <span class="tag rv">Expansión de la red</span>
+      <h2 class="rv" style="--d:1">Un nuevo socio, del formulario a su primera venta</h2>
+    </div>
+    <div class="rec" data-rec="socio" style="--c:var(--sky)">
+      <div><ol class="pasos"></ol><div class="controles"><button class="btn" data-a="-1" type="button">Anterior</button><button class="btn cta" data-a="1" type="button">Siguiente paso</button></div></div>
+      <div class="ficha" aria-live="polite"><header><b>Ficha del socio</b><span></span></header><dl></dl></div>
+    </div>
+  </div>
+</section>
+
+<!-- 7. Portal -->
+<section id="portal" data-nombre="Portal del emprendedor">
+  <div class="wrap">
+    <div class="two">
+      <div>
+        <span class="tag warm rv">Portal del emprendedor · sale primero</span>
+        <h2 class="rv" style="--d:1">Todo lo que hoy hace el App Millennials, dentro de la plataforma</h2>
+        <p class="lead rv" style="--d:2">Lo usa toda la red desde el celular. Sale en la semana 6 y el app actual se apaga: un solo lugar, un solo acceso.</p>
+        <div class="modulos" id="modulos" style="margin-top:24px"></div>
+      </div>
+      <div class="rv" style="--d:2">
+        <div class="tel"><div class="pant">
+          <div class="sb"><span>9:41</span><span>Millennials</span></div>
+          <div class="hd">Financiamiento</div>
+          <div class="cuerpo">
+            <label for="pP">Precio final de la venta (S/)<input id="pP" type="number" inputmode="decimal" min="0" step="10" value="6480"></label>
+            <div><label>Inicial</label><div class="chips" id="ini"></div></div>
+            <label for="pC">Número de cuotas: <b id="pCo"></b><input id="pC" type="range" min="2" max="31" value="12"></label>
+            <div class="cuota"><span class="small" style="color:#bdd6e2">Cuota mensual</span><span class="num" id="pR"></span><span class="small" style="color:#bdd6e2" id="pI"></span></div>
+          </div>
+          <div class="tabbar"><span>Catálogo</span><span class="on">Calculadora</span><span>Talleres</span><span>Multimedia</span></div>
+        </div></div>
+        <p class="small" style="text-align:center;margin-top:10px">Funciona con la tabla de factores del app actual.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 8. Conversaciones -->
+<section id="conversaciones" class="alt" data-nombre="WhatsApp">
+  <div class="wrap">
+    <div>
+      <span class="tag rv">Conversaciones de WhatsApp</span>
+      <h2 class="rv" style="--d:1">Los números oficiales de Millennials, trabajados desde la plataforma</h2>
+    </div>
+    <div class="two">
+      <div class="chat rv" style="--d:2">
+        <aside><b>Números</b><div class="on">Captación</div><div>Cobranzas</div><b>Mis conversaciones</b><div>Lucía Rojas</div><div>Jorge Paredes</div></aside>
+        <div class="hilo">
+          <div class="msg yo" style="--n:0"><div class="pdf"><i></i><span>Conoce Millennials.pdf<br><small>Información para nuevos socios</small></span></div>Hola Lucía, gracias por tu interés. Te comparto la información que conversamos por teléfono.<small>Ana · telemarketing · 10:12</small></div>
+          <div class="msg el" style="--n:1">¡Gracias! ¿Puedo ir a la entrevista el jueves en la tarde?</div>
+          <div class="msg yo" style="--n:2">Listo: jueves a las 4 p. m. en la oficina de Surco. Te llegará un recordatorio.<small>Ana · 10:15</small></div>
+        </div>
+      </div>
+      <ul class="reglas" id="reglas"></ul>
+    </div>
+  </div>
+</section>
+
+<!-- 9. Acceso -->
+<section id="acceso" data-nombre="Quién accede">
+  <div class="wrap">
+    <div class="two">
+      <div><span class="tag rv">Quién accede a qué</span><h2 class="rv" style="--d:1">Toda la red entra; cada quien ve lo suyo</h2></div>
+      <p class="lead rv" style="--d:2">Los permisos siguen los rangos de Royal Prestige y las áreas de Millennials. Cada distribuidor ve a su equipo; la gerencia ve toda la red.</p>
+    </div>
+    <div class="niveles" id="niveles"></div>
+  </div>
+</section>
+
+<!-- 10. Plan -->
+<section id="plan" class="alt" data-nombre="Cómo trabajamos">
+  <div class="wrap">
+    <div class="two">
+      <div><span class="tag rv">Cómo trabajamos</span><h2 class="rv" style="--d:1">18 semanas, con el portal en uso desde la semana 6</h2></div>
+      <p class="lead rv" style="--d:2">Primero escuchamos: tres semanas de discovery con cada área cierran los procesos y el alcance antes de construir. Después, cada entrega se valida con su equipo.</p>
+    </div>
+    <div class="panel rv" style="--d:3"><div class="gsem" id="gsem"></div><div class="gantt" id="gantt"></div></div>
+    <div class="entregas" id="entregas"></div>
+  </div>
+</section>
+
+<!-- 11. Inversión -->
+<section id="inversion" data-nombre="Inversión">
+  <div class="wrap">
+    <span class="tag warm rv">Inversión</span>
+    <div class="precio rv" style="--d:1"><span class="num" id="precio"></span><span>+ IGV, todo el proyecto</span></div>
+    <p class="lead rv" style="--d:2">Incluye discovery, construcción, migración de datos, salida a producción y 60 días de garantía y soporte. Se paga por avance: cada hito se factura cuando se cumple.</p>
+    <div class="rv" style="--d:3"><div class="pagos" id="pagos"></div><div class="hitos" id="hitos" style="margin-top:10px"></div></div>
+    <div class="mensual rv" style="--d:4" id="mensual"></div>
+  </div>
+</section>
+
+<!-- 12. Garantía -->
+<section id="garantia" class="alt" data-nombre="Sin riesgos">
+  <div class="wrap">
+    <div><span class="tag rv">Cómo cuidamos su inversión</span><h2 class="rv" style="--d:1">Millennials paga por lo que ya puede usar</h2></div>
+    <div class="compromisos" id="compromisos"></div>
+    <p class="fuera rv" style="--d:6" id="fuera"></p>
+  </div>
+</section>
+
+<!-- 13. Empezar -->
+<section id="empezar" data-nombre="Siguiente paso">
+  <div class="wrap">
+    <div class="two">
+      <div>
+        <span class="tag warm rv">Nuestra recomendación</span>
+        <h2 class="rv" style="--d:1">Empezar el discovery la próxima semana</h2>
+        <p class="lead rv" style="--d:2">En tres semanas Millennials tiene sus procesos ordenados y aprobados, y en la semana 6 toda la red ya usa el portal. Lo que se gana desde ahí es tiempo de cobranzas, control de la red y crecimiento.</p>
+        <div class="contacto rv" style="--d:3"><a class="btn cta" href="https://artisan.pe" target="_blank" rel="noopener">artisan.pe</a><span class="small">Artisan Technology · Lima, Perú</span></div>
+      </div>
+      <div class="panel rv" style="--d:2"><h3>Para empezar</h3><ul class="check" id="empezarL" style="margin-top:14px"></ul></div>
+    </div>
+  </div>
+</section>
+<footer><img src="{{LOGO_ARTISAN}}" alt="Artisan"><span>Creamos alianzas para trabajar juntos todas tus necesidades tecnológicas</span></footer>
+
+<script>
+{
+/* ============ Contenido de la propuesta: lo que cambia en cada cliente ============ */
+const P = {
+  precio: 29571,
+  semanas: 18,
+  fuentes: [
+    {t:'Drive', i:'M4 6h6l2 2h8v10H4z', xs:['Cuotas y cartera','Pagos registrados a mano']},
+    {t:'Hojas de cálculo', i:'M4 4h16v16H4zM4 10h16M10 4v16', xs:['Ventas del día','Bases de llamadas']},
+    {t:'WhatsApp', i:'M4 20l1.5-4A8 8 0 1 1 8 19z', xs:['Videos de curado y cocinado','Conversaciones con clientes y postulantes']},
+    {t:'App Millennials', i:'M8 3h8v18H8zM11 18h2', xs:['Catálogo y calculadora','Talleres y multimedia']},
+    {t:'La memoria de cada uno', i:'M12 4a6 6 0 0 1 4 10.5V18H8v-3.5A6 6 0 0 1 12 4zM10 21h4', xs:['Quién refirió a quién','Entrevistas y su resultado']}
+  ],
+  lineas: [
+    {t:'Operación comercial', c:'var(--yellow)', p:'Vender y cobrar con la historia completa de cada cliente.', e:['Posible cliente','Demo asignada','Venta y cuotas','Comisión','Cobranza','Cuadre']},
+    {t:'Expansión de la red', c:'var(--sky)', p:'Seguir a cada nuevo socio hasta su primera venta.', e:['Formulario o referido','Llamada','WhatsApp con PDF','Entrevista','Inducción','Primera venta']},
+    {t:'Portal del emprendedor', c:'var(--orange)', p:'Las herramientas de toda la red, en el celular.', e:['Capacitación','Catálogo','Calculadora','Multimedia','Tarjeta digital']}
+  ],
+  venta: [
+    {t:'Posible cliente', d:'Carlos, emprendedor, registra a Rosa después de conocerla en una reunión.', f:[['Cliente','Rosa Quispe'],['Registró','Carlos Huamán']], e:'Por aprobar'},
+    {t:'Aprobado por su distribuidor', d:'El distribuidor revisa y aprueba: Rosa pasa al listado de clientes.', f:[['Distribuidor','Equipo Surco']], e:'Cliente'},
+    {t:'Demo asignada en el calendario', d:'El coordinador asigna la demo a Carlos y aparece en su Google Calendar.', f:[['Demo','Jueves 10:00, Surco']], e:'Demo agendada'},
+    {t:'Vendida, desde el catálogo', d:'Carlos marca la demo como vendida y elige en el catálogo lo que se vendió, con sus regalos.', f:[['Productos','Juego de ollas 5 capas + regalo'],['Precio final','S/ 6,480']], e:'Venta'},
+    {t:'Cuotas en el mismo paso', d:'La calculadora se abre con el precio final. El cronograma pasa solo a cobranzas.', f:'cuotas', e:'Venta en cuotas'},
+    {t:'Evidencia validada', d:'Carlos sube desde su celular el video del curado y del cocinado; su líder lo valida.', f:[['Curado y cocinado','Validados']], e:'Comisión habilitada'},
+    {t:'Comisión del día', d:'La venta aparece en los pagos de comisión del día, con su sustento.', f:[['Comisión','Lista para pago']], e:'Por pagar'},
+    {t:'Cobranza heredada', d:'Cobranzas recibe a Rosa con sus datos, su vendedor y sus cuotas, y le escribe desde el número oficial.', f:[['Primera cuota','Vence en 30 días']], e:'Al día'},
+    {t:'Cuadre con Hy Cite', d:'Contabilidad compara la venta con su orden en Hy Cite y la marca como cuadrada.', f:[['Orden Hy Cite','Cuadrada']], e:'Cuadrada'}
+  ],
+  socio: [
+    {t:'Formulario o referido', d:'Lucía llena el formulario desde un anuncio en Instagram. También pudo haberla referido alguien de la red.', f:[['Socio','Lucía Rojas'],['Llegó por','Anuncio en Instagram']], e:'Lead nuevo'},
+    {t:'Asignada a un operador', d:'La base se reparte entre los operadores de telemarketing: Lucía le toca a Ana.', f:[['Operadora','Ana Torres']], e:'Por llamar'},
+    {t:'Llamada', d:'Ana la llama y registra el resultado de la conversación.', f:[['Llamada','Interesada']], e:'Contactada'},
+    {t:'WhatsApp con el PDF', d:'Con un clic, Ana le envía la información desde el número de captación. La conversación queda a su nombre.', f:[['WhatsApp','PDF enviado']], e:'En conversación'},
+    {t:'Entrevista', d:'Ana agenda la entrevista y marca que Lucía llegó.', f:[['Entrevista','Jueves 4 p. m., asistió']], e:'Entrevistada'},
+    {t:'Inducción', d:'Lucía completa su inducción en los talleres del portal.', f:[['Inducción','Completa']], e:'En formación'},
+    {t:'Alta como emprendedora', d:'Lucía entra al equipo y recibe su acceso al portal.', f:[['Equipo','Surco']], e:'Emprendedora'},
+    {t:'Primera venta', d:'Lucía vende por primera vez: la comisión de Ana por traerla queda registrada.', f:[['Primera venta','S/ 5,200'],['Comisión de Ana','Lista para pago']], e:'Activa'}
+  ],
+  modulos: [
+    ['Capacitación','Talleres en video, exámenes, avance y ranking, según el rango de cada persona.'],
+    ['Catálogo','Productos por categoría, con fotos, precios y los regalos que incluyen.'],
+    ['Calculadora','Sola o dentro de cada venta, con los factores que administración configura.'],
+    ['Multimedia','Imágenes, videos y documentos para que la red los comparta.']
+  ],
+  reglas: [
+    ['Hasta tres números oficiales','La plataforma trae los números de la cuenta de Millennials y administración asigna cada uno a captación o a cobranzas.'],
+    ['Cada uno ve lo suyo','El operador ve las conversaciones que él inició; el gestor, las de sus clientes.'],
+    ['Avisos en el celular','Llega una notificación cuando le escriben, aunque no tenga la plataforma abierta.'],
+    ['Sin descargar nada','Se instala en cualquier celular como una app, sin pasar por las tiendas.']
+  ],
+  niveles: [
+    {t:'Plataforma completa', full:true, p:'Los distribuidores que Millennials habilite y su red, y la red directa de Millennials.', xs:['Clientes, demos y calendario','Ventas, comisiones y cobranzas','Cuadre con Hy Cite','Captación de socios y conversaciones','Tablero y reportes de gerencia']},
+    {t:'Portal del emprendedor', p:'Todos los usuarios de la red.', xs:['Capacitación y talleres','Catálogo de productos','Calculadora de financiamiento','Multimedia compartida','Tarjeta digital y perfil']}
+  ],
+  cronograma: [
+    ['Discovery y entrevistas',1,3,'var(--sky)'],
+    ['Base: usuarios, red y accesos',2,5,'var(--teal)'],
+    ['Portal del emprendedor',3,6,'var(--orange)'],
+    ['Portal en uso, app apagada',6,0,'var(--orange)'],
+    ['Clientes, demos y calendario',6,9,'var(--yellow)'],
+    ['Ventas, comisiones y cobranzas',8,12,'var(--yellow)'],
+    ['Captación y WhatsApp',11,15,'var(--sky)'],
+    ['Tablero, reportes y migración',15,17,'var(--teal)'],
+    ['Plataforma completa en uso',18,0,'var(--yellow)']
+  ],
+  entregas: [
+    ['Semana 3','Discovery cerrado','Procesos, alcance y prototipos aprobados por cada área.'],
+    ['Semana 6','Portal en uso','Toda la red usa el portal y el app actual se apaga.'],
+    ['Semana 12','Operación comercial','Clientes, demos, ventas, comisiones, cobranzas y cuadre, validados.'],
+    ['Semana 18','Plataforma completa','Captación, conversaciones, tablero y la migración terminada.']
+  ],
+  hitos: [[35,'Inicio','Firma'],[15,'Semana 3','Discovery'],[15,'Semana 6','Portal'],[15,'Semana 12','Comercial'],[10,'Semana 15','Captación'],[10,'Semana 18','Completa']],
+  mensual: '<b>Operación mensual:</b> unos US$ 65 en servicios de nube, más WhatsApp según uso: US$ 0.0703 por mensaje de captación y US$ 0.03 por recordatorio. Las primeras 1,000 respuestas al mes por número no se cobran.',
+  compromisos: [
+    ['M4 12l5 5L20 6','Pago contra avance','35% para empezar; el resto se factura solo cuando cada hito se cumple y su equipo lo valida.'],
+    ['M4 5h16v14H4zM8 9h8M8 13h5','El discovery cierra el alcance','Antes de construir, cada área aprueba sus procesos y prototipos. Sin sorpresas a mitad de camino.'],
+    ['M12 3l8 4v5c0 5-3.5 8-8 9-4.5-1-8-4-8-9V7z','60 días de garantía y soporte','Corrección sin costo de cualquier falla y acompañamiento a cada área en sus primeras semanas.'],
+    ['M4 7h16M4 12h16M4 17h10','Su historia viene con ustedes','Migramos el app y el histórico de demos, ventas y cobranzas. Lo pendiente sigue activo.']
+  ],
+  fuera: '<b>No incluye:</b> integración automática con Hy Cite (que no ofrece conexión), bonos de red por rango o equipo, chatbot, telefonía integrada, pasarela de pagos propia y facturación electrónica.',
+  empezar: ['Aceptación de la propuesta y primer pago.','Un responsable por área y la agenda de entrevistas.','Acceso a la cuenta de empresa de Millennials en Meta y los números de WhatsApp.','El histórico actual de demos, ventas y cobranzas.','La lista de distribuidores con acceso a la plataforma completa.'],
+  notas: {
+    'inicio':'Abre agradeciendo y fija la reunión: recorrido de 15 minutos, inversión al final y, si hace sentido, fecha para empezar.',
+    'hoy':'Pregunta: de estos cinco lugares, ¿cuál les cuesta más hoy? Deja que responda antes de seguir.',
+    'costo':'Mueve los controles con las cifras que te dé. Pregunta: ¿qué haría su equipo con esas horas?',
+    'propuesta':'Una idea: cada dato se registra una vez. Pregunta cuál de los tres frentes le urge más.',
+    'venta':'Avanza paso a paso. Pregunta: ¿cómo se hace hoy este paso y cuánto tarda?',
+    'red-socios':'Pregunta: hoy, ¿cómo sabe quién trajo a cada socio y si llegó a su primera venta?',
+    'portal':'Deja que mueva la calculadora. Recuerda: el portal sale en la semana 6 y el app se apaga.',
+    'conversaciones':'Destaca que los números son de Millennials y que cada persona ve solo sus conversaciones.',
+    'acceso':'Pregunta qué distribuidores tendrían la plataforma completa desde el inicio.',
+    'plan':'El discovery es la garantía de que se construye lo correcto. Pregunta si tienen disponibilidad para entrevistas estas semanas.',
+    'inversion':'Di el precio en una frase y haz una pausa. Si pregunta por el resto, explica los hitos.',
+    'garantia':'Si hay dudas, vuelve aquí: pagan contra avance validado y hay 60 días de garantía.',
+    'empezar':'Cierra con una fecha: ¿empezamos el discovery el lunes?'
+  }
+};
+const FACT = {2:52.98,3:36.00,4:27.51,5:22.43,6:19.04,7:16.63,8:14.82,9:13.42,10:12.30,11:11.38,12:10.62,13:9.98,14:9.43,15:8.96,16:8.55,17:8.18,18:7.86,19:7.58,20:7.32,21:7.09,22:6.88,23:6.69,24:6.52,25:6.36,26:6.22,27:6.09,28:5.96,29:5.85,30:5.74,31:5.65};
+
+/* ============ Utilidades ============ */
+const $ = (s, r = document) => r.querySelector(s);
+const $$ = (s, r = document) => [...r.querySelectorAll(s)];
+const esc = v => String(v).replace(/[&<>"']/g, ch => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[ch]));
+const soles = (n, d = 0) => 'S/ ' + n.toLocaleString('es-PE', {minimumFractionDigits: d, maximumFractionDigits: d});
+const arriba = (n, paso) => Math.ceil(n / paso - 1e-9) * paso;
+const icono = d => `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="${d}"/></svg>`;
+const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+document.documentElement.classList.add('js');
+
+/* ============ Portada: la red que converge ============ */
+const red = $('#red');
+{
+  const cx = 320, cy = 270;
+  const nodos = [['Drive',90,90],['Hojas de cálculo',470,70],['WhatsApp',560,250],['Calendar',500,440],['App Millennials',110,450],['Cuadernos y chats',110,270]];
+  let seed = 7; const rnd = () => (seed = seed * 16807 % 2147483647) / 2147483647;
+  let puntos = '';
+  for (let i = 0; i < 70; i++) {
+    const a = rnd() * Math.PI * 2, r = 150 + rnd() * 120;
+    puntos += `<circle class="pto" style="--n:${i}" cx="${(cx + Math.cos(a) * r).toFixed(1)}" cy="${(cy + Math.sin(a) * r * .78).toFixed(1)}" r="${(2 + rnd() * 2.5).toFixed(1)}"/>`;
+  }
+  const lineas = nodos.map(([, x, y], i) => `<path class="lin" style="--n:${i}" d="M${x} ${y} Q ${(x + cx) / 2 + (i % 2 ? 40 : -40)} ${(y + cy) / 2} ${cx} ${cy}"/>`).join('');
+  const pills = nodos.map(([t, x, y]) => { const w = t.length * 8.4 + 28; return `<g class="pill"><rect x="${x - w / 2}" y="${y - 18}" width="${w}" height="36" rx="18"/><text x="${x}" y="${y + 5}" text-anchor="middle">${esc(t)}</text></g>`; }).join('');
+  red.innerHTML = `${puntos}${lineas}${pills}<g class="hub"><circle class="halo" cx="${cx}" cy="${cy}" r="70" fill="none" stroke="#FFB703" stroke-width="2"/><circle cx="${cx}" cy="${cy}" r="74" fill="#FFB703"/><circle cx="${cx}" cy="${cy}" r="60" fill="#FB8500"/><text x="${cx}" y="${cy - 4}" text-anchor="middle">Una sola</text><text x="${cx}" y="${cy + 18}" text-anchor="middle">plataforma</text></g>`;
+}
+
+/* ============ Secciones de contenido ============ */
+$('#fuentes').innerHTML = P.fuentes.map((f, i) => `<div class="fuente rv" style="--d:${i + 2}"><h3>${icono(f.i)}${esc(f.t)}</h3><ul>${f.xs.map(x => `<li>${esc(x)}</li>`).join('')}</ul></div>`).join('');
+$('#lineas').innerHTML = P.lineas.map((l, i) => `<div class="linea rv" style="--c:${l.c};--d:${i + 2}"><div><h3>${esc(l.t)}</h3><p>${esc(l.p)}</p></div><ol class="estac">${l.e.map(e => `<li>${esc(e)}</li>`).join('')}</ol></div>`).join('');
+$('#modulos').innerHTML = P.modulos.map(([t, d], i) => `<div class="panel rv" style="--d:${i + 3}"><h3>${esc(t)}</h3><p>${esc(d)}</p></div>`).join('');
+$('#reglas').innerHTML = P.reglas.map(([t, d], i) => `<li class="rv" style="--d:${i + 3}">${icono('M4 12l5 5L20 6')}<span><b>${esc(t)}.</b> ${esc(d)}</span></li>`).join('');
+$('#niveles').innerHTML = P.niveles.map((n, i) => `<div class="panel nivel rv ${n.full ? 'full' : ''}" style="--d:${i + 3}"><h3>${esc(n.t)}</h3><p class="small" style="margin-top:6px">${esc(n.p)}</p><ul>${n.xs.map(x => `<li>${esc(x)}</li>`).join('')}</ul></div>`).join('');
+$('#entregas').innerHTML = P.entregas.map(([s, t, d], i) => `<div class="panel rv" style="--d:${i + 4}"><b>${esc(s)}</b><h3>${esc(t)}</h3><p>${esc(d)}</p></div>`).join('');
+$('#compromisos').innerHTML = P.compromisos.map(([ic, t, d], i) => `<div class="panel rv" style="--d:${i + 2}">${icono(ic)}<div><h3>${esc(t)}</h3><p>${esc(d)}</p></div></div>`).join('');
+$('#fuera').innerHTML = P.fuera;
+$('#mensual').innerHTML = P.mensual;
+$('#empezarL').innerHTML = P.empezar.map(x => `<li>${esc(x)}</li>`).join('');
+
+/* Cronograma en semanas */
+{
+  const pct = w => (w - 1) / P.semanas * 100;
+  $('#gsem').innerHTML = '<span></span><div>' + [1, 3, 5, 7, 9, 11, 13, 15, 17].map(w => `<span style="left:${pct(w) + 100 / P.semanas / 2}%">Sem ${w}</span>`).join('') + '</div>';
+  $('#gantt').innerHTML = P.cronograma.map(([t, a, b, c], i) => b
+    ? `<div class="gfila"><span>${esc(t)}</span><div class="pista"><div class="gbar" style="--c:${c};--n:${i};left:${pct(a)}%;width:${(b - a + 1) / P.semanas * 100}%">sem ${a}–${b}</div></div></div>`
+    : `<div class="gfila h"><span>${esc(t)}</span><div class="pista"><i class="ghito" style="--c:${c};left:${pct(a + 1)}%"></i></div></div>`).join('');
+}
+
+/* Inversión e hitos */
+{
+  $('#precio').textContent = soles(P.precio);
+  const col = ['var(--yellow)', 'var(--sky)', 'var(--orange)', 'var(--yellow)', 'var(--sky)', 'var(--orange)'];
+  $('#pagos').innerHTML = P.hitos.map(([p], i) => `<div style="flex:${p};--c:${col[i]};--n:${i}">${p}%</div>`).join('');
+  $('#hitos').innerHTML = P.hitos.map(([p, s, t], i) => `<div style="--c:${col[i]}"><b>${soles(P.precio * p / 100, 2)}</b><span>${esc(s)} · ${esc(t)}</span></div>`).join('');
+}
+
+/* ============ Costo de quedarse igual ============ */
+{
+  const h = $('#h'), g = $('#g'), c = $('#c'), m = $('#m');
+  $('#hgrid').innerHTML = Array.from({length: 22}, () => '<i><b></b></i>').join('');
+  const pintar = () => {
+    const horas = +h.value, pers = +g.value, cart = +c.value, mora = +m.value;
+    const mes = horas * 22 * pers;
+    $('#hO').textContent = horas.toLocaleString('es-PE') + ' h'; $('#gO').textContent = pers;
+    $('#cO').textContent = soles(cart); $('#mO').textContent = mora.toLocaleString('es-PE') + ' pts';
+    $('#rH').textContent = Math.round(mes) + ' horas al mes';
+    $('#rHt').textContent = `Son ${(mes / 8).toFixed(1).replace('.', ',')} jornadas completas al mes copiando, buscando y avisando a mano. Cada barra es un día hábil.`;
+    $$('#hgrid b').forEach(b => { b.style.height = Math.min(100, horas / 8 * 100) + '%'; });
+    $('#rM').textContent = soles(cart * mora / 100);
+  };
+  [h, g, c, m].forEach(x => x.addEventListener('input', pintar)); pintar();
+}
+
+/* ============ Calculadora del portal ============ */
+{
+  let pct = .2;
+  const ini = $('#ini');
+  ini.innerHTML = [.15, .2, .25, .3].map(p => `<button type="button" aria-pressed="${p === pct}" data-p="${p}">${p * 100}%</button>`).join('');
+  const calc = () => {
+    const precio = Math.max(0, +$('#pP').value || 0), n = +$('#pC').value;
+    const inicial = Math.min(precio, arriba(precio * pct, 100));
+    const cuota = arriba((precio - inicial) * FACT[n] / 100, 10);
+    $('#pCo').textContent = n;
+    $('#pR').textContent = n + ' × ' + soles(cuota);
+    $('#pI').textContent = 'Inicial de ' + soles(inicial);
+  };
+  ini.addEventListener('click', e => { const b = e.target.closest('button'); if (!b) return; pct = +b.dataset.p; $$('button', ini).forEach(x => x.setAttribute('aria-pressed', x === b)); calc(); });
+  $('#pP').addEventListener('input', calc); $('#pC').addEventListener('input', calc); calc();
+}
+
+/* ============ Recorridos animados ============ */
+const recorridos = $$('[data-rec]').map(box => {
+  const pasos = P[box.dataset.rec];
+  const ol = $('.pasos', box), dl = $('dl', box), estado = $('header span', box);
+  ol.innerHTML = '<i class="prog"></i>' + pasos.map((p, i) => `<li><button type="button" data-i="${i}"><span class="pt">${i + 1}</span><span><strong>${esc(p.t)}</strong><small>${esc(p.d)}</small></span></button></li>`).join('');
+  let actual = -1, timer = null;
+  const filasCuotas = () => { const precio = 6480, inicial = arriba(precio * .2, 100), cuota = arriba((precio - inicial) * FACT[12] / 100, 10); return [['Inicial', soles(inicial)], ['Cuotas', '12 × ' + soles(cuota)]]; };
+  const ir = i => {
+    i = Math.max(0, Math.min(pasos.length - 1, i));
+    if (i === actual) return; actual = i;
+    $$('li', ol).forEach((li, k) => { li.classList.toggle('act', k === i); li.classList.toggle('hecho', k < i); });
+    const li = $$('li', ol)[i], prog = $('.prog', ol);
+    prog.style.height = (li.offsetTop + 2) + 'px';
+    let filas = [];
+    pasos.slice(0, i + 1).forEach((p, k) => { const f = p.f === 'cuotas' ? filasCuotas() : p.f; f.forEach(r => filas.push([r, k === i])); });
+    dl.innerHTML = filas.map(([[a, b], nuevo]) => `<dt${nuevo ? ' class="nuevo"' : ''}>${esc(a)}</dt><dd${nuevo ? ' class="nuevo"' : ''}>${esc(b)}</dd>`).join('');
+    estado.textContent = pasos[i].e;
+  };
+  const parar = () => { clearInterval(timer); timer = null; };
+  const auto = () => { if (reduce || timer) return; timer = setInterval(() => { if (actual >= pasos.length - 1) parar(); else ir(actual + 1); }, 2600); };
+  ol.addEventListener('click', e => { const b = e.target.closest('button'); if (b) { parar(); ir(+b.dataset.i); } });
+  $$('.controles button', box).forEach(b => b.addEventListener('click', () => { parar(); ir(actual + +b.dataset.a); }));
+  ir(0);
+  return {sec: box.closest('section'), entrar: () => { if (actual >= pasos.length - 1) { actual = -1; ir(0); } auto(); }, salir: parar};
+});
+
+/* ============ Navegación, riel, notas y pantalla completa ============ */
+const secciones = $$('section');
+const riel = $('#riel');
+riel.innerHTML = secciones.map(s => `<a href="#${s.id}" aria-label="${esc(s.dataset.nombre)}"><span>${esc(s.dataset.nombre)}</span><i></i></a>`).join('');
+const enlaces = $$('a', riel);
+let indice = 0;
+const notas = $('#notas');
+const mostrarNota = () => { const s = secciones[indice]; notas.innerHTML = `<b>${esc(s.dataset.nombre)}</b>${esc(P.notas[s.id] || '')}`; };
+const visto = new IntersectionObserver(es => {
+  es.forEach(en => {
+    if (en.isIntersecting) en.target.classList.add('on');
+    const rec = recorridos.find(r => r.sec === en.target);
+    if (rec) (en.isIntersecting ? rec.entrar : rec.salir)();
+  });
+}, {threshold: .3});
+const centro = new IntersectionObserver(es => {
+  es.forEach(en => {
+    if (!en.isIntersecting) return;
+    indice = secciones.indexOf(en.target);
+    enlaces.forEach((a, k) => a.classList.toggle('on', k === indice));
+    mostrarNota();
+  });
+}, {rootMargin: '-45% 0px -50% 0px'});
+secciones.forEach(s => { visto.observe(s); centro.observe(s); });
+const barra = $('#barra');
+addEventListener('scroll', () => { const d = document.documentElement; barra.style.width = (d.scrollTop / Math.max(1, d.scrollHeight - innerHeight) * 100) + '%'; }, {passive: true});
+const irA = k => { k = Math.max(0, Math.min(secciones.length - 1, k)); secciones[k].scrollIntoView({behavior: reduce ? 'auto' : 'smooth'}); };
+const pantalla = () => {
+  try {
+    if (document.fullscreenElement) document.exitFullscreen();
+    else { const r = document.documentElement.requestFullscreen?.(); if (r && r.catch) r.catch(() => { $('#pc span').textContent = 'Usa F11'; }); }
+  } catch (e) { $('#pc span').textContent = 'Usa F11'; }
+};
+$('#pc').addEventListener('click', pantalla);
+$('#bn').addEventListener('click', () => { notas.classList.toggle('on'); mostrarNota(); });
+addEventListener('keydown', e => {
+  if (e.target.closest('input,textarea') || e.metaKey || e.ctrlKey || e.altKey) return;
+  const k = e.key;
+  if (k === 'ArrowDown' || k === 'PageDown' || (k === ' ' && !e.target.closest('button,a'))) { e.preventDefault(); irA(indice + 1); }
+  else if (k === 'ArrowUp' || k === 'PageUp') { e.preventDefault(); irA(indice - 1); }
+  else if (k === 'Home') { e.preventDefault(); irA(0); }
+  else if (k === 'End') { e.preventDefault(); irA(secciones.length - 1); }
+  else if (k === 'n' || k === 'N') { notas.classList.toggle('on'); mostrarNota(); }
+  else if (k === 'f' || k === 'F') pantalla();
+  else if (k === 'ArrowRight' || k === 'ArrowLeft') {
+    const rec = recorridos.find(r => r.sec === secciones[indice]);
+    if (rec) { e.preventDefault(); $$('.controles button', rec.sec)[k === 'ArrowRight' ? 1 : 0].click(); }
+  }
+});
+const desdeHash = () => { const s = location.hash && document.getElementById(location.hash.slice(1)); if (s && secciones.includes(s)) s.scrollIntoView(); };
+addEventListener('hashchange', desdeHash); desdeHash();
+}
+</script>
+</body>
+</html>
