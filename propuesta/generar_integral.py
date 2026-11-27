@@ -75,9 +75,9 @@ def mod(titulo, entrega, intro, *items):
 # ---------- Inversión ----------
 PRECIO_LISTA = 29571.00
 TOTAL_SOLES = 26613.90  # 10% de descuento por inicio inmediato
-HITOS = [  # hito, momento, monto sin IGV
-    ('Inicio del proyecto: migración del app', '27 de noviembre', 5000.00),
-    ('Inicio del discovery con las áreas', '14 de diciembre', 5300.00),
+HITOS = [  # hito, momento, monto por transferencia directa
+    ('Inicio del proyecto: migración del app', '27 de noviembre', 5300.00),
+    ('Inicio del discovery con las áreas', '14 de diciembre', 5000.00),
     ('Cierre del discovery: alcance funcional y prototipos aprobados', 'Semana 5', 3800.00),
     ('Portal del emprendedor en uso y app actual apagada', 'Semana 6', 3800.00),
     ('Operación comercial validada por Millennials', 'Semana 12', 3800.00),
@@ -90,7 +90,6 @@ filas_hitos = ''.join(
     f'<tr><td>{h}</td><td>{fe}</td><td class="n">{pct(m)}</td><td class="n">{soles(m)}</td></tr>'
     for h, fe, m in HITOS)
 assert abs(sum(m for _, _, m in HITOS) - TOTAL_SOLES) < 0.005
-IGV = round(TOTAL_SOLES * 0.18, 2)
 
 HTML = f"""<!DOCTYPE html><html lang="es"><head><meta charset="utf-8"><title>Propuesta comercial · Plataforma integral Millennials</title><style>{CSS}</style></head><body><div class="pg">
 
@@ -109,7 +108,7 @@ HTML = f"""<!DOCTYPE html><html lang="es"><head><meta charset="utf-8"><title>Pro
 <p>Proponemos una plataforma única, hecha a la medida de Millennials, que cubre ambos trabajos y además reemplaza al App Millennials con un portal para toda la red: capacitación, catálogo, calculadora de financiamiento y multimedia. Cada dato se registra una sola vez: la demo trae al cliente, la venta trae la demo, y cobranzas recibe al cliente, al vendedor y sus cuotas sin volver a digitarlos. Las conversaciones de WhatsApp quedan en la plataforma, con los números oficiales de Millennials.</p>
 <p>El proyecto arranca el lunes 30 de noviembre con la migración del App Millennials y la base de la red. El 14 de diciembre empiezan tres semanas de discovery para cerrar los procesos con cada área. El portal sale en la semana 6 para apagar el app actual, y la plataforma completa entra en uso en la semana 18, con 60 días de garantía y soporte.</p>
 <div class="cards">
-  <div class="card"><small>Inversión total</small><b>S/ 26,613.90</b> <em>+ IGV</em></div>
+  <div class="card"><small>Inversión total</small><b>S/ 26,613.90</b></div>
   <div class="card"><small>Portal del emprendedor en uso</small><b>Semana 6</b></div>
   <div class="card n"><small>Plataforma completa · garantía</small><b>Semana 18 · 60 días</b></div>
 </div>
@@ -235,8 +234,8 @@ HTML = f"""<!DOCTYPE html><html lang="es"><head><meta charset="utf-8"><title>Pro
 
 <h2 class="salto">5. Inversión</h2>
 <table>
-<tr><th>Concepto</th><th class="n">Precio</th><th class="n">IGV (18%)</th><th class="n">Total</th></tr>
-<tr><td>Plataforma integral Millennials: discovery, construcción, migración, salida a producción y 60 días de garantía y soporte. Precio de lista {soles(PRECIO_LISTA)}, con 10% de descuento por inicio inmediato.</td><td class="n">{soles(TOTAL_SOLES)}</td><td class="n">{soles(IGV)}</td><td class="n">{soles(TOTAL_SOLES + IGV)}</td></tr>
+<tr><th>Concepto</th><th class="n">Monto</th></tr>
+<tr><td>Plataforma integral Millennials: discovery, construcción, migración, salida a producción y 60 días de garantía y soporte. Precio de lista {soles(PRECIO_LISTA)}, con 10% de descuento por inicio inmediato.</td><td class="n">{soles(TOTAL_SOLES)}</td></tr>
 </table>
 
 <h3>Forma de pago</h3>
@@ -245,7 +244,7 @@ HTML = f"""<!DOCTYPE html><html lang="es"><head><meta charset="utf-8"><title>Pro
 {filas_hitos}
 <tr class="tot"><td>Total</td><td></td><td class="n">100%</td><td class="n">{soles(TOTAL_SOLES)}</td></tr>
 </table>
-<p class="mute">Montos sin IGV. Cada hito se factura cuando se cumple; si el avance se mueve, el pago se mueve con él.</p>
+<p class="mute">Pagos por transferencia directa. Cada hito se paga cuando se cumple; si el avance se mueve, el pago se mueve con él.</p>
 
 <div class="junto"><h3>Costos mensuales de operación</h3>
 <table>
@@ -278,14 +277,14 @@ HTML = f"""<!DOCTYPE html><html lang="es"><head><meta charset="utf-8"><title>Pro
 
 <div class="junto"><h2>7. Para empezar</h2>
 <ul class="check">
-<li>Primer pago de S/ 5,000 + IGV para iniciar la migración del app el lunes 30 de noviembre.</li>
+<li>Primer pago de S/ 5,300 para iniciar la migración del app el lunes 30 de noviembre.</li>
 <li>Un responsable por área y la agenda de entrevistas del discovery, desde el 14 de diciembre.</li>
 <li>Acceso a la cuenta de empresa de Millennials en Meta y los números que se usarán para WhatsApp.</li>
 <li>El histórico actual de demos, ventas y cobranzas, en el formato en que esté hoy.</li>
 <li>Lista de distribuidores con acceso a la plataforma completa.</li>
 <li>Dominio para la plataforma y los correos (por ejemplo, millennials.pe) y acceso a su configuración.</li>
 </ul>
-<div class="firmas"><div>Artisan Technology<small>Nombre, firma y fecha</small></div><div>Millennials Investments SAC<small>Nombre, firma y fecha</small></div></div></div>
+<div class="firmas"><div>Artisan Technology EIRL<small>Marcelo Calle Chávez</small></div><div>Millennials Investments SAC<small>Fernando Gambetta Ching</small></div></div></div>
 </div></body></html>"""
 
 CABECERA = f"""<div style="width:100%;padding:0 64px;display:flex;justify-content:space-between;align-items:flex-start;font-family:'Liberation Sans',Arial,sans-serif;-webkit-print-color-adjust:exact">
