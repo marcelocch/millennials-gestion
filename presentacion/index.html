@@ -332,14 +332,12 @@ footer img{height:22px;width:auto}
       <div class="ctrl panel rv" style="--d:2">
         <div><label for="h">Horas al día de cobranza manual <output id="hO"></output></label><input id="h" type="range" min="1" max="8" step=".5" value="3.5"></div>
         <div><label for="g">Personas haciendo esa tarea <output id="gO"></output></label><input id="g" type="range" min="1" max="5" step="1" value="1"></div>
-        <div><label for="c">Cartera en cuotas <output id="cO"></output></label><input id="c" type="range" min="100000" max="2000000" step="50000" value="600000"></div>
-        <div><label for="m">Puntos de mora que se recuperan avisando a tiempo <output id="mO"></output></label><input id="m" type="range" min="0" max="10" step=".5" value="2"></div>
-        <p class="small">Cifras de ejemplo: muévelas con las de Millennials.</p>
+        <p class="small">Parte de las 3 a 4 horas diarias que contó su equipo de cobranzas. Muévelo si la cifra cambió.</p>
       </div>
       <div class="result rv" style="--d:3">
         <div><span class="num grande" id="rH"></span><p class="lead" style="margin-top:6px" id="rHt"></p></div>
         <div class="horas" id="hgrid" aria-hidden="true"></div>
-        <div><span class="num grande" id="rM" style="font-size:clamp(36px,5vw,64px)"></span><p class="lead" style="margin-top:6px">que vuelven a caja cada vez que la cartera da una vuelta, si los avisos salen solos y a tiempo.</p></div>
+        <p class="lead" style="margin-top:0">Con la plataforma, el gestor abre su lista del día y los recordatorios salen solos. Ese tiempo vuelve a lo que de verdad recupera cuotas: hablar con los clientes.</p>
       </div>
     </div>
   </div>
@@ -652,19 +650,17 @@ $('#empezarL').innerHTML = P.empezar.map(x => `<li>${esc(x)}</li>`).join('');
 
 /* ============ Costo de quedarse igual ============ */
 {
-  const h = $('#h'), g = $('#g'), c = $('#c'), m = $('#m');
+  const h = $('#h'), g = $('#g');
   $('#hgrid').innerHTML = Array.from({length: 22}, () => '<i><b></b></i>').join('');
   const pintar = () => {
-    const horas = +h.value, pers = +g.value, cart = +c.value, mora = +m.value;
+    const horas = +h.value, pers = +g.value;
     const mes = horas * 22 * pers;
     $('#hO').textContent = horas.toLocaleString('es-PE') + ' h'; $('#gO').textContent = pers;
-    $('#cO').textContent = soles(cart); $('#mO').textContent = mora.toLocaleString('es-PE') + ' pts';
     $('#rH').textContent = Math.round(mes) + ' horas al mes';
     $('#rHt').textContent = `Son ${(mes / 8).toFixed(1).replace('.', ',')} jornadas completas al mes copiando, buscando y avisando a mano. Cada barra es un día hábil.`;
     $$('#hgrid b').forEach(b => { b.style.height = Math.min(100, horas / 8 * 100) + '%'; });
-    $('#rM').textContent = soles(cart * mora / 100);
   };
-  [h, g, c, m].forEach(x => x.addEventListener('input', pintar)); pintar();
+  [h, g].forEach(x => x.addEventListener('input', pintar)); pintar();
 }
 
 /* ============ Calculadora del portal ============ */
