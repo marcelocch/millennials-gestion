@@ -498,7 +498,7 @@ footer img{height:22px;width:auto}
 {
 /* ============ Contenido de la propuesta: lo que cambia en cada cliente ============ */
 const P = {
-  precio: 26613.90,
+  precio: 26600,
   semanas: 18,
   fuentes: [
     {t:'Drive', i:'M4 6h6l2 2h8v10H4z', xs:['Cuotas y cartera','Pagos registrados a mano']},
@@ -566,7 +566,7 @@ const P = {
     ['Semana 12','Operación comercial','Clientes, demos, ventas, comisiones, cobranzas y cuadre, validados.'],
     ['Semana 18','Plataforma completa','Captación, conversaciones, tablero y la migración terminada.']
   ],
-  hitos: [[5300,'27 nov','Inicio',1],[5000,'14 dic','Discovery',1],[3800,'Semana 5','Discovery cerrado'],[3800,'Semana 6','Portal'],[3800,'Semana 12','Comercial'],[2450,'Semana 15','Captación'],[2463.90,'Semana 18','Completa']],
+  hitos: [[5300,'27 nov','Inicio',1],[5000,'14 dic','Discovery',1],[3800,'Semana 5','Discovery cerrado'],[3800,'Semana 6','Portal'],[3800,'Semana 12','Comercial'],[2450,'Semana 15','Captación'],[2450,'Semana 18','Completa']],
   mensual: '<b>Operación mensual:</b> unos US$ 65 en servicios de nube, más WhatsApp según uso: US$ 0.0703 por mensaje de captación y US$ 0.03 por recordatorio. Las primeras 1,000 respuestas al mes por número no se cobran.',
   compromisos: [
     ['M4 12l5 5L20 6','Pago contra avance','S/ 10,300 para empezar, en dos pagos; el resto se paga solo cuando cada hito se cumple y su equipo lo valida.'],
@@ -643,7 +643,7 @@ $('#empezarL').innerHTML = P.empezar.map(x => `<li>${esc(x)}</li>`).join('');
 
 /* Inversión e hitos */
 {
-  $('#precio').textContent = soles(P.precio, 2);
+  $('#precio').textContent = soles(P.precio, P.precio % 1 ? 2 : 0);
   /* El primer pago (la firma) en naranja; los demás, por avance, en amarillo. Cada etiqueta va bajo su tramo. */
   /* Cada hito es un monto por transferencia; el ancho de su tramo es su parte del total. Los pagos de inicio, en naranja. */
   $('#pagos').innerHTML = P.hitos.map(([m, s, t, ini], i) => `<div class="pago" style="--p:${m};--n:${i};--c:${ini ? 'var(--orange)' : 'var(--yellow)'}"><div class="seg">${Math.round(m / P.precio * 100)}%</div><div><b>${soles(m, m % 1 ? 2 : 0)}</b><span>${esc(s)}<br>${esc(t)}</span></div></div>`).join('');

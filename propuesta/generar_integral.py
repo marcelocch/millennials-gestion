@@ -74,7 +74,7 @@ def mod(titulo, entrega, intro, *items):
 
 # ---------- Inversión ----------
 PRECIO_LISTA = 29571.00
-TOTAL_SOLES = 26613.90  # 10% de descuento por inicio inmediato
+TOTAL_SOLES = 26600.00  # 10% de descuento por inicio inmediato, redondeado
 HITOS = [  # hito, momento, monto por transferencia directa
     ('Inicio del proyecto: migración del app', '27 de noviembre', 5300.00),
     ('Inicio del discovery con las áreas', '14 de diciembre', 5000.00),
@@ -82,7 +82,7 @@ HITOS = [  # hito, momento, monto por transferencia directa
     ('Portal del emprendedor en uso y app actual apagada', 'Semana 6', 3800.00),
     ('Operación comercial validada por Millennials', 'Semana 12', 3800.00),
     ('Captación de socios y conversaciones validadas', 'Semana 15', 2450.00),
-    ('Plataforma completa en uso, con la migración terminada', 'Semana 18', 2463.90),
+    ('Plataforma completa en uso, con la migración terminada', 'Semana 18', 2450.00),
 ]
 soles = lambda x: f'S/ {x:,.2f}'
 pct = lambda x: f'{x / TOTAL_SOLES * 100:.1f}%'
@@ -108,7 +108,7 @@ HTML = f"""<!DOCTYPE html><html lang="es"><head><meta charset="utf-8"><title>Pro
 <p>Proponemos una plataforma única, hecha a la medida de Millennials, que cubre ambos trabajos y además reemplaza al App Millennials con un portal para toda la red: capacitación, catálogo, calculadora de financiamiento y multimedia. Cada dato se registra una sola vez: la demo trae al cliente, la venta trae la demo, y cobranzas recibe al cliente, al vendedor y sus cuotas sin volver a digitarlos. Las conversaciones de WhatsApp quedan en la plataforma, con los números oficiales de Millennials.</p>
 <p>El proyecto arranca el lunes 30 de noviembre con la migración del App Millennials y la base de la red. El 14 de diciembre empiezan tres semanas de discovery para cerrar los procesos con cada área. El portal sale en la semana 6 para apagar el app actual, y la plataforma completa entra en uso en la semana 18, con 60 días de garantía y soporte.</p>
 <div class="cards">
-  <div class="card"><small>Inversión total</small><b>S/ 26,613.90</b></div>
+  <div class="card"><small>Inversión total</small><b>S/ 26,600</b></div>
   <div class="card"><small>Portal del emprendedor en uso</small><b>Semana 6</b></div>
   <div class="card n"><small>Plataforma completa · garantía</small><b>Semana 18 · 60 días</b></div>
 </div>
