@@ -25,9 +25,9 @@ corto = lambda d: f'{d.day} {MESES[d.month - 1]}'
 pos = lambda d: (d - INICIO).days / TOTAL * 100
 
 FILAS = [  # etiqueta, semana inicial, semana final (None = hito al cierre de esa semana), tipo
-    ('Discovery y entrevistas', 1, 3, 'f1'),
-    ('Base: usuarios, red y accesos', 2, 5, 'f1'),
-    ('Portal del emprendedor', 3, 6, 'f1'),
+    ('Migración del app y base de la red', 1, 4, 'f1'),
+    ('Portal del emprendedor', 2, 6, 'f1'),
+    ('Discovery y entrevistas', 3, 5, 'f1'),
     ('Portal en uso, app apagada', 6, None, 'hito'),
     ('Clientes, demos y calendario', 6, 9, 'f2'),
     ('Ventas, comisiones y cobranzas', 8, 12, 'f2'),
@@ -73,20 +73,23 @@ def mod(titulo, entrega, intro, *items):
             f'<p>{intro}</p>{li(*items)}</div>')
 
 # ---------- Inversión ----------
-TOTAL_SOLES = 29571.00
-HITOS = [  # hito, fecha, porcentaje
-    ('Firma e inicio del proyecto', 'Inicio', 35),
-    ('Cierre del discovery: alcance funcional y prototipos aprobados', 'Semana 3', 15),
-    ('Portal del emprendedor en uso y app actual apagada', 'Semana 6', 15),
-    ('Operación comercial validada por Millennials', 'Semana 12', 15),
-    ('Captación de socios y conversaciones validadas', 'Semana 15', 10),
-    ('Plataforma completa en uso, con la migración terminada', 'Semana 18', 10),
+PRECIO_LISTA = 29571.00
+TOTAL_SOLES = 26613.90  # 10% de descuento por inicio inmediato
+HITOS = [  # hito, momento, monto sin IGV
+    ('Inicio del proyecto: migración del app', '27 de noviembre', 5000.00),
+    ('Inicio del discovery con las áreas', '14 de diciembre', 5300.00),
+    ('Cierre del discovery: alcance funcional y prototipos aprobados', 'Semana 5', 3800.00),
+    ('Portal del emprendedor en uso y app actual apagada', 'Semana 6', 3800.00),
+    ('Operación comercial validada por Millennials', 'Semana 12', 3800.00),
+    ('Captación de socios y conversaciones validadas', 'Semana 15', 2450.00),
+    ('Plataforma completa en uso, con la migración terminada', 'Semana 18', 2463.90),
 ]
 soles = lambda x: f'S/ {x:,.2f}'
+pct = lambda x: f'{x / TOTAL_SOLES * 100:.1f}%'
 filas_hitos = ''.join(
-    f'<tr><td>{h}</td><td>{fe}</td><td class="n">{p}%</td><td class="n">{soles(TOTAL_SOLES * p / 100)}</td></tr>'
-    for h, fe, p in HITOS)
-assert abs(sum(round(TOTAL_SOLES * p / 100, 2) for _, _, p in HITOS) - TOTAL_SOLES) < 0.005
+    f'<tr><td>{h}</td><td>{fe}</td><td class="n">{pct(m)}</td><td class="n">{soles(m)}</td></tr>'
+    for h, fe, m in HITOS)
+assert abs(sum(m for _, _, m in HITOS) - TOTAL_SOLES) < 0.005
 IGV = round(TOTAL_SOLES * 0.18, 2)
 
 HTML = f"""<!DOCTYPE html><html lang="es"><head><meta charset="utf-8"><title>Propuesta comercial · Plataforma integral Millennials</title><style>{CSS}</style></head><body><div class="pg">
@@ -96,7 +99,7 @@ HTML = f"""<!DOCTYPE html><html lang="es"><head><meta charset="utf-8"><title>Pro
 <p class="sub">Clientes, demostraciones, ventas, cobranzas, captación de socios, WhatsApp y el portal del emprendedor en un solo sistema</p>
 <div class="ficha">
   <div><small>Cliente</small><b>Millennials Investments SAC</b></div>
-  <div><small>Fecha</small><b>25 de noviembre de 2026</b></div>
+  <div><small>Fecha</small><b>27 de noviembre de 2026</b></div>
   <div><small>Validez de la oferta</small><b>15 días calendario</b></div>
   <div><small>Plazo</small><b>18 semanas + 60 días de garantía</b></div>
 </div>
@@ -104,9 +107,9 @@ HTML = f"""<!DOCTYPE html><html lang="es"><head><meta charset="utf-8"><title>Pro
 <h2>1. Resumen</h2>
 <p>Millennials necesita un solo sistema para dos trabajos que hoy viven en Drive, hojas de cálculo, WhatsApp y el App Millennials. El primero es <b>vender y cobrar</b>: cada cliente, su demostración, su venta y sus cuotas. El segundo es <b>hacer crecer la red</b>: cada persona interesada que llega desde redes sociales, su entrevista, su inducción y su primera venta.</p>
 <p>Proponemos una plataforma única, hecha a la medida de Millennials, que cubre ambos trabajos y además reemplaza al App Millennials con un portal para toda la red: capacitación, catálogo, calculadora de financiamiento y multimedia. Cada dato se registra una sola vez: la demo trae al cliente, la venta trae la demo, y cobranzas recibe al cliente, al vendedor y sus cuotas sin volver a digitarlos. Las conversaciones de WhatsApp quedan en la plataforma, con los números oficiales de Millennials.</p>
-<p>El proyecto empieza con tres semanas de discovery para cerrar los procesos con cada área. El portal sale primero, en la semana 6, para apagar el app actual, y la plataforma completa entra en uso en la semana 18, con 60 días de garantía y soporte.</p>
+<p>El proyecto arranca el lunes 30 de noviembre con la migración del App Millennials y la base de la red. El 14 de diciembre empiezan tres semanas de discovery para cerrar los procesos con cada área. El portal sale en la semana 6 para apagar el app actual, y la plataforma completa entra en uso en la semana 18, con 60 días de garantía y soporte.</p>
 <div class="cards">
-  <div class="card"><small>Inversión total</small><b>S/ 29,571</b> <em>+ IGV</em></div>
+  <div class="card"><small>Inversión total</small><b>S/ 26,613.90</b> <em>+ IGV</em></div>
   <div class="card"><small>Portal del emprendedor en uso</small><b>Semana 6</b></div>
   <div class="card n"><small>Plataforma completa · garantía</small><b>Semana 18 · 60 días</b></div>
 </div>
@@ -212,8 +215,8 @@ HTML = f"""<!DOCTYPE html><html lang="es"><head><meta charset="utf-8"><title>Pro
      '<b>Migración de la operación:</b> demos, ventas y cobranzas, con lo pendiente y el histórico, a partir de una plantilla única en Excel. Lo pendiente queda activo y con sus recordatorios.')}
 
 <h2>4. Plan de trabajo</h2>
-<h3>Discovery: las tres primeras semanas</h3>
-<p>Antes de construir, entrevistamos a cada área para aterrizar los procesos que hoy tienen vacíos. El discovery termina con un documento de alcance funcional y prototipos navegables que Millennials aprueba. Ahí se define, entre otros puntos:</p>
+<h3>Migración del app y discovery</h3>
+<p>Las dos primeras semanas migramos el App Millennials (usuarios, catálogo, talleres y multimedia) y armamos la base de la red, que no dependen de nuevas definiciones. Desde el 14 de diciembre, durante tres semanas, entrevistamos a cada área para aterrizar los procesos que hoy tienen vacíos. El discovery termina con un documento de alcance funcional y prototipos navegables que Millennials aprueba. Ahí se define, entre otros puntos:</p>
 <div class="dos">
 <div>{li('Los campos del formulario de interés y del registro de referidos.', 'Los reportes esenciales de gerencia.', 'El flujo de entrevistas, inducción y alta.', 'Las reglas de aprobación de clientes, asignación de demos y reparto de leads.')}</div>
 <div>{li('Las plantillas de WhatsApp para captación y cobranzas.', 'La tabla de comisiones, los factores de cuotas y la inicial mínima.', 'La plantilla de Excel para la migración.', 'Qué distribuidores tienen acceso a la plataforma completa.')}</div>
@@ -221,7 +224,7 @@ HTML = f"""<!DOCTYPE html><html lang="es"><head><meta charset="utf-8"><title>Pro
 <p class="mute">Lo que aparezca después del discovery se evalúa como evolutivo y se cotiza aparte.</p>
 
 <div class="junto"><h3>Cronograma</h3>
-<p>El plan dura 18 semanas. El portal entra en uso al cierre de la semana 6 para apagar el app actual, y la plataforma completa al cierre de la semana 18. Como ejemplo, el cronograma muestra un inicio el lunes 30 de noviembre de 2026; si el inicio cambia, las semanas se mantienen.</p>
+<p>El plan dura 18 semanas desde el lunes 30 de noviembre de 2026. El discovery empieza el 14 de diciembre, el portal entra en uso al cierre de la semana 6 para apagar el app actual, y la plataforma completa al cierre de la semana 18.</p>
 {gantt()}
 <p class="mute">Con ese inicio, el plan ya considera los feriados de diciembre, el 1 de enero y Semana Santa. Las entregas 2 y 3 se validan con el equipo de Millennials en un ambiente de pruebas y salen a producción juntas, con la migración completa.</p></div>
 
@@ -233,7 +236,7 @@ HTML = f"""<!DOCTYPE html><html lang="es"><head><meta charset="utf-8"><title>Pro
 <h2 class="salto">5. Inversión</h2>
 <table>
 <tr><th>Concepto</th><th class="n">Precio</th><th class="n">IGV (18%)</th><th class="n">Total</th></tr>
-<tr><td>Plataforma integral Millennials: discovery, construcción, migración, salida a producción y 60 días de garantía y soporte</td><td class="n">{soles(TOTAL_SOLES)}</td><td class="n">{soles(IGV)}</td><td class="n">{soles(TOTAL_SOLES + IGV)}</td></tr>
+<tr><td>Plataforma integral Millennials: discovery, construcción, migración, salida a producción y 60 días de garantía y soporte. Precio de lista {soles(PRECIO_LISTA)}, con 10% de descuento por inicio inmediato.</td><td class="n">{soles(TOTAL_SOLES)}</td><td class="n">{soles(IGV)}</td><td class="n">{soles(TOTAL_SOLES + IGV)}</td></tr>
 </table>
 
 <h3>Forma de pago</h3>
@@ -269,14 +272,14 @@ HTML = f"""<!DOCTYPE html><html lang="es"><head><meta charset="utf-8"><title>Pro
 <tr><td>Meta demora la aprobación de las plantillas o las clasifica como marketing</td><td>Retrasa los envíos o sube su costo</td><td>Tramitar las plantillas en el discovery, con textos que respeten las reglas de cada categoría.</td></tr>
 <tr><td>El histórico en Excel viene incompleto o con formatos distintos</td><td>Retrasa la migración</td><td>Plantilla única desde el discovery, una carga de prueba y una carga final.</td></tr>
 <tr><td>Procesos que todavía no están definidos</td><td>El alcance crece durante el desarrollo</td><td>El discovery los cierra con un documento aprobado; lo nuevo se trabaja como evolutivo.</td></tr>
-<tr><td>Poca disponibilidad del equipo en fiestas de fin de año</td><td>Se alarga el discovery</td><td>Entrevistas agendadas desde la firma y sesiones fijas cada semana.</td></tr>
+<tr><td>Poca disponibilidad del equipo en fiestas de fin de año</td><td>Se alarga el discovery</td><td>Agenda de entrevistas cerrada antes del 14 de diciembre y sesiones fijas cada semana.</td></tr>
 <tr><td>El equipo sigue usando el app o el Drive</td><td>Información partida en dos lugares</td><td>El app se apaga al salir el portal, y cada área recibe capacitación antes de cada salida.</td></tr>
 </table>
 
 <div class="junto"><h2>7. Para empezar</h2>
 <ul class="check">
-<li>Aceptación de la propuesta y pago del primer hito.</li>
-<li>Un responsable por área y la agenda de entrevistas del discovery.</li>
+<li>Primer pago de S/ 5,000 + IGV para iniciar la migración del app el lunes 30 de noviembre.</li>
+<li>Un responsable por área y la agenda de entrevistas del discovery, desde el 14 de diciembre.</li>
 <li>Acceso a la cuenta de empresa de Millennials en Meta y los números que se usarán para WhatsApp.</li>
 <li>El histórico actual de demos, ventas y cobranzas, en el formato en que esté hoy.</li>
 <li>Lista de distribuidores con acceso a la plataforma completa.</li>

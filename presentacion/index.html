@@ -214,7 +214,7 @@ input[type=range]::-moz-range-thumb{width:20px;height:20px;border-radius:50%;bac
 
 /* Inversión */
 .precio{display:flex;flex-wrap:wrap;align-items:baseline;gap:8px 18px}
-.precio .num{font-size:clamp(64px,10vw,132px);line-height:.95;color:var(--yellow)}
+.precio .num{font-size:clamp(48px,8vw,112px);line-height:.95;color:var(--yellow)}
 .precio span{font-size:22px;color:var(--fg2)}
 .pagos{display:flex;gap:6px;align-items:start}
 .pago{flex:var(--p) 1 0;display:grid;gap:12px}
@@ -451,7 +451,7 @@ footer img{height:22px;width:auto}
   <div class="wrap">
     <div class="two">
       <div><span class="tag rv">Cómo trabajamos</span><h2 class="rv" style="--d:1">18 semanas, con el portal en uso desde la semana 6</h2></div>
-      <p class="lead rv" style="--d:2">Primero escuchamos: tres semanas de discovery con cada área cierran los procesos y el alcance antes de construir. Después, cada entrega se valida con su equipo.</p>
+      <p class="lead rv" style="--d:2">Arrancamos el lunes 30 de noviembre migrando el App Millennials. Desde el 14 de diciembre, tres semanas de discovery con cada área cierran los procesos y el alcance antes de construir lo nuevo. Después, cada entrega se valida con su equipo.</p>
     </div>
     <div class="panel rv" style="--d:3"><div class="gsem" id="gsem"></div><div class="gantt" id="gantt"></div></div>
     <div class="entregas" id="entregas"></div>
@@ -463,7 +463,7 @@ footer img{height:22px;width:auto}
   <div class="wrap">
     <span class="tag warm rv">Inversión</span>
     <div class="precio rv" style="--d:1"><span class="num" id="precio"></span><span>+ IGV, todo el proyecto</span></div>
-    <p class="lead rv" style="--d:2">Incluye discovery, construcción, migración de datos, salida a producción y 60 días de garantía y soporte. Se paga por avance: cada hito se factura cuando se cumple.</p>
+    <p class="lead rv" style="--d:2">Precio de lista S/ 29,571, con 10% de descuento por inicio inmediato. Incluye discovery, construcción, migración de datos, salida a producción y 60 días de garantía y soporte. Se paga por avance: cada hito se factura cuando se cumple.</p>
     <div class="pagos rv" style="--d:3" id="pagos"></div>
     <div class="mensual rv" style="--d:4" id="mensual"></div>
   </div>
@@ -484,8 +484,8 @@ footer img{height:22px;width:auto}
     <div class="two">
       <div>
         <span class="tag warm rv">Nuestra recomendación</span>
-        <h2 class="rv" style="--d:1">Empezar el discovery la próxima semana</h2>
-        <p class="lead rv" style="--d:2">En tres semanas Millennials tiene sus procesos ordenados y aprobados, y en la semana 6 toda la red ya usa el portal. Lo que se gana desde ahí es tiempo de cobranzas, control de la red y crecimiento.</p>
+        <h2 class="rv" style="--d:1">Empezamos el lunes 30 de noviembre</h2>
+        <p class="lead rv" style="--d:2">Primero migramos el App Millennials; desde el 14 de diciembre el discovery ordena los procesos con cada área, y en la semana 6 toda la red ya usa el portal. Lo que se gana desde ahí es tiempo de cobranzas, control de la red y crecimiento.</p>
         <div class="contacto rv" style="--d:3"><a class="btn cta" href="https://artisan.pe" target="_blank" rel="noopener">artisan.pe</a><span class="small">Artisan Technology · Lima, Perú</span></div>
       </div>
       <div class="panel rv" style="--d:2"><h3>Para empezar</h3><ul class="check" id="empezarL" style="margin-top:14px"></ul></div>
@@ -498,7 +498,7 @@ footer img{height:22px;width:auto}
 {
 /* ============ Contenido de la propuesta: lo que cambia en cada cliente ============ */
 const P = {
-  precio: 29571,
+  precio: 26613.90,
   semanas: 18,
   fuentes: [
     {t:'Drive', i:'M4 6h6l2 2h8v10H4z', xs:['Cuotas y cartera','Pagos registrados a mano']},
@@ -550,9 +550,9 @@ const P = {
     {t:'Portal del emprendedor', p:'Todos los usuarios de la red.', xs:['Capacitación y talleres','Catálogo de productos','Calculadora de financiamiento','Multimedia compartida','Tarjeta digital y perfil']}
   ],
   cronograma: [
-    ['Discovery y entrevistas',1,3,'var(--sky)'],
-    ['Base: usuarios, red y accesos',2,5,'var(--teal)'],
-    ['Portal del emprendedor',3,6,'var(--orange)'],
+    ['Migración del app y base de la red',1,4,'var(--teal)'],
+    ['Portal del emprendedor',2,6,'var(--orange)'],
+    ['Discovery y entrevistas',3,5,'var(--sky)'],
     ['Portal en uso, app apagada',6,0,'var(--orange)'],
     ['Clientes, demos y calendario',6,9,'var(--yellow)'],
     ['Ventas, comisiones y cobranzas',8,12,'var(--yellow)'],
@@ -561,21 +561,21 @@ const P = {
     ['Plataforma completa en uso',18,0,'var(--yellow)']
   ],
   entregas: [
-    ['Semana 3','Discovery cerrado','Procesos, alcance y prototipos aprobados por cada área.'],
+    ['Semana 5','Discovery cerrado','Procesos, alcance y prototipos aprobados por cada área.'],
     ['Semana 6','Portal en uso','Toda la red usa el portal y el app actual se apaga.'],
     ['Semana 12','Operación comercial','Clientes, demos, ventas, comisiones, cobranzas y cuadre, validados.'],
     ['Semana 18','Plataforma completa','Captación, conversaciones, tablero y la migración terminada.']
   ],
-  hitos: [[35,'Inicio','Firma'],[15,'Semana 3','Discovery'],[15,'Semana 6','Portal'],[15,'Semana 12','Comercial'],[10,'Semana 15','Captación'],[10,'Semana 18','Completa']],
+  hitos: [[5000,'27 nov','Inicio',1],[5300,'14 dic','Discovery',1],[3800,'Semana 5','Discovery cerrado'],[3800,'Semana 6','Portal'],[3800,'Semana 12','Comercial'],[2450,'Semana 15','Captación'],[2463.90,'Semana 18','Completa']],
   mensual: '<b>Operación mensual:</b> unos US$ 65 en servicios de nube, más WhatsApp según uso: US$ 0.0703 por mensaje de captación y US$ 0.03 por recordatorio. Las primeras 1,000 respuestas al mes por número no se cobran.',
   compromisos: [
-    ['M4 12l5 5L20 6','Pago contra avance','35% para empezar; el resto se factura solo cuando cada hito se cumple y su equipo lo valida.'],
+    ['M4 12l5 5L20 6','Pago contra avance','S/ 10,300 para empezar, en dos pagos; el resto se factura solo cuando cada hito se cumple y su equipo lo valida.'],
     ['M4 5h16v14H4zM8 9h8M8 13h5','El discovery cierra el alcance','Antes de construir, cada área aprueba sus procesos y prototipos. Sin sorpresas a mitad de camino.'],
     ['M12 3l8 4v5c0 5-3.5 8-8 9-4.5-1-8-4-8-9V7z','60 días de garantía y soporte','Corrección sin costo de cualquier falla y acompañamiento a cada área en sus primeras semanas.'],
     ['M4 7h16M4 12h16M4 17h10','Su historia viene con ustedes','Migramos el app y el histórico de demos, ventas y cobranzas. Lo pendiente sigue activo.']
   ],
   fuera: '<b>No incluye:</b> integración automática con Hy Cite (que no ofrece conexión), bonos de red por rango o equipo, chatbot, telefonía integrada, pasarela de pagos propia y facturación electrónica.',
-  empezar: ['Aceptación de la propuesta y primer pago.','Un responsable por área y la agenda de entrevistas.','Acceso a la cuenta de empresa de Millennials en Meta y los números de WhatsApp.','El histórico actual de demos, ventas y cobranzas.','La lista de distribuidores con acceso a la plataforma completa.'],
+  empezar: ['Primer pago de S/ 5,000 para iniciar la migración del app.','Un responsable por área y la agenda de entrevistas.','Acceso a la cuenta de empresa de Millennials en Meta y los números de WhatsApp.','El histórico actual de demos, ventas y cobranzas.','La lista de distribuidores con acceso a la plataforma completa.'],
   notas: {
     'inicio':'Abre agradeciendo y fija la reunión: recorrido de 15 minutos, inversión al final y, si hace sentido, fecha para empezar.',
     'hoy':'Pregunta: de estos cinco lugares, ¿cuál les cuesta más hoy? Deja que responda antes de seguir.',
@@ -589,7 +589,7 @@ const P = {
     'plan':'El discovery es la garantía de que se construye lo correcto. Pregunta si tienen disponibilidad para entrevistas estas semanas.',
     'inversion':'Di el precio en una frase y haz una pausa. Si pregunta por el resto, explica los hitos.',
     'garantia':'Si hay dudas, vuelve aquí: pagan contra avance validado y hay 60 días de garantía.',
-    'empezar':'Cierra con una fecha: ¿empezamos el discovery el lunes?'
+    'empezar':'Confirma la agenda de entrevistas del discovery desde el 14 de diciembre.'
   }
 };
 const FACT = {2:52.98,3:36.00,4:27.51,5:22.43,6:19.04,7:16.63,8:14.82,9:13.42,10:12.30,11:11.38,12:10.62,13:9.98,14:9.43,15:8.96,16:8.55,17:8.18,18:7.86,19:7.58,20:7.32,21:7.09,22:6.88,23:6.69,24:6.52,25:6.36,26:6.22,27:6.09,28:5.96,29:5.85,30:5.74,31:5.65};
@@ -643,9 +643,10 @@ $('#empezarL').innerHTML = P.empezar.map(x => `<li>${esc(x)}</li>`).join('');
 
 /* Inversión e hitos */
 {
-  $('#precio').textContent = soles(P.precio);
+  $('#precio').textContent = soles(P.precio, 2);
   /* El primer pago (la firma) en naranja; los demás, por avance, en amarillo. Cada etiqueta va bajo su tramo. */
-  $('#pagos').innerHTML = P.hitos.map(([p, s, t], i) => `<div class="pago" style="--p:${p};--n:${i};--c:${i ? 'var(--yellow)' : 'var(--orange)'}"><div class="seg">${p}%</div><div><b>${soles(P.precio * p / 100, 2)}</b><span>${esc(s)}<br>${esc(t)}</span></div></div>`).join('');
+  /* Cada hito es un monto sin IGV; el ancho de su tramo es su parte del total. Los pagos de inicio, en naranja. */
+  $('#pagos').innerHTML = P.hitos.map(([m, s, t, ini], i) => `<div class="pago" style="--p:${m};--n:${i};--c:${ini ? 'var(--orange)' : 'var(--yellow)'}"><div class="seg">${Math.round(m / P.precio * 100)}%</div><div><b>${soles(m, m % 1 ? 2 : 0)}</b><span>${esc(s)}<br>${esc(t)}</span></div></div>`).join('');
 }
 
 /* ============ Costo de quedarse igual ============ */
