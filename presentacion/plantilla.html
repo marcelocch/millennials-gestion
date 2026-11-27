@@ -216,14 +216,13 @@ input[type=range]::-moz-range-thumb{width:20px;height:20px;border-radius:50%;bac
 .precio{display:flex;flex-wrap:wrap;align-items:baseline;gap:8px 18px}
 .precio .num{font-size:clamp(64px,10vw,132px);line-height:.95;color:var(--yellow)}
 .precio span{font-size:22px;color:var(--fg2)}
-.pagos{display:flex;gap:4px;height:64px;border-radius:14px;overflow:hidden}
-.pagos div{background:var(--c);display:flex;align-items:center;justify-content:center;font:800 18px var(--display);color:var(--bg)}
-.js .pagos div{transform:scaleY(0);transform-origin:bottom;transition:transform .6s var(--ease);transition-delay:calc(.2s + var(--n)*.12s)}
-.js section.on .pagos div{transform:none}
-.hitos{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:4px;font-size:14px}
-.hitos div{border-top:3px solid var(--c);padding-top:8px}
-.hitos b{display:block;font-family:var(--display);font-size:15px;white-space:nowrap}
-.hitos span{color:var(--fg2)}
+.pagos{display:flex;gap:6px;align-items:start}
+.pago{flex:var(--p) 1 0;display:grid;gap:12px}
+.pago .seg{height:64px;border-radius:12px;background:var(--c);display:grid;place-items:center;font:800 18px var(--display);color:var(--bg)}
+.js .pago .seg{transform:scaleY(0);transform-origin:bottom;transition:transform .6s var(--ease);transition-delay:calc(.2s + var(--n)*.12s)}
+.js section.on .pago .seg{transform:none}
+.pago b{display:block;font-family:var(--display);font-size:clamp(13px,1.2vw,16px);white-space:nowrap}
+.pago span{display:block;color:var(--fg2);font-size:14px;line-height:1.35;margin-top:2px}
 .mensual{display:flex;flex-wrap:wrap;gap:10px 28px;color:var(--fg2);font-size:15px}
 .mensual b{color:var(--fg)}
 
@@ -265,8 +264,9 @@ footer img{height:22px;width:auto}
   .estac li::before,.estac li:first-child::before,.estac li:last-child::before{left:0;right:auto;margin-left:0;top:1px}
   .gfila,.gsem{grid-template-columns:minmax(0,1fr)}
   .gsem span:nth-child(even){display:none}
-  .hitos{grid-template-columns:repeat(3,minmax(0,1fr));row-gap:14px}
-  .pagos div{font-size:14px}
+  .pagos{flex-direction:column;gap:10px}
+  .pago{flex:none;width:100%;grid-template-columns:76px minmax(0,1fr);align-items:center}
+  .pago .seg{height:48px;font-size:16px}
   .chat{grid-template-columns:minmax(0,1fr)}
   .chat aside{grid-template-columns:repeat(2,minmax(0,1fr))}
   .chat aside b{grid-column:1/-1}
@@ -276,7 +276,7 @@ footer img{height:22px;width:auto}
   html{scroll-behavior:auto}
   *,*::before,*::after{animation:none!important;transition:none!important}
   .js .rv,.js .msg{opacity:1;transform:none}
-  .js .estac::before,.js .gbar,.js .pagos div{transform:none}
+  .js .estac::before,.js .gbar,.js .pago .seg{transform:none}
   .js .red .lin{stroke-dashoffset:0}
 }
 </style>
@@ -466,7 +466,7 @@ footer img{height:22px;width:auto}
     <span class="tag warm rv">Inversión</span>
     <div class="precio rv" style="--d:1"><span class="num" id="precio"></span><span>+ IGV, todo el proyecto</span></div>
     <p class="lead rv" style="--d:2">Incluye discovery, construcción, migración de datos, salida a producción y 60 días de garantía y soporte. Se paga por avance: cada hito se factura cuando se cumple.</p>
-    <div class="rv" style="--d:3"><div class="pagos" id="pagos"></div><div class="hitos" id="hitos" style="margin-top:10px"></div></div>
+    <div class="pagos rv" style="--d:3" id="pagos"></div>
     <div class="mensual rv" style="--d:4" id="mensual"></div>
   </div>
 </section>
@@ -646,9 +646,8 @@ $('#empezarL').innerHTML = P.empezar.map(x => `<li>${esc(x)}</li>`).join('');
 /* Inversión e hitos */
 {
   $('#precio').textContent = soles(P.precio);
-  const col = ['var(--yellow)', 'var(--sky)', 'var(--orange)', 'var(--yellow)', 'var(--sky)', 'var(--orange)'];
-  $('#pagos').innerHTML = P.hitos.map(([p], i) => `<div style="flex:${p};--c:${col[i]};--n:${i}">${p}%</div>`).join('');
-  $('#hitos').innerHTML = P.hitos.map(([p, s, t], i) => `<div style="--c:${col[i]}"><b>${soles(P.precio * p / 100, 2)}</b><span>${esc(s)} · ${esc(t)}</span></div>`).join('');
+  /* El primer pago (la firma) en naranja; los demás, por avance, en amarillo. Cada etiqueta va bajo su tramo. */
+  $('#pagos').innerHTML = P.hitos.map(([p, s, t], i) => `<div class="pago" style="--p:${p};--n:${i};--c:${i ? 'var(--yellow)' : 'var(--orange)'}"><div class="seg">${p}%</div><div><b>${soles(P.precio * p / 100, 2)}</b><span>${esc(s)}<br>${esc(t)}</span></div></div>`).join('');
 }
 
 /* ============ Costo de quedarse igual ============ */
@@ -746,9 +745,18 @@ const pantalla = () => {
 };
 $('#pc').addEventListener('click', pantalla);
 $('#bn').addEventListener('click', () => { notas.classList.toggle('on'); mostrarNota(); });
+/* Un clic deja el foco en el botón o el control: lo soltamos para que la barra espaciadora y las flechas sigan pasando de sección */
+document.addEventListener('pointerup', e => { const b = e.target.closest('button,a'); if (b) setTimeout(() => b.blur(), 0); });
+$$('input[type=range]').forEach(x => x.addEventListener('change', () => x.blur()));
+$$('input[type=number]').forEach(x => x.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === 'Escape') x.blur(); }));
 addEventListener('keydown', e => {
-  if (e.target.closest('input,textarea') || e.metaKey || e.ctrlKey || e.altKey) return;
-  const k = e.key;
+  if (e.metaKey || e.ctrlKey || e.altKey) return;
+  const k = e.key, campo = e.target.closest('input,textarea');
+  if (campo) {
+    /* En un campo, las flechas y los números son del campo; la barra espaciadora y Re Pág / Av Pág siguen navegando */
+    if (k !== ' ' && k !== 'PageDown' && k !== 'PageUp') return;
+    campo.blur();
+  }
   if (k === 'ArrowDown' || k === 'PageDown' || (k === ' ' && !e.target.closest('button,a'))) { e.preventDefault(); irA(indice + 1); }
   else if (k === 'ArrowUp' || k === 'PageUp') { e.preventDefault(); irA(indice - 1); }
   else if (k === 'Home') { e.preventDefault(); irA(0); }
